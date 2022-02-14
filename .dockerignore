@@ -1,0 +1,11 @@
+# internal
+*.md
+
+# docker
+*.env
+*.yml
+*.dockerfile
+
+# git
+.git
+.gitignore
