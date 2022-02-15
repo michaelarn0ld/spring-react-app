@@ -8,14 +8,14 @@ DROP TABLE IF EXISTS
 CASCADE;
 
 CREATE TABLE membership (
-    id serial PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     tier VARCHAR(16) NOT NULL,
     price DECIMAL NOT NULL,
     weekly_visits INTEGER NOT NULL
 );
 
 CREATE TABLE app_user (
-    id serial PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     membership_id INTEGER NOT NULL REFERENCES membership(id),
     email VARCHAR(128) NOT NULL UNIQUE,
     password_hash VARCHAR(2048) NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE app_user (
     city VARCHAR(64) NOT NULL,
     state CHAR(2) NOT NULL,
     zip_code CHAR(5) NOT NULL,
-    disabled boolean NOT NULL DEFAULT FALSE
+    disabled BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE app_role (
