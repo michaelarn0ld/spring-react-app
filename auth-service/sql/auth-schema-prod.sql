@@ -18,6 +18,7 @@ CREATE TABLE app_user (
     id SERIAL PRIMARY KEY,
     membership_id INTEGER NOT NULL REFERENCES membership(id),
     email VARCHAR(128) NOT NULL UNIQUE,
+    username VARCHAR(32) NOT NULL UNIQUE,
     password_hash VARCHAR(2048) NOT NULL,
     first_name VARCHAR(64) NOT NULL,
     last_name VARCHAR(64) NOT NULL,
@@ -55,13 +56,13 @@ INSERT INTO app_role (app_role_name) VALUES
     ('USER'),
     ('ADMIN');
 
-INSERT INTO app_user (membership_id, email, password_hash, first_name, last_name,
+INSERT INTO app_user (membership_id, email, username, password_hash, first_name, last_name,
                         phone, address, city, state, zip_code) VALUES
-    (1, 'me@michaelarnold.io', 'NOTAPASSWORDHASH', 'Michael', 'Arnold',
+    (1, 'me@michaelarnold.io', 'michaelarn0ld', 'NOTAPASSWORDHASH', 'Michael', 'Arnold',
     '951-768-2490', '777 Lucky St', 'Georgetown', 'TX', '78626'),
-    (2, 'example@test.com', 'NOTAPASSWORDHASH', 'Example', 'Test',
+    (2, 'example@test.com', 'example123', 'NOTAPASSWORDHASH', 'Example', 'Test',
     '555-555-5555', '789 Fresh Ave', 'Corvallis', 'OR', '97333'),
-    (3, 'test@example.com', 'NOTAPASSWORDHASH', 'Test', 'Example',
+    (3, 'test@example.com', 'test456', 'NOTAPASSWORDHASH', 'Test', 'Example',
     '000-000-0000', '3993 Peppertree Ln', 'Chino', 'CA', '91760');
 
 -- me@michaelarnold.io: ADMIN
