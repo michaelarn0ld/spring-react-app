@@ -4,7 +4,8 @@
 DROP TABLE IF EXISTS
     app_user,
     app_role,
-    app_user_role
+    app_user_role,
+    membership
 CASCADE;
 
 CREATE TABLE membership (
