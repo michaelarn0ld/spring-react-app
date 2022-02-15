@@ -1,10 +1,18 @@
+# no need for build dir
+build
+
+# node
+node_modules
+
 # internal
 *.md
 
-# docker
+# env
 *.env
+
+# docker
 *.yml
-*.dockerfile
+*.Dockerfile
 
 # git
 .git
