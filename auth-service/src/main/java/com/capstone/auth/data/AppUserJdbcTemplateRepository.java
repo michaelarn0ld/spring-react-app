@@ -5,6 +5,7 @@ import com.capstone.auth.models.AppUser;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.util.List;
@@ -23,36 +24,37 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     public AppUser findUser(String input) {
         final String sql = "SELECT * FROM app_user WHERE username = ? OR email = ?;";
 
-        AppUser appUser = jdbcTemplate.query(sql, new AppUserMapper(), input, input).stream()
+        AppUser user = jdbcTemplate.query(sql, new AppUserMapper(), input, input).stream()
                 .findFirst()
                 .orElse(null);
 
-        if (appUser != null) {
-            appUser.setAuthorityNames(getAuthorities(appUser.getId()));
+        if (user != null) {
+            user.setAuthorityNames(getAuthorities(user.getId()));
         }
 
-        return appUser;
+        return user;
     }
 
     @Override
-    public AppUser add(AppUser appUser) {
+    @Transactional
+    public AppUser add(AppUser user) {
         final String sql = "INSERT INTO app_user (membership_id, email, username, password_hash, first_name, " +
                 "last_name, phone, address, city, state, zip_code) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(con -> {
             PreparedStatement ps = con.prepareStatement(sql, new String[]{ "id" });
-            ps.setInt(1, appUser.getMembershipId());
-            ps.setString(2, appUser.getEmail());
-            ps.setString(3, appUser.getUsername());
-            ps.setString(4, appUser.getPassword());
-            ps.setString(5, appUser.getFirstName());
-            ps.setString(6, appUser.getLastName());
-            ps.setString(7, appUser.getPhone());
-            ps.setString(8, appUser.getAddress());
-            ps.setString(9, appUser.getCity());
-            ps.setString(10, appUser.getState());
-            ps.setString(11, appUser.getZipCode());
+            ps.setInt(1, user.getMembershipId());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getUsername());
+            ps.setString(4, user.getPassword());
+            ps.setString(5, user.getFirstName());
+            ps.setString(6, user.getLastName());
+            ps.setString(7, user.getPhone());
+            ps.setString(8, user.getAddress());
+            ps.setString(9, user.getCity());
+            ps.setString(10, user.getState());
+            ps.setString(11, user.getZipCode());
             return ps;
         }, keyHolder);
 
@@ -60,24 +62,39 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
             return null;
         }
 
-        appUser.setId(keyHolder.getKey().intValue());
-        return appUser;
+        user.setId(keyHolder.getKey().intValue());
+        return user;
     }
 
     @Override
-    public boolean update(AppUser appUser) {
+    @Transactional
+    public boolean update(AppUser user) {
+        final String sql = "UPDATE app_user SET membership_id = ?, email = ?, username = ?, password_hash = ?, first_name = ?, " +
+                "last_name = ?, phone = ?, address = ?, city =  ?, state = ?, zip_code = ? WHERE id = ?;";
+
+        int rowsAffected = jdbcTemplate.update(sql,
+                user.getMembershipId(), user.getEmail(), user.getUsername(),
+                user.getPassword(), user.getFirstName(), user.getLastName(),
+                user.getPhone(), user.getAddress(), user.getCity(),
+                user.getState(), user.getZipCode(), user.getId());
+
+        if (rowsAffected > 0) {
+            setAuthorities(user);
+            return true;
+        }
+
         return false;
     }
 
-    private void setAuthorities(AppUser appUser) {
-        jdbcTemplate.update("DELETE FROM app_user_role WHERE app_user_id = ?;", appUser.getId());
+    private void setAuthorities(AppUser user) {
+        jdbcTemplate.update("DELETE FROM app_user_role WHERE app_user_id = ?;", user.getId());
 
-        for (String authority : appUser.getAuthorityNames()) {
+        for (String authority : user.getAuthorityNames()) {
 
             String sql = "INSERT INTO app_user_role (app_user_id, app_role_id) "
                     + "VALUES (?, (SELECT id FROM app_role WHERE app_role_name = ?));";
 
-            jdbcTemplate.update(sql, appUser.getId(), authority);
+            jdbcTemplate.update(sql, user.getId(), authority);
         }
     }
 

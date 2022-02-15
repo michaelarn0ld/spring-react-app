@@ -53,27 +53,11 @@
       <recent name="com.capstone.auth.models" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AppUserJdbcTemplateRepositoryTest.shouldNotAddBadUser">
+  <component name="RunManager" selected="JUnit.All in auth-service">
     <configuration name="All in auth-service" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="auth-service" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppUserJdbcTemplateRepositoryTest.shouldAddUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="auth-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.capstone.auth.data.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.capstone.auth.data" />
-      <option name="MAIN_CLASS_NAME" value="com.capstone.auth.data.AppUserJdbcTemplateRepositoryTest" />
-      <option name="METHOD_NAME" value="shouldAddUser" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -110,7 +94,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppUserJdbcTemplateRepositoryTest.shouldNotAddDuplicateUsername" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AppUserJdbcTemplateRepositoryTest.shouldNotUpdateBadUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="auth-service" />
       <extension name="coverage">
         <pattern>
@@ -120,7 +104,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.capstone.auth.data" />
       <option name="MAIN_CLASS_NAME" value="com.capstone.auth.data.AppUserJdbcTemplateRepositoryTest" />
-      <option name="METHOD_NAME" value="shouldNotAddDuplicateUsername" />
+      <option name="METHOD_NAME" value="shouldNotUpdateBadUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppUserJdbcTemplateRepositoryTest.shouldUpdateUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="auth-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.capstone.auth.data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.capstone.auth.data" />
+      <option name="MAIN_CLASS_NAME" value="com.capstone.auth.data.AppUserJdbcTemplateRepositoryTest" />
+      <option name="METHOD_NAME" value="shouldUpdateUser" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -128,11 +128,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in auth-service" />
+        <item itemvalue="JUnit.AppUserJdbcTemplateRepositoryTest.shouldNotUpdateBadUser" />
+        <item itemvalue="JUnit.AppUserJdbcTemplateRepositoryTest.shouldUpdateUser" />
         <item itemvalue="JUnit.AppUserJdbcTemplateRepositoryTest.shouldNotAddBadUser" />
         <item itemvalue="JUnit.AppUserJdbcTemplateRepositoryTest.shouldNotAddDuplicateEmail" />
-        <item itemvalue="JUnit.AppUserJdbcTemplateRepositoryTest.shouldNotAddDuplicateUsername" />
-        <item itemvalue="JUnit.AppUserJdbcTemplateRepositoryTest.shouldAddUser" />
-        <item itemvalue="JUnit.All in auth-service" />
       </list>
     </recent_temporary>
   </component>

@@ -1,6 +1,7 @@
 package com.capstone.auth.data;
 
 import com.capstone.auth.models.AppUser;
+import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.postgresql.util.PSQLException;
@@ -110,6 +111,22 @@ class AppUserJdbcTemplateRepositoryTest {
     void shouldNotAddBadUser() {
         AppUser user = new AppUser();
         assertThrows(DataIntegrityViolationException.class, () -> repository.add(user));
+    }
+
+    @Test
+    void shouldUpdateUser() {
+       AppUser user = repository.findUser("example123");
+       user.setUsername("michael");
+       assertTrue(repository.update(user));
+       AppUser result = repository.findUser("example@test.com");
+       assertEquals("michael", result.getUsername());
+    }
+
+    @Test
+    void shouldNotUpdateBadUser() {
+        AppUser user = new AppUser();
+        user.setUsername("myusername");
+        assertFalse(repository.update(user));
     }
 
 }
