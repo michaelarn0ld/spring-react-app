@@ -6,8 +6,8 @@ public interface AppUserRepository {
 
     AppUser findUser(String input);
 
-    AppUser add(AppUser appUser);
+    AppUser add(AppUser user);
 
-    boolean update(AppUser appUser);
+    boolean update(AppUser user);
 
 }
