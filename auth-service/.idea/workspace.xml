@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9232d850-0572-4dd7-8e4e-cdbf77b25668" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/data/AppUserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/capstone/auth/models/AppUserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/data/AppUserJdbcTemplateRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/data/mappers/AppUserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/capstone/auth/data/AppUserJdbcTemplateRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/capstone/auth/data/KnownGoodState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/models/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/models/AppUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/auth-schema-prod.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/auth-schema-prod.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/auth-schema-test.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/auth-schema-test.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,18 +46,59 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.capstone.auth.data" />
       <recent name="com.capstone.auth.models" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AppUserTest">
+  <component name="RunManager" selected="JUnit.All in auth-service">
+    <configuration name="All in auth-service" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="auth-service" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppUserJdbcTemplateRepositoryTest.shouldFindByEmail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="auth-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.capstone.auth.data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.capstone.auth.data" />
+      <option name="MAIN_CLASS_NAME" value="com.capstone.auth.data.AppUserJdbcTemplateRepositoryTest" />
+      <option name="METHOD_NAME" value="shouldFindByEmail" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppUserJdbcTemplateRepositoryTest.shouldFindByUsername" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="auth-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.capstone.auth.data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.capstone.auth.data" />
+      <option name="MAIN_CLASS_NAME" value="com.capstone.auth.data.AppUserJdbcTemplateRepositoryTest" />
+      <option name="METHOD_NAME" value="shouldFindByUsername" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AppUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="auth-service" />
       <extension name="coverage">
@@ -65,22 +110,6 @@
       <option name="PACKAGE_NAME" value="com.capstone.auth.models" />
       <option name="MAIN_CLASS_NAME" value="com.capstone.auth.models.AppUserTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppUserTest.goodUserShouldPass" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="auth-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.capstone.auth.models.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.capstone.auth.models" />
-      <option name="MAIN_CLASS_NAME" value="com.capstone.auth.models.AppUserTest" />
-      <option name="METHOD_NAME" value="goodUserShouldPass" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -101,45 +130,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppUserTest.longUsernameUserShouldFail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="auth-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.capstone.auth.models.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.capstone.auth.models" />
-      <option name="MAIN_CLASS_NAME" value="com.capstone.auth.models.AppUserTest" />
-      <option name="METHOD_NAME" value="longUsernameUserShouldFail" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppUserTest.usernameLikeEmailShouldFail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="auth-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.capstone.auth.models.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.capstone.auth.models" />
-      <option name="MAIN_CLASS_NAME" value="com.capstone.auth.models.AppUserTest" />
-      <option name="METHOD_NAME" value="usernameLikeEmailShouldFail" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in auth-service" />
+        <item itemvalue="JUnit.AppUserJdbcTemplateRepositoryTest.shouldFindByEmail" />
+        <item itemvalue="JUnit.AppUserJdbcTemplateRepositoryTest.shouldFindByUsername" />
         <item itemvalue="JUnit.AppUserTest" />
         <item itemvalue="JUnit.AppUserTest.longPasswordUserShouldFail" />
-        <item itemvalue="JUnit.AppUserTest.goodUserShouldPass" />
-        <item itemvalue="JUnit.AppUserTest.longUsernameUserShouldFail" />
-        <item itemvalue="JUnit.AppUserTest.usernameLikeEmailShouldFail" />
       </list>
     </recent_temporary>
   </component>

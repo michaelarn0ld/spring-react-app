@@ -66,13 +66,14 @@ INSERT INTO app_user (membership_id, email, username, password_hash, first_name,
     (3, 'test@example.com', 'test456', 'NOTAPASSWORDHASH', 'Test', 'Example',
     '000-000-0000', '3993 Peppertree Ln', 'Chino', 'CA', '91760');
 
--- me@michaelarnold.io: ADMIN
+-- me@michaelarnold.io: USER, ADMIN
 -- example@test.com: USER
 -- test@example.com: USER
 INSERT INTO app_user_role (app_user_id, app_role_id) VALUES
     (1, 1),
-    (2, 2),
-    (3, 2);
+    (1, 2),
+    (2, 1),
+    (3, 1);
 
 --------------------------------------------------
 ------------------ END DML------------------------
