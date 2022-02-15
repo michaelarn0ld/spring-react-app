@@ -27,13 +27,12 @@ public class AppUser implements UserDetails {
     private String email;
 
     @NotNull
-    @Size(min = 4, max = 32)
+    @Pattern(regexp = "^[a-z0-9_-]{4,32}$")
     private String username;
 
     @NotNull
-    @Size(min = 8, max = 32)
-    // Password needs all the following: uppercase, lowercase, number, special character.
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
+    // Password is 8 char and needs all the following: uppercase, lowercase, number, special character.
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,32}$")
     private String password;
 
     @NotNull
@@ -45,7 +44,8 @@ public class AppUser implements UserDetails {
     private String lastName;
 
     @NotNull
-    @Size(max = 16)
+    // Phone: (888) 888-8888 || 888-888-8888 || 1112223333
+    @Pattern(regexp = "^((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$")
     private String phone;
 
     @NotNull
