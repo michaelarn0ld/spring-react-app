@@ -3,8 +3,10 @@ package com.capstone.auth.data;
 import com.capstone.auth.data.mappers.AppUserMapper;
 import com.capstone.auth.models.AppUser;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.sql.PreparedStatement;
 import java.util.List;
 
 @Repository
@@ -34,7 +36,32 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
 
     @Override
     public AppUser add(AppUser appUser) {
-        return null;
+        final String sql = "INSERT INTO app_user (membership_id, email, username, password_hash, first_name, " +
+                "last_name, phone, address, city, state, zip_code) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
+        int rowsAffected = jdbcTemplate.update(con -> {
+            PreparedStatement ps = con.prepareStatement(sql, new String[]{ "id" });
+            ps.setInt(1, appUser.getMembershipId());
+            ps.setString(2, appUser.getEmail());
+            ps.setString(3, appUser.getUsername());
+            ps.setString(4, appUser.getPassword());
+            ps.setString(5, appUser.getFirstName());
+            ps.setString(6, appUser.getLastName());
+            ps.setString(7, appUser.getPhone());
+            ps.setString(8, appUser.getAddress());
+            ps.setString(9, appUser.getCity());
+            ps.setString(10, appUser.getState());
+            ps.setString(11, appUser.getZipCode());
+            return ps;
+        }, keyHolder);
+
+        if (rowsAffected <= 0) {
+            return null;
+        }
+
+        appUser.setId(keyHolder.getKey().intValue());
+        return appUser;
     }
 
     @Override
