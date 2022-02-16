@@ -1,19 +1,23 @@
-# no need for build dir
-build
-
-# node
-node_modules
-
-# internal
-*.md
+# docker
+*.yml
+Dockerfile
 
 # env
 *.env
 
-# docker
-*.yml
-*.Dockerfile
+# intelliJ
+.idea
+*.iml
+
+# internal
+*.md
 
 # git
 .git
 .gitignore
+
+# node
+node_modules
+
+# no need for build dir
+build
