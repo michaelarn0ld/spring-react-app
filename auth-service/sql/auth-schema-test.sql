@@ -76,11 +76,11 @@ BEGIN
 
     INSERT INTO app_user (membership_id, email, username, password_hash, first_name, last_name,
                             phone, address, city, state, zip_code) VALUES
-        (1, 'me@michaelarnold.io', 'michaelarn0ld', 'NOTAPASSWORDHASH', 'Michael', 'Arnold',
+        (1, 'me@michaelarnold.io', 'michaelarn0ld', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'Michael', 'Arnold',
         '951-768-2490', '777 Lucky St', 'Georgetown', 'TX', '78626'),
-        (2, 'example@test.com', 'example123', 'NOTAPASSWORDHASH', 'Example', 'Test',
+        (2, 'example@test.com', 'example123', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'Example', 'Test',
         '555-555-5555', '789 Fresh Ave', 'Corvallis', 'OR', '97333'),
-        (3, 'test@example.com', 'test456', 'NOTAPASSWORDHASH', 'Test', 'Example',
+        (3, 'test@example.com', 'test456', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'Test', 'Example',
         '000-000-0000', '3993 Peppertree Ln', 'Chino', 'CA', '91760');
 
     -- me@michaelarnold.io: USER, ADMIN

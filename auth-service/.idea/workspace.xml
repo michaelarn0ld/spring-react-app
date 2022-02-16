@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9232d850-0572-4dd7-8e4e-cdbf77b25668" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/controllers/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http/requests.http" beforeDir="false" afterPath="$PROJECT_DIR$/http/requests.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/auth-schema-prod.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/auth-schema-prod.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/auth-schema-test.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/auth-schema-test.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/controllers/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/data/AppUserJdbcTemplateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/data/AppUserJdbcTemplateRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/SecurityConfig.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +40,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -56,7 +59,7 @@
       <recent name="com.capstone.auth.models" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="JUnit.All in auth-service">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.capstone.auth.App" />
       <module name="auth-service" />
@@ -78,7 +81,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppUserJdbcTemplateRepositoryTest.shouldNotAddBadUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AppUserJdbcTemplateRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="auth-service" />
       <extension name="coverage">
         <pattern>
@@ -88,51 +91,49 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.capstone.auth.data" />
       <option name="MAIN_CLASS_NAME" value="com.capstone.auth.data.AppUserJdbcTemplateRepositoryTest" />
-      <option name="METHOD_NAME" value="shouldNotAddBadUser" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppUserJdbcTemplateRepositoryTest.shouldFindByUsername" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="auth-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.capstone.auth.data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.capstone.auth.data" />
+      <option name="MAIN_CLASS_NAME" value="com.capstone.auth.data.AppUserJdbcTemplateRepositoryTest" />
+      <option name="METHOD_NAME" value="shouldFindByUsername" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppUserJdbcTemplateRepositoryTest.shouldNotUpdateBadUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AppUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="auth-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.capstone.auth.data.*" />
+          <option name="PATTERN" value="com.capstone.auth.models.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.capstone.auth.data" />
-      <option name="MAIN_CLASS_NAME" value="com.capstone.auth.data.AppUserJdbcTemplateRepositoryTest" />
-      <option name="METHOD_NAME" value="shouldNotUpdateBadUser" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppUserJdbcTemplateRepositoryTest.shouldUpdateUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="auth-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.capstone.auth.data.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.capstone.auth.data" />
-      <option name="MAIN_CLASS_NAME" value="com.capstone.auth.data.AppUserJdbcTemplateRepositoryTest" />
-      <option name="METHOD_NAME" value="shouldUpdateUser" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.capstone.auth.models" />
+      <option name="MAIN_CLASS_NAME" value="com.capstone.auth.models.AppUserTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
         <item itemvalue="JUnit.All in auth-service" />
-        <item itemvalue="JUnit.AppUserJdbcTemplateRepositoryTest.shouldNotUpdateBadUser" />
-        <item itemvalue="JUnit.AppUserJdbcTemplateRepositoryTest.shouldUpdateUser" />
-        <item itemvalue="JUnit.AppUserJdbcTemplateRepositoryTest.shouldNotAddBadUser" />
+        <item itemvalue="JUnit.AppUserJdbcTemplateRepositoryTest" />
+        <item itemvalue="JUnit.AppUserTest" />
+        <item itemvalue="JUnit.AppUserJdbcTemplateRepositoryTest.shouldFindByUsername" />
+        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
