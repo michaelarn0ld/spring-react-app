@@ -9,6 +9,9 @@ Dockerfile
 .idea
 *.iml
 
+# maven
+target
+
 # internal
 *.md
 
