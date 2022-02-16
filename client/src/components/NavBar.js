@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
+import { useContext } from "react";
 
-function NavBar({userStatus}) {
+function NavBar() {
+    const [userStatus, setUserStatus] = useContext(AuthContext);
+
     return ( 
         <nav>
         <Link to="/">
@@ -10,8 +14,11 @@ function NavBar({userStatus}) {
           <ul className="navbar-nav">
             {userStatus.user ? (
                 <li className="nav-item">
-                    <button onClick={userStatus.logout}>
-                        Logout {userStatus.user}
+                    <button onClick={() => {
+                        setUserStatus(null);
+                        localStorage.removeItem("token");
+                    }}>
+                        Logout {userStatus.user.sub}
                     </button>
                 </li>
             ) : (

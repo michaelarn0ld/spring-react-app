@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import jwtDecode from "jwt-decode";
+import AuthContext from "../../context/AuthContext";
 
 
 function Login({ userStatus }) {
@@ -8,6 +9,9 @@ function Login({ userStatus }) {
 const [username, setUsername] = useState("");
 const [password, setPassword] = useState("");
 const [errors, setErrors] = useState([]);
+
+const contextValue = useContext(AuthContext);
+const [_, setUserStatus] = useContext(AuthContext);
 
 const history = useHistory();
 
@@ -30,7 +34,7 @@ const handleSubmit = async (event) => {
         const { jwt_token } = await response.json();
 
         localStorage.setItem("token", jwt_token);
-        userStatus.login(username);
+        setUserStatus({ user: jwtDecode(jwt_token) });
         history.push("/");
     } else if(response.status === 400) {
         const errors = await response.json();
