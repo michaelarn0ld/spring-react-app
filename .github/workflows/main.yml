@@ -24,4 +24,4 @@ jobs:
         with:
           context: ./client
           push: true
-          tags: ${{secrets.DOCKERHUB_USERNAME}}/actions:latest
+          tags: ${{secrets.DOCKERHUB_USERNAME}}/capstone:latest
