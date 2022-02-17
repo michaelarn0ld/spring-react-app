@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9232d850-0572-4dd7-8e4e-cdbf77b25668" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/controllers/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/JwtConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/JwtRequestFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http/requests.http" beforeDir="false" afterPath="$PROJECT_DIR$/http/requests.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/models/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/models/AppUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/SecurityConfigurer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/SecurityUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/SecurityUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/capstone/auth/models/AppUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/capstone/auth/models/AppUserTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +49,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../local/deployment-lab" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -53,10 +63,10 @@
       <recent name="com.capstone.auth.models" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in auth-service">
+  <component name="RunManager" selected="JUnit.com.capstone.auth.models in user-service">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.capstone.auth.App" />
-      <module name="auth-service" />
+      <module name="user-service" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.capstone.auth.*" />
@@ -67,47 +77,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in auth-service" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="auth-service" />
+    <configuration name="All in user-service" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="user-service" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppUserJdbcTemplateRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="auth-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.capstone.auth.data.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.capstone.auth.data" />
-      <option name="MAIN_CLASS_NAME" value="com.capstone.auth.data.AppUserJdbcTemplateRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppUserJdbcTemplateRepositoryTest.shouldFindByUsername" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="auth-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.capstone.auth.data.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.capstone.auth.data" />
-      <option name="MAIN_CLASS_NAME" value="com.capstone.auth.data.AppUserJdbcTemplateRepositoryTest" />
-      <option name="METHOD_NAME" value="shouldFindByUsername" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="auth-service" />
+    <configuration name="AppUserTest.goodUserShouldPass" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="user-service" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.capstone.auth.models.*" />
@@ -116,18 +95,47 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.capstone.auth.models" />
       <option name="MAIN_CLASS_NAME" value="com.capstone.auth.models.AppUserTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="goodUserShouldPass" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.capstone.auth.data in user-service" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="user-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.capstone.auth.data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.capstone.auth.data" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.capstone.auth.models in user-service" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="user-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.capstone.auth.models.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.capstone.auth.models" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in auth-service" />
-        <item itemvalue="JUnit.AppUserJdbcTemplateRepositoryTest" />
-        <item itemvalue="JUnit.AppUserTest" />
-        <item itemvalue="JUnit.AppUserJdbcTemplateRepositoryTest.shouldFindByUsername" />
+        <item itemvalue="JUnit.com.capstone.auth.models in user-service" />
+        <item itemvalue="JUnit.AppUserTest.goodUserShouldPass" />
         <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.com.capstone.auth.data in user-service" />
+        <item itemvalue="JUnit.All in user-service" />
       </list>
     </recent_temporary>
   </component>

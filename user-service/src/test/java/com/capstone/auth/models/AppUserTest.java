@@ -22,7 +22,7 @@ class AppUserTest {
         user.setId(0);
         user.setMembershipId(1);
         user.setEmail("example@test.com");
-        user.setUsername("thisisatest");
+        user.setUsername("thisisatesT123_");
         user.setPassword("$$R3gex$$");
         user.setFirstName("Example");
         user.setLastName("Test");

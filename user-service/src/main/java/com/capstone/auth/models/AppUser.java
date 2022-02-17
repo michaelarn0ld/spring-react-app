@@ -27,7 +27,7 @@ public class AppUser implements UserDetails {
     private String email;
 
     @NotNull
-    @Pattern(regexp = "^[a-z0-9_-]{4,32}$")
+    @Pattern(regexp = "^[A-Za-z0-9_-]{4,32}$")
     private String username;
 
     @NotNull
