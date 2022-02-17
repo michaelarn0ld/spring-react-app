@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9232d850-0572-4dd7-8e4e-cdbf77b25668" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/controllers/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/JwtConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/JwtRequestFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/http/requests.http" beforeDir="false" afterPath="$PROJECT_DIR$/http/requests.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/models/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/models/AppUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/SecurityConfigurer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/SecurityUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/SecurityUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/capstone/auth/models/AppUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/capstone/auth/models/AppUserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,5 +151,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
