@@ -36,6 +36,15 @@ npm-debug.log*
 # Production
 /build
 
+# docker
+*.env
+
+# Maven
+target/
+
+# OSX
+.DS_Store
+
 # React dependencies
 /node_modules
 /.pnp
@@ -43,3 +52,13 @@ npm-debug.log*
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# Production
+/build
+
+# Misc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
