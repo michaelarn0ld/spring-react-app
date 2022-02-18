@@ -5,3 +5,28 @@ Content-Type: application/json
     "username": "me@michaelarnold.io",
     "password": "P@ssw0rd!"
 }
+###
+POST http://localhost:8080/register
+Content-Type: application/json
+
+{
+    "membershipId": 1,
+    "email": "pete@example.com",
+    "username": "pete12345",
+    "password": "$$R3gex$$",
+    "firstName": "Pete",
+    "lastName": "Olson",
+    "phone": "888-999-0000",
+    "address": "789 Docker Ave",
+    "city": "Minneapolis",
+    "state": "MN",
+    "zipCode": "55372"
+}
+###
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+    "username": "pete@example.com",
+    "password": "$$R3gex$$"
+}
