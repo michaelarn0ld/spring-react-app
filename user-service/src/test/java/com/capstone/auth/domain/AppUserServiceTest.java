@@ -11,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -25,6 +26,7 @@ class AppUserServiceTest {
 
     AppUser userIn;
     AppUser userOut;
+    AppUser userPull;
 
     @BeforeEach
     void setup() {
@@ -55,6 +57,20 @@ class AppUserServiceTest {
         userOut.setCity("Georgetown");
         userOut.setState("TX");
         userOut.setZipCode("78626");
+
+        userPull = new AppUser();
+        userPull.setId(0);
+        userPull.setMembershipId(1);
+        userPull.setEmail("example@test.com");
+        userPull.setUsername("thisisatesT123_");
+        userPull.setPassword("$$R3gex$$");
+        userPull.setFirstName("Example");
+        userPull.setLastName("Test");
+        userPull.setPhone("951-768-2490");
+        userPull.setAddress("777 Lucky St");
+        userPull.setCity("Georgetown");
+        userPull.setState("TX");
+        userPull.setZipCode("78626");
     }
 
     @Test
@@ -103,6 +119,25 @@ class AppUserServiceTest {
         when(repository.noDuplicateUsers(anyString(), anyString())).thenReturn(false);
 
         Result<AppUser> result = service.add(userIn);
+        assertFalse(result.isSuccess());
+        assertEquals(1, result.getMessages().size());
+    }
+
+    @Test
+    void shouldUpdate() {
+        when(repository.findUser(anyString())).thenReturn(userPull);
+        when(repository.update(any())).thenReturn(true);
+
+        userIn.setUsername("billybob123");
+        Result<AppUser> result = service.update(userIn);
+        assertTrue(result.isSuccess());
+    }
+
+    @Test
+    void shouldNotUpdateToExistingUsernameDifferentUserId() {
+        when(repository.findUser(anyString())).thenReturn(userOut);
+
+        Result<AppUser> result = service.update(userIn);
         assertFalse(result.isSuccess());
         assertEquals(1, result.getMessages().size());
     }
