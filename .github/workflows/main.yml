@@ -24,7 +24,7 @@ jobs:
         with:
           context: ./ui
           push: true
-          tags: ${{secrets.DOCKERHUB_USERNAME}}/ui:latest
+          tags: ${{secrets.DOCKERHUB_USERNAME}}/capstone_ui:latest
 
   user-service:
     runs-on: ubuntu-latest
@@ -44,4 +44,4 @@ jobs:
         with:
           context: ./user-service
           push: true
-          tags: ${{secrets.DOCKERHUB_USERNAME}}/user-service:latest
+          tags: ${{secrets.DOCKERHUB_USERNAME}}/capstone_user-service:latest
