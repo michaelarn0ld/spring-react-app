@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.DuplicateKeyException;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
@@ -22,6 +24,27 @@ class AppUserJdbcTemplateRepositoryTest {
     @BeforeEach
     void setup() {
         knownGoodState.set();
+    }
+
+    @Test
+    void shouldFindAll() {
+        List<AppUser> users = repository.findAll();
+        assertTrue(users.size() >= 3);
+    }
+
+    @Test
+    void shouldFindDuplicateUserByEmail() {
+        assertFalse(repository.noDuplicateUsers("michaelarnold", "me@michaelarnold.io"));
+    }
+
+    @Test
+    void shouldFindDuplicateUserByUsername() {
+        assertFalse(repository.noDuplicateUsers("michaelarn0ld", "me2@michaelarnold.io"));
+    }
+
+    @Test
+    void shouldNotFindDuplicateUser() {
+        assertTrue(repository.noDuplicateUsers("michaelarnold", "me2@michaelarnold.io"));
     }
 
     @Test

@@ -2,6 +2,7 @@ package com.capstone.auth.data;
 
 import com.capstone.auth.data.mappers.AppUserMapper;
 import com.capstone.auth.models.AppUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
@@ -13,10 +14,20 @@ import java.util.List;
 @Repository
 public class AppUserJdbcTemplateRepository implements AppUserRepository {
 
-    private final JdbcTemplate jdbcTemplate;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
-    public AppUserJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+    @Override
+    public List<AppUser> findAll() {
+        final String sql = "SELECT * FROM app_user;";
+        return jdbcTemplate.query(sql, new AppUserMapper());
+    }
+
+    @Override
+    public boolean noDuplicateUsers(String username, String email) {
+        final String sql = "SELECT COUNT(*) FROM app_user WHERE username = ? OR email = ?;";
+        int count = jdbcTemplate.queryForObject(sql, Integer.class, username, email);
+        return count == 0;
     }
 
     @Override
