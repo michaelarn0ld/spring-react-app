@@ -33,6 +33,26 @@ class AppUserJdbcTemplateRepositoryTest {
     }
 
     @Test
+    void shouldFindAllRoles() {
+        List<String> roles = repository.findRoles();
+        assertEquals(2, roles.size());
+        assertTrue(roles.containsAll(List.of("USER", "ADMIN")));
+    }
+
+    @Test
+    void shouldFindById() {
+       AppUser user = repository.findById(2);
+       assertNotNull(user);
+       assertEquals("example123", user.getUsername());
+    }
+
+    @Test
+    void shouldNotFindByBadId() {
+        AppUser user = repository.findById(22);
+        assertNull(user);
+    }
+
+    @Test
     void shouldFindDuplicateUserByEmail() {
         assertFalse(repository.noDuplicateUsers("michaelarnold", "me@michaelarnold.io"));
     }
@@ -148,6 +168,24 @@ class AppUserJdbcTemplateRepositoryTest {
         AppUser user = new AppUser();
         user.setUsername("myusername");
         assertFalse(repository.update(user));
+    }
+
+    @Test
+    void shouldChangePassword() {
+       AppUser user = new AppUser();
+       user.setId(1);
+       user.setPassword("MYNEWPASSWORD");
+
+       assertTrue(repository.changePassword(user));
+       assertEquals("MYNEWPASSWORD", repository.findUser("me@michaelarnold.io").getPassword());
+    }
+
+    @Test
+    void shouldNotChangePassword() {
+        AppUser user = new AppUser();
+        user.setPassword("MYNEWPASSWORD");
+
+        assertFalse(repository.changePassword(user));
     }
 
 }

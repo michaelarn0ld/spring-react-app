@@ -6,8 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="9232d850-0572-4dd7-8e4e-cdbf77b25668" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http/requests.http" beforeDir="false" afterPath="$PROJECT_DIR$/http/requests.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/auth-schema-prod.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/auth-schema-prod.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/controllers/AppUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/controllers/AppUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/data/AppUserJdbcTemplateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/data/AppUserJdbcTemplateRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/data/AppUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/data/AppUserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/domain/AppUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/domain/AppUserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/capstone/auth/data/AppUserJdbcTemplateRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/capstone/auth/data/AppUserJdbcTemplateRepositoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/capstone/auth/domain/AppUserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/capstone/auth/domain/AppUserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +63,7 @@
       <recent name="com.capstone.auth.models" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AppUserServiceTest.shouldNotUpdateToExistingUsernameDifferentUserId">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.capstone.auth.App" />
       <module name="user-service" />
@@ -71,39 +77,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppUserServiceTest.shouldNotUpdateToExistingUsernameDifferentUserId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AppUserJdbcTemplateRepositoryTest.shouldChangePassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="user-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.capstone.auth.domain.*" />
+          <option name="PATTERN" value="com.capstone.auth.data.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.capstone.auth.domain" />
-      <option name="MAIN_CLASS_NAME" value="com.capstone.auth.domain.AppUserServiceTest" />
-      <option name="METHOD_NAME" value="shouldNotUpdateToExistingUsernameDifferentUserId" />
+      <option name="PACKAGE_NAME" value="com.capstone.auth.data" />
+      <option name="MAIN_CLASS_NAME" value="com.capstone.auth.data.AppUserJdbcTemplateRepositoryTest" />
+      <option name="METHOD_NAME" value="shouldChangePassword" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppUserServiceTest.shouldUpdate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AppUserJdbcTemplateRepositoryTest.shouldNotChangePassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="user-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.capstone.auth.domain.*" />
+          <option name="PATTERN" value="com.capstone.auth.data.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.capstone.auth.domain" />
-      <option name="MAIN_CLASS_NAME" value="com.capstone.auth.domain.AppUserServiceTest" />
-      <option name="METHOD_NAME" value="shouldUpdate" />
+      <option name="PACKAGE_NAME" value="com.capstone.auth.data" />
+      <option name="MAIN_CLASS_NAME" value="com.capstone.auth.data.AppUserJdbcTemplateRepositoryTest" />
+      <option name="METHOD_NAME" value="shouldNotChangePassword" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppUserServiceTest.shouldUpdateToNewUsername" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AppUserServiceTest.shouldChangePassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="user-service" />
       <extension name="coverage">
         <pattern>
@@ -113,7 +119,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.capstone.auth.domain" />
       <option name="MAIN_CLASS_NAME" value="com.capstone.auth.domain.AppUserServiceTest" />
-      <option name="METHOD_NAME" value="shouldUpdateToNewUsername" />
+      <option name="METHOD_NAME" value="shouldChangePassword" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -135,11 +141,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AppUserServiceTest.shouldNotUpdateToExistingUsernameDifferentUserId" />
-        <item itemvalue="JUnit.com.capstone.auth in user-service" />
-        <item itemvalue="JUnit.AppUserServiceTest.shouldUpdate" />
-        <item itemvalue="JUnit.AppUserServiceTest.shouldUpdateToNewUsername" />
         <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.com.capstone.auth in user-service" />
+        <item itemvalue="JUnit.AppUserServiceTest.shouldChangePassword" />
+        <item itemvalue="JUnit.AppUserJdbcTemplateRepositoryTest.shouldNotChangePassword" />
+        <item itemvalue="JUnit.AppUserJdbcTemplateRepositoryTest.shouldChangePassword" />
       </list>
     </recent_temporary>
   </component>

@@ -1,6 +1,5 @@
 package com.capstone.auth.domain;
 
-import com.capstone.auth.App;
 import com.capstone.auth.data.AppUserRepository;
 import com.capstone.auth.models.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class AppUserService {
@@ -26,6 +26,14 @@ public class AppUserService {
 
     public List<AppUser> findAll() {
         return repository.findAll();
+    }
+
+    public List<String> findRoles() {
+        return repository.findRoles();
+    }
+
+    public AppUser findById(int id) {
+        return repository.findById(id);
     }
 
     public Result<AppUser> add(AppUser user) {
@@ -73,12 +81,32 @@ public class AppUserService {
             return result;
         }
         user.setPassword(encoder.encode(user.getPassword()));
-        boolean success = repository.update(user);
-        if (!success) {
+        if (!repository.update(user)) {
             result.addErrorMessage("User not updated");
         }
 
         return result;
 
+    }
+
+    public Result<AppUser> changePassword(AppUser user) {
+        Result<AppUser> result = new Result<>();
+
+        Set<ConstraintViolation<AppUser>> violations = validator.validate(user);
+        violations = violations.stream()
+                .filter(v -> v.getPropertyPath().toString().equals("id")
+                             || v.getPropertyPath().toString().equals("password"))
+                .collect(Collectors.toSet());
+
+        if (!violations.isEmpty()) {
+            violations.forEach(v -> result.addErrorMessage(v.getMessage()));
+            return result;
+        }
+        user.setPassword(encoder.encode(user.getPassword()));
+        if (!repository.changePassword(user)) {
+            result.addErrorMessage("User password not changed");
+        }
+
+        return result;
     }
 }

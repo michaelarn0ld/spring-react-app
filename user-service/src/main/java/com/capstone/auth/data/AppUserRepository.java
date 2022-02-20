@@ -8,12 +8,18 @@ public interface AppUserRepository {
 
     List<AppUser> findAll();
 
-    boolean noDuplicateUsers(String username, String email);
+    List<String> findRoles();
+
+    AppUser findById(int id);
 
     AppUser findUser(String input);
 
     AppUser add(AppUser user);
 
+    boolean changePassword(AppUser user);
+
     boolean update(AppUser user);
+
+    boolean noDuplicateUsers(String username, String email);
 
 }

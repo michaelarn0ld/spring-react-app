@@ -142,4 +142,21 @@ class AppUserServiceTest {
         assertEquals(1, result.getMessages().size());
     }
 
+    @Test
+    void shouldChangePassword() {
+        when(repository.changePassword(any())).thenReturn(true);
+
+        userIn.setPassword("Sweden101$$");
+        Result<AppUser> result = service.changePassword(userIn);
+        assertTrue(result.isSuccess());
+    }
+
+    @Test
+    void shouldNotChangePassword() {
+        userIn.setPassword("NOTAGOODPASSWORD");
+        Result<AppUser> result = service.changePassword(userIn);
+        assertFalse(result.isSuccess());
+        assertEquals(1, result.getMessages().size());
+    }
+
 }

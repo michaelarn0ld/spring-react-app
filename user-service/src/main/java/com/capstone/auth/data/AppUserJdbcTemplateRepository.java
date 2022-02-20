@@ -24,6 +24,28 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     }
 
     @Override
+    public List<String> findRoles() {
+        final String sql = "SELECT app_role_name FROM app_role;";
+        return jdbcTemplate.query(sql, (rs, i) -> rs.getString("app_role_name"));
+    }
+
+    @Override
+    @Transactional
+    public AppUser findById(int id) {
+        final String sql = "SELECT * FROM app_user WHERE id = ?;";
+
+        AppUser user = jdbcTemplate.query(sql, new AppUserMapper(), id).stream()
+                .findFirst()
+                .orElse(null);
+
+        if (user != null) {
+            user.setAuthorityNames(getAuthorities(user.getId()));
+        }
+
+        return user;
+    }
+
+    @Override
     public boolean noDuplicateUsers(String username, String email) {
         final String sql = "SELECT COUNT(*) FROM app_user WHERE username = ? OR email = ?;";
         int count = jdbcTemplate.queryForObject(sql, Integer.class, username, email);
@@ -31,6 +53,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     }
 
     @Override
+    @Transactional
     public AppUser findUser(String input) {
         final String sql = "SELECT * FROM app_user WHERE username = ? OR email = ?;";
 
@@ -73,20 +96,21 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
         }
 
         user.setId(keyHolder.getKey().intValue());
+        setUserAuthority(user);
         return user;
     }
 
     @Override
     @Transactional
     public boolean update(AppUser user) {
-        final String sql = "UPDATE app_user SET membership_id = ?, email = ?, username = ?, password_hash = ?, first_name = ?, " +
+        final String sql = "UPDATE app_user SET membership_id = ?, email = ?, username = ?, first_name = ?, " +
                 "last_name = ?, phone = ?, address = ?, city =  ?, state = ?, zip_code = ? WHERE id = ?;";
 
         int rowsAffected = jdbcTemplate.update(sql,
                 user.getMembershipId(), user.getEmail(), user.getUsername(),
-                user.getPassword(), user.getFirstName(), user.getLastName(),
-                user.getPhone(), user.getAddress(), user.getCity(),
-                user.getState(), user.getZipCode(), user.getId());
+                user.getFirstName(), user.getLastName(), user.getPhone(),
+                user.getAddress(), user.getCity(), user.getState(),
+                user.getZipCode(), user.getId());
 
         if (rowsAffected > 0) {
             setAuthorities(user);
@@ -94,6 +118,18 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
         }
 
         return false;
+    }
+
+    @Override
+    public boolean changePassword(AppUser user) {
+        final String sql = "UPDATE app_user SET password_hash = ? WHERE id = ?;";
+        return jdbcTemplate.update(sql, user.getPassword(), user.getId()) > 0;
+    }
+
+    private void setUserAuthority(AppUser user) {
+        final String sql = "INSERT INTO app_user_role (app_user_id, app_role_id) "
+                + "VALUES (?, (SELECT id FROM app_role WHERE app_role_name = 'USER'));";
+        jdbcTemplate.update(sql, user.getId());
     }
 
     private void setAuthorities(AppUser user) {
