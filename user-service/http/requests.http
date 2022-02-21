@@ -10,6 +10,16 @@ Content-Type: application/json
 }
 
 ###
+# SHOULD TRIGGER EXCEPTION NOT READABLE MESSAGE
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+    asdfljasjdfl
+    asdfjasldkf;23rkl23J
+}
+
+###
 # REFRESH TOKEN WITHOUT TOKEN IS 403
 POST http://localhost:8080/refresh
 Content-Type: application/json
