@@ -1,8 +1,9 @@
-@url=http://3.128.26.96:8080
+# @host=http://localhost:8080
+@host=http://3.128.26.96:8080
 @jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTQ3MTA1NX0.uTnf1au__5qHYSqNt-q9vC_7cVQkFRmfPpduzKt5AIc
 
 # LOGIN AS AN ADMIN
-POST {{url}}/login HTTP/1.1
+POST {{host}}/login
 Content-Type: application/json
 
 {
@@ -12,7 +13,7 @@ Content-Type: application/json
 
 ###
 # SHOULD TRIGGER EXCEPTION NOT READABLE MESSAGE
-POST http://localhost:8080/login
+POST {{host}}/login
 Content-Type: application/json
 
 {
@@ -22,18 +23,18 @@ Content-Type: application/json
 
 ###
 # REFRESH TOKEN WITHOUT TOKEN IS 403
-POST http://localhost:8080/refresh
+POST {{host}}/refresh
 Content-Type: application/json
 
 ###
 # REFRESH TOKEN WITH TOKEN IS 200 OK
-POST http://localhost:8080/refresh
+POST {{host}}/refresh
 Content-Type: application/json
 Authorization: Bearer {{jwt}}
 
 ###
 # CHANGE YOUR PASSWORD
-PUT http://localhost:8080/password
+PUT {{host}}/password
 Content-Type: application/json
 Authorization: Bearer {{jwt}}
 
@@ -43,7 +44,7 @@ Authorization: Bearer {{jwt}}
 
 ###
 # REGISTER A NEW USER
-POST http://localhost:8080/register
+POST {{host}}/register
 Content-Type: application/json
 
 {
@@ -62,7 +63,7 @@ Content-Type: application/json
 
 ###
 # SIGN IN WITH NEW USER
-POST http://localhost:8080/login
+POST {{host}}/login
 Content-Type: application/json
 
 {
@@ -72,7 +73,7 @@ Content-Type: application/json
 
 ###
 # CHANGE YOUR PASSWORD
-PUT http://localhost:8080/password
+PUT {{host}}/password
 Content-Type: application/json
 Authorization: Bearer {{jwt}}
 
@@ -83,17 +84,17 @@ Authorization: Bearer {{jwt}}
 ###
 # YOU MUST SIGN IN AS ADMIN BEFORE THE NEXT TESTS
 # GET USERS
-GET http://localhost:8080/user
+GET {{host}}/user
 Authorization: Bearer {{jwt}}
 
 ###
 # GET A SPECIFIC USER
-GET http://localhost:8080/user/4
+GET {{host}}/user/4
 Authorization: Bearer {{jwt}}
 
 ###
 # UPDATE A SPECIFIC USER
-PUT http://localhost:8080/user/update
+PUT {{host}}/user/update
 Content-Type: application/json
 Authorization: Bearer {{jwt}}
 
@@ -114,7 +115,7 @@ Authorization: Bearer {{jwt}}
 
 ###
 # UPDATE YOURSELF AS AN ADMIN
-PUT http://localhost:8080/user/update
+PUT {{host}}/user/update
 Content-Type: application/json
 Authorization: Bearer {{jwt}}
 
@@ -135,7 +136,7 @@ Authorization: Bearer {{jwt}}
 
 ###
 # ADMIN CANNOT UPDATE ANOTHER ADMIN; THIS SHOULD RETURN A 403
-PUT http://localhost:8080/user/update
+PUT {{host}}/user/update
 Content-Type: application/json
 Authorization: Bearer {{jwt}}
 
@@ -156,5 +157,5 @@ Authorization: Bearer {{jwt}}
 
 ###
 # GET ALL POSSIBLE USER ROLES
-GET http://localhost:8080/user/roles
+GET {{host}}/user/roles
 Authorization: Bearer {{jwt}}

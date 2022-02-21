@@ -45,7 +45,7 @@ target/
 .DS_Store
 
 # React dependencies
-/node_modules
+node_modules
 /.pnp
 .pnp.js
 
