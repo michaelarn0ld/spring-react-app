@@ -12,7 +12,7 @@ function NavBar() {
         </Link>
         <div>
           <ul className="navbar-nav">
-            {userStatus.user ? (
+            {userStatus?.user ? (
                 <li className="nav-item">
                     <button onClick={() => {
                         setUserStatus(null);
@@ -32,8 +32,8 @@ function NavBar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/contact">
-                Contact
+              <Link to="/admin">
+                Admin
               </Link>
             </li>
           </ul>
