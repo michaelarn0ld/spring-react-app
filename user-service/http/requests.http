@@ -1,4 +1,4 @@
-@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTMzOTM3Nn0.UYXXYMVmsZ56ycvgYXKExoOy2oi0vS1NkfniLmI3ZCY
+@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTQwNTM2OH0.Ts_QTkJhG-kKUPKaElVSg2zbNg2X6NnD2-l13H7h_6s
 
 # LOGIN AS AN ADMIN
 POST http://localhost:8080/login
@@ -8,6 +8,17 @@ Content-Type: application/json
     "username": "me@michaelarnold.io",
     "password": "P@ssw0rd!!"
 }
+
+###
+# REFRESH TOKEN WITHOUT TOKEN IS 403
+POST http://localhost:8080/refresh
+Content-Type: application/json
+
+###
+# REFRESH TOKEN WITH TOKEN IS 200 OK
+POST http://localhost:8080/refresh
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
 
 ###
 # CHANGE YOUR PASSWORD

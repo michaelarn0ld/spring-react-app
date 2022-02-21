@@ -6,15 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9232d850-0572-4dd7-8e4e-cdbf77b25668" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/http/requests.http" beforeDir="false" afterPath="$PROJECT_DIR$/http/requests.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/auth-schema-prod.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/auth-schema-prod.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/controllers/AppUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/controllers/AppUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/data/AppUserJdbcTemplateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/data/AppUserJdbcTemplateRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/data/AppUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/data/AppUserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/domain/AppUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/domain/AppUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/controllers/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/capstone/auth/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/capstone/auth/data/AppUserJdbcTemplateRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/capstone/auth/data/AppUserJdbcTemplateRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/capstone/auth/domain/AppUserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/capstone/auth/domain/AppUserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
