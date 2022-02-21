@@ -25,7 +25,6 @@ npm-debug.log*
 .DS_Store
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
