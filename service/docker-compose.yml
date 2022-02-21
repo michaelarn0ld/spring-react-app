@@ -15,6 +15,6 @@ services:
       - 8081:8080
     # RDS
     environment:
-      - DB_URL=aws.com:5432/endpoint
+      - DB_URL=
       - DB_USERNAME=
       - DB_PASSWORD=
