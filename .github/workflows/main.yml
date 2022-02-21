@@ -40,7 +40,7 @@ jobs:
       - name: build & push
         uses: docker/build-push-action@v2
         with:
-          context: ./user-service
+          context: ./service/user-service
           push: true
           tags: ${{secrets.DOCKERHUB_USERNAME}}/capstone_user-service:latest
   
@@ -59,26 +59,26 @@ jobs:
       - name: build & push
         uses: docker/build-push-action@v2
         with:
-          context: ./facility-service
+          context: ./service/facility-service
           push: true
           tags: ${{secrets.DOCKERHUB_USERNAME}}/capstone_facility-service:latest
   
-  aws:
-    runs-on: ubuntu-latest
-      steps:
-        - name: Configure AWS Credentials
-          uses: aws-actions/configure-aws-credentials@v1
-          with:
-            role-to-assume: arn:aws:iam::123456789100:role/my-github-actions-role # need to define this in aws
-            aws-region: us-east-2
-        - name: Login to Amazon ECR
-          id: login-ecr
-          uses: aws-actions/amazon-ecr-login@v1
-        - name: Build, tag, and push image to Amazon ECR # I should only need to pull from dockerhub.. time to read about ECR
-          env:
-            ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-            ECR_REPOSITORY: my-ecr-repo
-            IMAGE_TAG: ${{ github.sha }}
-          run: |
-            docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-            docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+  # aws:
+  #   runs-on: ubuntu-latest
+  #     steps:
+  #       - name: Configure AWS Credentials
+  #         uses: aws-actions/configure-aws-credentials@v1
+  #         with:
+  #           role-to-assume: arn:aws:iam::123456789100:role/my-github-actions-role # need to define this in aws
+  #           aws-region: us-east-2
+  #       - name: Login to Amazon ECR
+  #         id: login-ecr
+  #         uses: aws-actions/amazon-ecr-login@v1
+  #       - name: Build, tag, and push image to Amazon ECR # I should only need to pull from dockerhub.. time to read about ECR
+  #         env:
+  #           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+  #           ECR_REPOSITORY: my-ecr-repo
+  #           IMAGE_TAG: ${{ github.sha }}
+  #         run: |
+  #           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+  #           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
