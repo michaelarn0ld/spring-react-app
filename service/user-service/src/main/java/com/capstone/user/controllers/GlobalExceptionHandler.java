@@ -1,4 +1,4 @@
-package com.capstone.auth.controllers;
+package com.capstone.user.controllers;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;

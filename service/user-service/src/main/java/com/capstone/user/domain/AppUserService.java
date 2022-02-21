@@ -1,7 +1,7 @@
-package com.capstone.auth.domain;
+package com.capstone.user.domain;
 
-import com.capstone.auth.data.AppUserRepository;
-import com.capstone.auth.models.AppUser;
+import com.capstone.user.data.AppUserRepository;
+import com.capstone.user.models.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

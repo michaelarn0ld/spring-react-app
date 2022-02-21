@@ -1,4 +1,4 @@
-package com.capstone.auth.domain;
+package com.capstone.user.domain;
 
 import lombok.AccessLevel;
 import lombok.Data;

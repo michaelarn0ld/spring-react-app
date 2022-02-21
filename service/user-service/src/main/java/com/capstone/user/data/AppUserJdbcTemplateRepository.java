@@ -1,7 +1,7 @@
-package com.capstone.auth.data;
+package com.capstone.user.data;
 
-import com.capstone.auth.data.mappers.AppUserMapper;
-import com.capstone.auth.models.AppUser;
+import com.capstone.user.data.mappers.AppUserMapper;
+import com.capstone.user.models.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;

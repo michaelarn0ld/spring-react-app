@@ -1,6 +1,6 @@
-package com.capstone.auth.data.mappers;
+package com.capstone.user.data.mappers;
 
-import com.capstone.auth.models.AppUser;
+import com.capstone.user.models.AppUser;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

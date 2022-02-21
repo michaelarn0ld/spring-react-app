@@ -1,6 +1,6 @@
-package com.capstone.auth.security;
+package com.capstone.user.security;
 
-import com.capstone.auth.models.AppUser;
+import com.capstone.user.models.AppUser;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;

@@ -1,7 +1,7 @@
-package com.capstone.auth.security;
+package com.capstone.user.security;
 
-import com.capstone.auth.data.AppUserRepository;
-import com.capstone.auth.models.AppUser;
+import com.capstone.user.data.AppUserRepository;
+import com.capstone.user.models.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

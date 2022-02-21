@@ -1,6 +1,6 @@
-package com.capstone.auth.data;
+package com.capstone.user.data;
 
-import com.capstone.auth.models.AppUser;
+import com.capstone.user.models.AppUser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

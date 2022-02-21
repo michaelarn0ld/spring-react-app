@@ -1,4 +1,4 @@
-package com.capstone.auth.models;
+package com.capstone.user.models;
 
 import lombok.AccessLevel;
 import lombok.Data;

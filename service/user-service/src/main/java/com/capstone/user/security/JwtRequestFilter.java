@@ -1,6 +1,6 @@
-package com.capstone.auth.security;
+package com.capstone.user.security;
 
-import com.capstone.auth.models.AppUser;
+import com.capstone.user.models.AppUser;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

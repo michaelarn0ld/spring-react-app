@@ -1,4 +1,4 @@
-package com.capstone.auth.models;
+package com.capstone.user.models;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

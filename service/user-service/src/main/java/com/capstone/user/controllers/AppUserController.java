@@ -1,8 +1,8 @@
-package com.capstone.auth.controllers;
+package com.capstone.user.controllers;
 
-import com.capstone.auth.domain.AppUserService;
-import com.capstone.auth.domain.Result;
-import com.capstone.auth.models.AppUser;
+import com.capstone.user.domain.AppUserService;
+import com.capstone.user.domain.Result;
+import com.capstone.user.models.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.http.HttpStatus;
