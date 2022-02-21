@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.DuplicateKeyException;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
@@ -22,6 +24,47 @@ class AppUserJdbcTemplateRepositoryTest {
     @BeforeEach
     void setup() {
         knownGoodState.set();
+    }
+
+    @Test
+    void shouldFindAll() {
+        List<AppUser> users = repository.findAll();
+        assertTrue(users.size() >= 3);
+    }
+
+    @Test
+    void shouldFindAllRoles() {
+        List<String> roles = repository.findRoles();
+        assertEquals(2, roles.size());
+        assertTrue(roles.containsAll(List.of("USER", "ADMIN")));
+    }
+
+    @Test
+    void shouldFindById() {
+       AppUser user = repository.findById(2);
+       assertNotNull(user);
+       assertEquals("example123", user.getUsername());
+    }
+
+    @Test
+    void shouldNotFindByBadId() {
+        AppUser user = repository.findById(22);
+        assertNull(user);
+    }
+
+    @Test
+    void shouldFindDuplicateUserByEmail() {
+        assertFalse(repository.noDuplicateUsers("michaelarnold", "me@michaelarnold.io"));
+    }
+
+    @Test
+    void shouldFindDuplicateUserByUsername() {
+        assertFalse(repository.noDuplicateUsers("michaelarn0ld", "me2@michaelarnold.io"));
+    }
+
+    @Test
+    void shouldNotFindDuplicateUser() {
+        assertTrue(repository.noDuplicateUsers("michaelarnold", "me2@michaelarnold.io"));
     }
 
     @Test
@@ -125,6 +168,24 @@ class AppUserJdbcTemplateRepositoryTest {
         AppUser user = new AppUser();
         user.setUsername("myusername");
         assertFalse(repository.update(user));
+    }
+
+    @Test
+    void shouldChangePassword() {
+       AppUser user = new AppUser();
+       user.setId(1);
+       user.setPassword("MYNEWPASSWORD");
+
+       assertTrue(repository.changePassword(user));
+       assertEquals("MYNEWPASSWORD", repository.findUser("me@michaelarnold.io").getPassword());
+    }
+
+    @Test
+    void shouldNotChangePassword() {
+        AppUser user = new AppUser();
+        user.setPassword("MYNEWPASSWORD");
+
+        assertFalse(repository.changePassword(user));
     }
 
 }
