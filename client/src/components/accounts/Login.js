@@ -46,14 +46,22 @@ const handleSubmit = async (event) => {
     }
 };
 
+const renderErrors = () => {
+  return errors.map( error => <li key={error}>{error}</li>)
+}
+
     return ( 
+      <>
+      {(errors.length > 0) && (
+        <div className="alert alert-danger">
+          <ul>
+            {renderErrors()}
+          </ul>
+          </div>
+      )}
         <div>
         <h2>Login</h2>
-    
-        {/* {errors.map((error, i) => (
-          <Error key={i} msg={error} />
-        ))}
-     */}
+
         <form onSubmit={handleSubmit}>
           <div>
             <label>Username:</label>
@@ -74,7 +82,8 @@ const handleSubmit = async (event) => {
           </div>
         </form>
       </div>
-     );
+      </>
+    );
 }
 
 export default Login;

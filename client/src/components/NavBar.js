@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import jwtDecode from "jwt-decode";
 
 function NavBar() {
     const [userStatus, setUserStatus] = useContext(AuthContext);
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if(token){
+            setUserStatus({ user: jwtDecode(token) });
+        }
+    }, [setUserStatus]);
 
     return ( 
         <nav>
