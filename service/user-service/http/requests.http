@@ -1,4 +1,4 @@
-@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTQwNTM2OH0.Ts_QTkJhG-kKUPKaElVSg2zbNg2X6NnD2-l13H7h_6s
+@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTQ3MTA1NX0.uTnf1au__5qHYSqNt-q9vC_7cVQkFRmfPpduzKt5AIc
 
 # LOGIN AS AN ADMIN
 POST http://localhost:8080/login
@@ -6,7 +6,7 @@ Content-Type: application/json
 
 {
     "username": "me@michaelarnold.io",
-    "password": "P@ssw0rd!!"
+    "password": "P@ssw0rd!"
 }
 
 ###
@@ -37,7 +37,7 @@ Content-Type: application/json
 Authorization: Bearer {{jwt}}
 
 {
-    "password": "P@ssw0rd!!"
+    "password": "NEW$$P@ssw0rd!!"
 }
 
 ###
@@ -66,7 +66,7 @@ Content-Type: application/json
 
 {
     "username": "petey@example.com",
-    "password": "P@ssw0rd!"
+    "password": "$$R3gex$$"
 }
 
 ###
