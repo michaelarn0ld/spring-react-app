@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import jwtDecode from "jwt-decode";
 
 function NavBar() {
     const [userStatus, setUserStatus] = useContext(AuthContext);
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if(token){
+            setUserStatus({ user: jwtDecode(token) });
+        }
+    }, [setUserStatus]);
 
     return ( 
         <nav>
@@ -12,7 +20,7 @@ function NavBar() {
         </Link>
         <div>
           <ul className="navbar-nav">
-            {userStatus.user ? (
+            {userStatus?.user ? (
                 <li className="nav-item">
                     <button onClick={() => {
                         setUserStatus(null);
@@ -32,8 +40,8 @@ function NavBar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/contact">
-                Contact
+              <Link to="/admin">
+                Admin
               </Link>
             </li>
           </ul>

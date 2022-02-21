@@ -6,6 +6,7 @@ import Registration from "./components/accounts/Registration";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { useState } from "react";
 import AuthContext from "./context/AuthContext";
+import AdminPage from "./components/AdminPage";
 
 function App() {
 
@@ -34,6 +35,9 @@ const [userStatus, setUserStatus] = useState();
         </Route>
         <Route path="/register">
         {localStorage.getItem("token") ? <Redirect to="/" /> : <Registration />}
+        </Route>
+        <Route path="/admin">
+          <AdminPage />
         </Route>
         <Route exact path="/">
           <Home />

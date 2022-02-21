@@ -29,3 +29,12 @@ with `/user`
 cannot update other users with role `ADMIN`
 * All users with any role can change their own password; a user, no matter their
 roles, cannot change the password of another user
+
+Starting a Development Environment
+1. Get the initialized development database from Dockerhub and start a new
+container:
+`docker run --rm -d -p 5432:5432 --name capstone-auth-service-dev michaelarn0ld/auth-service-db`
+
+1. Go to `/service` and make sure you can see the `user-service.jar` file
+1. Run the application:
+`java -jar user-service.jar`
