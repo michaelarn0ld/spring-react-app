@@ -11,6 +11,6 @@ import java.util.HashMap;
 public class SecurityController {
 
     public static boolean authenticate(@RequestBody HashMap<String, String> credentials) {
-
+        return false;
     }
 }
