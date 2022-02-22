@@ -18,8 +18,11 @@ const history = useHistory();
 const handleSubmit = async (event) => {
     event.preventDefault();
 
+    const body = JSON.stringify({username,
+      password,})
+      console.log(body)
     //placeholder, double check to make sure this is the current fetch address
-    const response = await fetch("http://localhost:8080/authenticate", {
+    const response = await fetch("http://localhost:8080/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -36,6 +39,7 @@ const handleSubmit = async (event) => {
         localStorage.setItem("token", jwt_token);
         setUserStatus({ user: jwtDecode(jwt_token) });
         history.push("/");
+       ;
     } else if(response.status === 400) {
         const errors = await response.json();
         setErrors(errors);
