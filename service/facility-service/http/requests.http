@@ -1,0 +1,3 @@
+GET http://localhost:8081/helloworld
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTU2MjQ5OH0.G9GdNtV82frol1rTT8bgwbHl68PmxVQBej9mzPMqVnI

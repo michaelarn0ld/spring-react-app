@@ -12,11 +12,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -70,5 +70,14 @@ public class AuthController {
 
         return new ResponseEntity<>(map, HttpStatus.OK);
 
+    }
+
+    @GetMapping("/authenticate")
+    public List<String> helloWorld(@RequestParam(name = "jwt", required = false) String jwt) {
+        AppUser user = converter.getUserFromToken(jwt);
+        if (user == null) {
+            return new ArrayList<>();
+        }
+        return user.getAuthorityNames();
     }
 }

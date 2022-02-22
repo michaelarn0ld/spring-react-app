@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.PUT, "/password").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
                 .antMatchers(HttpMethod.POST, "/refresh").authenticated()
-                .antMatchers(HttpMethod.GET, "/hello_facility").authenticated()
+                .antMatchers(HttpMethod.GET, "/authenticate").permitAll()
                 .antMatchers("/**").denyAll()
                 .and()
                 .addFilter(new JwtRequestFilter(authenticationManager(), converter))
