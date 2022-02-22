@@ -34,10 +34,10 @@ const handleSubmit = async (event) => {
     });
     
     if(response.status === 200){
-        const { jwt_token } = await response.json();
+        const { jwt } = await response.json();
 
-        localStorage.setItem("token", jwt_token);
-        setUserStatus({ user: jwtDecode(jwt_token) });
+        localStorage.setItem("token", jwt);
+        setUserStatus({ user: jwtDecode(jwt) });
         history.push("/");
        ;
     } else if(response.status === 400) {
