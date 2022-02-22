@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class AppUserJdbcTemplateRepository implements AppUserRepository {
@@ -48,6 +49,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     @Override
     public boolean noDuplicateUsers(String username, String email) {
         final String sql = "SELECT COUNT(*) FROM app_user WHERE username = ? OR email = ?;";
+        //noinspection ConstantConditions
         int count = jdbcTemplate.queryForObject(sql, Integer.class, username, email);
         return count == 0;
     }
@@ -95,7 +97,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
             return null;
         }
 
-        user.setId(keyHolder.getKey().intValue());
+        user.setId(Objects.requireNonNull(keyHolder.getKey()).intValue());
         setUserAuthority(user);
         return user;
     }

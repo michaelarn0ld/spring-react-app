@@ -14,13 +14,13 @@ import java.util.stream.Collectors;
 @Component
 public class JwtConverter {
 
-    private Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     private final String ISSUER = "user-service";
-    private final int EXPIRATION_MINUTES = 15;
-    private final int EXPIRATION_MILLIS = EXPIRATION_MINUTES * 60 * 1000;
 
     public String getTokenFromUser(AppUser user) {
 
+        int EXPIRATION_MINUTES = 15;
+        int EXPIRATION_MILLIS = EXPIRATION_MINUTES * 60 * 1000;
         return Jwts.builder()
                 .setIssuer(ISSUER)
                 .setSubject(user.getUsername())
@@ -58,6 +58,7 @@ public class JwtConverter {
             return user;
 
         } catch (JwtException e) {
+            //noinspection ThrowablePrintedToSystemOut
             System.out.println(e);
         }
 
