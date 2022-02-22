@@ -1,5 +1,7 @@
 package com.capstone.auth.security;
 
+import com.capstone.user.security.JwtConverter;
+import com.capstone.user.security.JwtRequestFilter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
