@@ -46,15 +46,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManager();
     }
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(@SuppressWarnings("NullableProblems") CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:3000")
-                        .allowedMethods("*");
-            }
-        };
-    }
 }
