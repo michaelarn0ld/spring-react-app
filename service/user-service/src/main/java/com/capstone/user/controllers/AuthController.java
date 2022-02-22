@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +33,10 @@ public class AuthController {
     @Autowired
     private PasswordEncoder encoder;
 
+    @GetMapping
+    public ResponseEntity<Object> healthCheck() {
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody HashMap<String, String> credentials) {

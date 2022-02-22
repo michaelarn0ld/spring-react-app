@@ -1,5 +1,5 @@
-@host=http://localhost:8080
-# @host=aws-bs
+# @host=http://localhost:8080
+@host=http://3.12.147.247:8080
 @jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTQ3MTA1NX0.uTnf1au__5qHYSqNt-q9vC_7cVQkFRmfPpduzKt5AIc
 
 ###
@@ -11,6 +11,10 @@ Content-Type: application/json
     "username": "me@michaelarnold.io",
     "password": "P@ssw0rd!"
 }
+
+###
+# GET HOST
+GET {{host}} HTTP/1.1
 
 ###
 # SHOULD TRIGGER EXCEPTION NOT READABLE MESSAGE
