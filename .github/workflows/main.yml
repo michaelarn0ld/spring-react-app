@@ -6,6 +6,7 @@ on:
       - "main"
 
 env:
+  DOCKER_PATH: https://hub.docker.com/repository/docker
   AWS_REGION: us-east-2
   ECR_REGISTRY: pete-ecr-repo
   ECS_CLUSTER: pete-cluster
@@ -56,7 +57,7 @@ jobs:
         with:
           aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
           aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-          aws-region: ${{env.USER_IMAGE}}
+          aws-region: ${{env.AWS_REGION}}
 
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: ui-task-def
@@ -64,7 +65,7 @@ jobs:
         with:
           task-definition: ${{env.USER_TASK_DEFINITION}}
           container-name: ${{env.USER_CONTAINER_NAME}}
-          image: ${{env.USER_IMAGE}}
+          image: ${{env.DOCKER_PATH}}/${{env.USER_IMAGE}}
 
   # facility-service:
   #   runs-on: ubuntu-latest
