@@ -8,8 +8,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableWebSecurity
 @ConditionalOnWebApplication
@@ -28,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors();
 
         http.authorizeRequests()
+                .antMatchers("/").permitAll()
                 .antMatchers("/user/**").hasAuthority("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/password").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST, "/login", "/register").permitAll()

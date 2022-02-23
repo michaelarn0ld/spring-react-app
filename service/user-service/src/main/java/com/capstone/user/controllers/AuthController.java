@@ -32,6 +32,10 @@ public class AuthController {
     @Autowired
     private PasswordEncoder encoder;
 
+    @GetMapping
+    public ResponseEntity<Object> healthCheck() {
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody HashMap<String, String> credentials) {
