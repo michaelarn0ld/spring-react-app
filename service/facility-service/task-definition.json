@@ -40,7 +40,7 @@
         },
         {
           "name": "USER_SERVICE_HOSTNAME",
-          "value": "pete-user-service"
+          "value": "http://pete-user-service"
         }
       ],
       "resourceRequirements": null,
