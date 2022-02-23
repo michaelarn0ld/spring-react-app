@@ -1,3 +1,12 @@
-GET http://localhost:8081/helloworld
+# LOCALHOST
+@host=http://localhost:8081
+
+# LOAD BALANCER
+# @host=
+
+# TOKEN
+@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTY0ODg5OX0.ugGBaaCbFnk-6fMqI9o4EtSGBzy2z0QbxIp6Oz9YRYM
+
+GET {{host}}/helloworld
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTU2MjQ5OH0.G9GdNtV82frol1rTT8bgwbHl68PmxVQBej9mzPMqVnI
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTY0ODg5OX0.ugGBaaCbFnk-6fMqI9o4EtSGBzy2z0QbxIp6Oz9YRYM

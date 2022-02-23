@@ -1,7 +1,9 @@
-# localhost
-# @host=http://localhost:8080
-# aws load balancer
-@host=http://pete-lb-461189805.us-east-2.elb.amazonaws.com:8080
+# LOCALHOST
+@host=http://localhost:8080
+
+# AWS LOAD BALANCER
+# @host=http://pete-lb-461189805.us-east-2.elb.amazonaws.com:8080
+
 @jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTY0NDI5MX0.gG8bx6moBTH2wvrT1VITHSA1wQ8bfYwcXwWebRr_L8U
 
 ###
