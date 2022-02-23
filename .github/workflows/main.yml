@@ -15,11 +15,11 @@ env:
   USER_TASK_DEFINITION: ./service/user-service/task-definition.json
   USER_CONTAINER_NAME: pete-user-container
   USER_IMAGE: ${{secrets.DOCKERHUB_USERNAME}}/capstone_user-service:latest
-  # # facility
-  # FACILITY_SERVICE: pete-facility-service
-  # FACILITY_TASK_DEFINITION: ./service/facility-service/task-definition.json
-  # FACILITY_CONTAINER_NAME: pete-facility-container
-  # FACILITY_IMAGE: ${{secrets.DOCKERHUB_USERNAME}}/capstone_facility-service:latest
+  # facility
+  FACILITY_SERVICE: pete-facility-service
+  FACILITY_TASK_DEFINITION: ./service/facility-service/task-definition.json
+  FACILITY_CONTAINER_NAME: pete-facility-container
+  FACILITY_IMAGE: ${{secrets.DOCKERHUB_USERNAME}}/capstone_facility-service:latest
   # # ui
   # UI_SERVICE: pete-ui-service
   # UI_TASK_DEFINITION: ./ui/task-definition.json
