@@ -5,7 +5,7 @@ function AdminPage() {
     const [ errors, setErrors ] = useState([]);
     const [ users, setUsers ] = useState([]);
     const [ username, setUsername ] = useState("");
-    const [ authorities, setAuthorities ] = useState("");
+    const [ authorities, setAuthorities ] = useState([]);
     const [ firstName, setFirstName ] = useState("");
     const [ lastName, setLastName ] = useState("");
     const [ membershipId, setMembershipId ] = useState(NaN);
@@ -20,25 +20,33 @@ function AdminPage() {
 
 
 
-    //View all members
-    const renderUsers = () => {
-        return users.map(user => <li key={user.userId}>
-        <div className="row">
-        <div className="col-8">
-        {user.firstName}
-        <span> </span>
-        {user.lastName}
-        </div>
-        <div className="col-2">
-        <span className="clickable" onClick={() => editUser(user.UserId)}>✏️</span>
-        </div>
-        <span className="clickable" onClick={() => deleteUser(user.userId)}>🗑️</span>
-        </div>
+    useEffect(() => {
+        fetch("http://localhost:8080/user")
+        .then(response => response.json())
+        .then(data => setUsers(data))
+        .catch(errors => console.log(errors));
+    }, []);
 
-    </li>        
-    )
-    }
+   //delete a member
+   const deleteUser = (userId) => {
 
+    fetch( `http://localhost:8080/user/${userId}`, { method: "DELETE"} )
+
+    .then(response => {
+        if(response.status === 204) {
+            const filteredUsers = users.filter(user => user.userId !== userId);
+            setUsers(filteredUsers);
+
+        } else if(response.status === 404) {
+            return Promise.reject("User not found");
+
+        } else {
+            return Promise.reject(`Delete failed with status: ${response.status}`)
+
+        }
+    })
+    .catch(console.log);
+}
 
     //Find members by first and last name
 
@@ -118,32 +126,11 @@ function AdminPage() {
                     setCity("");
                     setState("");
                     setZipCode("");
-                    setAuthorities("")
+                    setAuthorities([])
 
                 }
             })
-    }
-
-
-    //delete a member
-    const deleteUser = (userId) => {
-
-        fetch( `http://localhost:8080/user/${userId}`, { method: "DELETE"} )
-
-        .then(response => {
-            if(response.status === 204) {
-                const filteredUsers = users.filter(user => user.userId !== userId);
-                setUsers(filteredUsers);
-
-            } else if(response.status === 404) {
-                return Promise.reject("User not found");
-
-            } else {
-                return Promise.reject(`Delete failed with status: ${response.status}`)
-
-            }
-        })
-        .catch(console.log);
+        }
     }
 
 
@@ -152,7 +139,7 @@ function AdminPage() {
         setEditingUserId(NaN);
         setErrors([]);
         setUsername("");
-        setAuthorities("");
+        setAuthorities([]);
         setFirstName("");
         setLastName("");
         setMembershipId(NaN);
@@ -166,10 +153,48 @@ function AdminPage() {
         return errors.map( error => <li key={error}>{error}</li>)
     }
 
-    return ( 
-        <div>This is the admin page component</div>
-     );
+    //View all members
+    const renderUsers = () => {
+        return users.map(user => <li key={user.userId}>
+        <div className="row">
+        <div className="col-8">
+        {user.firstName}
+        <span> </span>
+        {user.lastName}
+        </div>
+        <div className="col-2">
+        <span className="clickable" onClick={() => editUser(user.UserId)}>✏️</span>
+        </div>
+        <span className="clickable" onClick={() => deleteUser(user.userId)}>🗑️</span>
+        </div>
+
+    </li>        
+    )
     }
+
+    return ( 
+        <>
+        {(errors.length > 0) && (
+            <div className="alert alert-danger">
+                <ul>
+                    {renderErrors()}
+                </ul>
+            </div>
+        )}
+        
+        
+        {view === "Main" &&(
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+        )}
+        </>
+     );
 }
 
 export default AdminPage;
