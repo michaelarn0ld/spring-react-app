@@ -1,11 +1,11 @@
 # LOCALHOST
-@host=http://localhost:8081
+# @host=http://localhost:8081
 
 # LOAD BALANCER
-# @host=
+@host=http://pete-lb-461189805.us-east-2.elb.amazonaws.com:8081
 
 # TOKEN
-@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTY0ODg5OX0.ugGBaaCbFnk-6fMqI9o4EtSGBzy2z0QbxIp6Oz9YRYM
+@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTY1MTQzMX0.sDumWnjH-ssYd4SPFHTbSuy2X2s8cDc7bMLYj7Gkrdk
 
 GET {{host}}/helloworld
 Content-Type: application/json
