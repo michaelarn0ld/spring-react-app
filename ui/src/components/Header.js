@@ -2,7 +2,7 @@ import React from "react";
 
 function Header() {
     return (
-        <div className={"text-center"}>
+        <div className={"text-center bg-light"}>
             <img src={"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVwAAACRCAMAAAC4yfDAAAAAclBMVEX39/cAAAD9/f3+/v719fU9PT2np6f6+vqamppcXFyhoaGQkJDh4eHExMS7u7vy8vJRUVEODg4fHx/KyspXV1fV1dWBgYFubm5paWlFRUXo6OjX19ebm5uxsbEnJyd2dnY0NDQrKyt+fn5AQEAZGRkbGxv/FCEMAAADuklEQVR4nO3da3eaQBSFYRyMxwoGowLxSm79/3+xgIkCM6QEs3GE/XzoWlUrh9dLJRJwHCIiIiIiIiIiIiJbScWt5/mP6rg2z6uCcF4SBurWM31D3O2qPO9OrJ1XvJHGu/VQ9WT7rI27PLi3HstMEr3taBRb+1ILXkzzHqx87srcNOto9GhpXTcyz7u1cV73zTxsbOsL7dU8r5VPXfePediFpXGDJ/O8U8a9nq1xRRV9vkf1La5xJeFE5pMi/1SvX3FFrUorGXazFuIfK+Mk+cPaq7gSbKqrEXQylP7xcJ/N06+4+srEHbwXy0Gf55g9qn2KKzvDFT7+fVcZtnHz5fYq7qPhijnjNsa4QIwLxLhAjAvEuEC3j6tvXw89rvzeTxwO8fPZNP8x8sDjih9diiTzK7baVFy699dAhh5XwvJl+9Yrp31xE6mhx1WLyoWtvxRSs8o9rd2hx3WWlQtXjGvSKu6YcRthXCDGBWJcIMYFYlwgxgViXCDGBWJcIMYFYlwgxgViXCDGBWJcoM7jinI/5d9FMm6zuOVsNST0ohMv+0eM2yyu+NOvbPW/F1baKzW9GeM2iit+4e+zui/bS3eZ3opxm8Utft3+Vre2mLhrV1nJgcSNuo37MrFUH+LeG8YFYlwgxgViXCDGBWJcIMYFYlwgxgViXCDGBWJcIMYFYlwgxgViXCDGBWJcoLuK+/T+YKc+xF3I2Eagr9a7jmvnfgvCuECMC8S4QIwLxLhAjAvEuEBdx10VbjVh3KZxizs/e7VHGpPZYvPJC7jbfsO4jhzWX9mib45sfj5+Xn52JcZtFte5nOqr+RHyGLdh3DYYl3FbYlwgxgViXCDGBWJcIMYFYlwgxgViXCDGBWJcIMYFYlwgxgViXKAbx9UWkQw+rlR3PN21jeuMH/R7GnZcVbniipMByzY5Ls/WYfYoDTtuWvf9UuTVu2YAcZWcnY6lN/C4jnIvRdRvr9rQ40IxLhDjAjEuEOMCMS4Q4wKpib7Yj2zHyV7FDQ1XtN/SbUy2+mKTbCOwT3G1Df/UBt9W37xOF5vv8duruLKrXrv0u4jrqJ0XFySTcb7YXsVNX6DT4krG+9ZnT/6h7Fzup2Nln/48XdqvuNpKdtS2Rs/i2oVxgdzYPOyzpXHlr3neiY1x1eGOhnXqnwzdfCr4qfHGNOvD+NZz1Sj9bt5FZOdzQbYLfdZFVx9hfk6tjvq8b7aOK7LaT0v2c7F12JQKHsvjerOdpf9BZKR6jhaL02bubV4iIiIiIgv8A6Hyu1wFHBgxAAAAAElFTkSuQmCC"} alt={"logo"} />
         </div>
     );
