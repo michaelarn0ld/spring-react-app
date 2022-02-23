@@ -92,7 +92,7 @@ jobs:
         with:
           context: ./service/facility-service
           push: true
-          tags: ${{FACILITY_IMAGE}}
+          tags: ${{env.FACILITY_IMAGE}}
 
       # deploy to Amazon ECS
       - name: Configure AWS credentials
@@ -137,7 +137,7 @@ jobs:
   #       with:
   #         context: ./ui
   #         push: true
-  #         tags: ${{UI_IMAGE}}
+  #         tags: ${{env.UI_IMAGE}}
 
   #     # deploy to Amazon ECS
   #     - name: Configure AWS credentials
@@ -153,4 +153,4 @@ jobs:
   #       with:
   #         task-definition: ${{env.UI_TASK_DEFINITION}}
   #         container-name: ${{env.UI_CONTAINER_NAME}}
-  #         image: ${{UI_IMAGE}}
+  #         image: ${{env.UI_IMAGE}}
