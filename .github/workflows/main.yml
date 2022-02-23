@@ -108,7 +108,7 @@ jobs:
         with:
           task-definition: ${{env.FACILITY_TASK_DEFINITION}}
           container-name: ${{env.FACILITY_CONTAINER_NAME}}
-          image: ${{FACILITY_IMAGE}}
+          image: ${{env.FACILITY_IMAGE}}
 
   # ui:
   #   runs-on: ubuntu-latest
