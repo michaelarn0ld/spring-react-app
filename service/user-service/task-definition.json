@@ -32,7 +32,7 @@
         },
         {
           "name": "DB_URL",
-          "value": "jdbc:postgresql://pete-db.cn7ajgqf9e2f.us-east-2.rds.amazonaws.com:5432/prod2"
+          "value": "jdbc:postgresql://pete-db.cn7ajgqf9e2f.us-east-2.rds.amazonaws.com:5432/prod"
         },
         {
           "name": "DB_USERNAME",
@@ -73,8 +73,11 @@
   "placementConstraints": [],
   "memory": "512",
   "taskRoleArn": null,
-  "compatibilities": ["EC2", "FARGATE"],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-2:913869820395:task-definition/pete-user-task:6",
+  "compatibilities": [
+    "EC2",
+    "FARGATE"
+  ],
+  "taskDefinitionArn": "arn:aws:ecs:us-east-2:913869820395:task-definition/pete-user-task:9",
   "family": "pete-user-task",
   "requiresAttributes": [
     {
@@ -109,14 +112,16 @@
     }
   ],
   "pidMode": null,
-  "requiresCompatibilities": ["FARGATE"],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
   "networkMode": "awsvpc",
   "runtimePlatform": {
     "operatingSystemFamily": "LINUX",
     "cpuArchitecture": null
   },
   "cpu": "256",
-  "revision": 6,
+  "revision": 9,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
