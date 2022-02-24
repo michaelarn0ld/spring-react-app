@@ -15,7 +15,7 @@ env:
   UI_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/capstone-ui
 
 jobs:
-  CI | user-service:
+  CI-user_service:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -39,7 +39,7 @@ jobs:
           cache-from: type=registry,ref=${{ env.USER_IMAGE_NAME }}:buildcache
           cache-to: type=registry,ref=${{ env.USER_IMAGE_NAME }}:buildcache,mode=max
 
-  CI | facility-service:
+  CI-facility_service:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -63,7 +63,7 @@ jobs:
           cache-from: type=registry,ref=${{ env.FACILITY_IMAGE_NAME }}:buildcache
           cache-to: type=registry,ref=${{ env.FACILITY_IMAGE_NAME }}:buildcache,mode=max
 
-  CI | ui:
+  CI-ui:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
