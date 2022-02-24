@@ -86,3 +86,9 @@ jobs:
           tags: ${{ env.UI_IMAGE_NAME }}:latest
           cache-from: type=registry,ref=${{ env.UI_IMAGE_NAME }}:buildcache
           cache-to: type=registry,ref=${{ env.UI_IMAGE_NAME }}:buildcache,mode=max
+    
+  CD:
+    runs-on: ubuntu-latest
+    steps:
+      - name: create docker context
+        run: docker context create ecs pete-capstone
