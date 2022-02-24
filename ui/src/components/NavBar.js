@@ -14,7 +14,7 @@ function NavBar() {
     }, [setUserStatus]);
 
     return (
-        <body>
+        
             <div className={"container"}>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light" >
                     <a className="navbar-brand" href="#">Welcome</a>
@@ -60,7 +60,7 @@ function NavBar() {
                     </div>
                 </nav>
             </div>
-        </body>
+        
      );
 }
 

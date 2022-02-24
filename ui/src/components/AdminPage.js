@@ -21,7 +21,12 @@ function AdminPage() {
 
 
     useEffect(() => {
-        fetch("http://localhost:8080/user")
+        fetch("http://localhost:8080/user", {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}`, 
+            },
+        })
         .then(response => response.json())
         .then(data => setUsers(data))
         .catch(errors => console.log(errors));
@@ -185,26 +190,51 @@ function AdminPage() {
         
         {view === "Main" &&(
             <>
-          {/* <h1 className="display-1">Users</h1>
-          <div className="accordion" id="usersAccordion">
-              (users.map(user, i) => (
-                  <div key={user.userId} className="accordion-item">
-                      <h2 className="accordion-header" id={`heading${i}`}>
-                          <button
-                          className="accordion-button"
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target={`#collapse${i}`}
-                          aria-expanded="true"
-                          aria-aria-controls={`collapse${i}`}
-                          ></button>
-                      </h2>
-
-                  </div>
-              ))
-          </div> */}
-          </>
+        <h1 className="display-1">Users</h1>
+      <div className="accordion" id="usersAccordion">
+        {users.map((user, i) => (
+          <div key={user.userId} className="accordion-item">
+            <h2 className="accordion-header" id={`heading${i}`}>
+              <button
+                className="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target={`#collapse${i}`}
+                aria-expanded="true"
+                aria-controls={`collapse${i}`}
+              >
+                {user.firstName}
+                {user.lastName}
+              </button>
+            </h2>
+            <div
+              id={`collapse${i}`}
+              className={
+                i == 0
+                  ? "accordion-collapse collapse show"
+                  : "accordion-collapse collapse"
+              }
+              aria-labelledby={`heading${i}`}
+              data-bs-parent="#usersAccordion"
+            >
+              <div className="accordion-body">
+               {user.email}
+               {user.username}
+               {user.phone}
+               {user.address}
+               {user.city}
+               {user.state}
+               {user.zipCode}
+               {user.membershipId}
+               {user.authorities}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      </>
         )}
+        
 
         {view === "Edit" && (
             <>
