@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import { useState } from "react";
 import AuthContext from "./context/AuthContext";
 import AdminPage from "./components/AdminPage";
+import Header from "./components/Header";
 
 function App() {
 
@@ -25,29 +26,32 @@ const [userStatus, setUserStatus] = useState();
 
     //still need to protect routes for users that are logged in 
     // as well as consumer vs admin
+
   return (
     <Router>
+      <Header/>
       <AuthContext.Provider value={[userStatus, setUserStatus]}>
       <NavBar />
       <Switch>
         <Route path="/login">
-          {userStatus?.user ? <Redirect to="/" /> : <Login />}
+            {userStatus?.user ? <Redirect to="/" /> : <Login />}
         </Route>
         <Route path="/register">
-        {localStorage.getItem("token") ? <Redirect to="/" /> : <Registration />}
+            {localStorage.getItem("token") ? <Redirect to="/" /> : <Registration />}
         </Route>
         <Route path="/admin">
-          <AdminPage />
+            <AdminPage />
         </Route>
         <Route exact path="/">
-          <Home />
+            <Home/>
         </Route>
         <Route>
-          <NotFound />
+            <NotFound />
         </Route>
       </Switch>
       </AuthContext.Provider>
     </Router>
+
   );
 }
 
