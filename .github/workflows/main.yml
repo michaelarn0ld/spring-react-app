@@ -8,17 +8,11 @@ on:
 env:
   DOCKER_PATH: https://hub.docker.com/repository/docker
   # user
-  USER_IMAGE_NAME: capstone-user_service
-  USER_IMAGE_LATEST: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.USER_IMAGE_NAME }}:latest
-  USER_IMAGE_BUILDCACHE: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.USER_IMAGE_NAME }}:buildcache
+  USER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/capstone-user_service
   # facility
-  FACILITY_IMAGE_NAME: capstone-facility_service
-  FACILITY_IMAGE_LATEST: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.FACILITY_IMAGE_NAME }}:latest
-  FACILITY_IMAGE_BUILDCACHE: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.FACILITY_IMAGE_NAME }}:buildcache
+  FACILITY_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/capstone-facility_service
   # ui
-  UI_IMAGE_NAME: capstone-ui
-  UI_IMAGE_LATEST: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.UI_IMAGE_NAME }}:latest
-  UI_IMAGE_BUILDCACHE: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.UI_IMAGE_NAME }}:buildcache
+  UI_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/capstone-ui
 
 jobs:
   CI | user-service:
@@ -41,7 +35,9 @@ jobs:
         with:
           context: ./service/user-service
           push: true
-          tags: ${{ env.USER_IMAGE_LATEST }}
+          tags: ${{ env.USER_IMAGE_NAME }}:latest
+          env:
+            USER_IMAGE_BUILDCACHE: ${{ env.USER_IMAGE_NAME }}:buildcache
           cache-from: type=registry,ref=${{ env.USER_IMAGE_BUILDCACHE }}
           cache-to: type=registry,ref=${{ env.USER_IMAGE_BUILDCACHE }},mode=max
 
@@ -65,7 +61,9 @@ jobs:
         with:
           context: ./service/facility-service
           push: true
-          tags: ${{ env.FACILITY_IMAGE_LATEST }}
+          tags: ${{ env.FACILITY_IMAGE_NAME }}:latest
+          env:
+            FACILITY_IMAGE_BUILDCACHE: ${{ env.FACILITY_IMAGE_NAME }}:buildcache
           cache-from: type=registry,ref=${{ env.FACILITY_IMAGE_BUILDCACHE }}
           cache-to: type=registry,ref=${{ env.FACILITY_IMAGE_BUILDCACHE }},mode=max
 
@@ -89,7 +87,9 @@ jobs:
         with:
           context: ./ui
           push: true
-          tags: ${{ env.UI_IMAGE_LATEST }}
+          tags: ${{ env.UI_IMAGE_NAME }}:latest
+          env:
+            UI_IMAGE_BUILDCACHE: ${{ env.UI_IMAGE_NAME }}:buildcache
           cache-from: type=registry,ref=${{ env.UI_IMAGE_BUILDCACHE }}
           cache-to: type=registry,ref=${{ env.UI_IMAGE_BUILDCACHE }},mode=max
 
