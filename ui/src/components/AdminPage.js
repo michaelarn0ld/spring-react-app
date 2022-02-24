@@ -8,7 +8,7 @@ function AdminPage() {
     const [ authorities, setAuthorities ] = useState([]);
     const [ firstName, setFirstName ] = useState("");
     const [ lastName, setLastName ] = useState("");
-    const [ membershipId, setMembershipId ] = useState(NaN);
+    const [ membershipId, setMembershipId ] = useState(0);
     const [ email, setEmail ] = useState("");
     const [ phone, setPhone ] = useState("");
     const [ address, setAddress ] = useState("");
@@ -116,7 +116,7 @@ function AdminPage() {
                     setEditingUserId(NaN);
                     setErrors([]);
                     setView("Main");
-                    setMembershipId(NaN);
+                    setMembershipId(0);
                     setEmail("");
                     setUsername("");
                     setFirstName("");
@@ -142,7 +142,7 @@ function AdminPage() {
         setAuthorities([]);
         setFirstName("");
         setLastName("");
-        setMembershipId(NaN);
+        setMembershipId(0);
         setEmail("");
         setPhone("");
         setView("Main")
@@ -184,15 +184,96 @@ function AdminPage() {
         
         
         {view === "Main" &&(
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
+            <>
+          {/* <h1 className="display-1">Users</h1>
+          <div className="accordion" id="usersAccordion">
+              (users.map(user, i) => (
+                  <div key={user.userId} className="accordion-item">
+                      <h2 className="accordion-header" id={`heading${i}`}>
+                          <button
+                          className="accordion-button"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target={`#collapse${i}`}
+                          aria-expanded="true"
+                          aria-aria-controls={`collapse${i}`}
+                          ></button>
+                      </h2>
+
+                  </div>
+              ))
+          </div> */}
+          </>
         )}
+
+        {view === "Edit" && (
+            <>
+            <div className="row">
+            <div className="column">
+            <form onSubmit={onSubmit}>
+            <label htmlFor="membershipId">Membership Id:</label>
+            <input id="membershipId" name="membershipId" type="number" value={membershipId} onChange={event => setMembershipId(event.target.value)}/>
+            <br />
+            <label htmlFor="email">Email:</label>
+            <input id="email" name="email" type="text" value={email} onChange={event => setEmail(event.target.value)}/>
+            <br />
+            <label htmlFor="username">Username:</label>
+            <input id="username" name="username" type="text" value={username} onChange={event => setUsername(event.target.value)}/>
+            <br />
+            <label htmlFor="firstName">First Name:</label>
+            <input id="firstName" name="firstName" type="text" value={firstName} onChange={event => setFirstName(event.target.value)}/>
+            <br />
+            <label htmlFor="lastName">Last Name:</label>
+            <input id="lastName" name="lastName" type="text" value={lastName} onChange={event => setLastName(event.target.value)}/>
+            <br />
+            <label htmlFor="phone">Phone:</label>
+            <input id="phone" name="phone" type="text" value={phone} onChange={event => setPhone(event.target.value)}/>
+            <br />
+            <label htmlFor="address">Address:</label>
+            <input id="address" name="address" type="text" value={address} onChange={event => setAddress(event.target.value)}/>
+            <br />
+            <label htmlFor="city">City:</label>
+            <input id="city" name="city" type="text" value={city} onChange={event => setCity(event.target.value)}/>
+            <br />
+            <label htmlFor="state">State:</label>
+            <input maxlength="2" id="state" name="state" type="text" value={state} onChange={event => setState(event.target.value)}/>
+            <br />
+            <label htmlFor="zipCode">Zip Code:</label>
+            <input id="zipCode" name="zipCode" type="text" value={zipCode} onChange={event => setZipCode(event.target.value)}/>
+            <br />
+            <div> 
+            <h3>Membership:</h3>
+            <div className="radio">
+            <input id="rdBronzeMembership" name="membershipId" type="radio" value="1" checked={membershipId === "1"} onChange={event => setMembershipId(event.target.value)}/> 
+            <label htmlFor="rdBronzeMembership">Bronze</label>
+            </div>
+            <div className="radio">
+            <input id="rdSilverMembership" name="membershipId" type="radio" value="2" checked={membershipId === "2"} onChange={event => setMembershipId(event.target.value)}/> 
+            <label htmlFor="rdSilverMembership">Silver</label>
+            </div>
+            <div className="radio">
+            <input id="rdGoldMembership" name="membershipId" type="radio" value="3" checked={membershipId === "3"} onChange={event => setMembershipId(event.target.value)}/> 
+            <label htmlFor="rdGoldMembership">Gold</label>
+            </div>
+            </div>
+            <br/>
+            <div>
+            <h3>Authorities:</h3>
+            <div className="checkbox">  
+            <input id="chkUser" name="authorities" type="checkbox" value="USER" onChange={event => setAuthorities(event.target.value)}/>
+            <label htmlFor="chkUser">User</label>
+            </div>
+            <div className="checkbox">  
+            <input id="chkAdmin" name="authorities" type="checkbox" value="ADMIN" onChange={event => setAuthorities(event.target.value)}/>
+            <label htmlFor="chkAdmin">Admin</label>
+            </div>
+            </div>
+            </form>
+            </div>
+            </div>
+            </>
+        )}
+        
         </>
      );
 }
