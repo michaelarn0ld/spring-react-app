@@ -16,11 +16,10 @@ public class UserClient {
 
     public UserClient(RestTemplateBuilder restTemplateBuilder) {
         restTemplate = restTemplateBuilder
-                .rootUri("http://" + System.getenv("USER_SERVICE_HOSTNAME") + ":8080")
+                .rootUri("http://user-service:8080")
                 .setConnectTimeout(Duration.ofSeconds(2))
                 .setReadTimeout(Duration.ofSeconds(2))
                 .build();
-        System.out.println("http://" + System.getenv("USER_SERVICE_HOSTNAME") + ":8080");
     }
 
     public Set<String> getRolesFromToken(String token) {
