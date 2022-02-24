@@ -1,1 +1,20 @@
 version: '3'
+services:
+  ui:
+    image: friendcode/capstone-ui:latest
+    ports:
+      - "80:80"
+  user-service:
+    image: friendcode/capstone-user_service:latest
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+  facility-service:
+    image: friendcode/capstone-facility_service:latest
+    env_file:
+      - .env
+    environment:
+      - USER_SERVICE_HOSTNAME=user-service
+    ports:
+      - "8081:8081"
