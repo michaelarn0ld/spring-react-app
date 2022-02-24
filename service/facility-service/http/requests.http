@@ -5,8 +5,12 @@
 # @host=http://pete-lb-461189805.us-east-2.elb.amazonaws.com:8081
 
 # TOKEN
+<<<<<<< HEAD
 @jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTY2NTE2NX0.Q5LRjl8ilS8Pz1AlrZxyJyKySOwhYzJgkrwimLGeYt8
+=======
+@jwt=asjdl
+>>>>>>> facility-service
 
 GET {{host}}/helloworld
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTY0ODg5OX0.ugGBaaCbFnk-6fMqI9o4EtSGBzy2z0QbxIp6Oz9YRYM
+Authorization: Bearer {{jwt}}

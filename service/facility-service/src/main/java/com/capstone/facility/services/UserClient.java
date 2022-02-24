@@ -6,7 +6,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.Duration;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -17,7 +16,7 @@ public class UserClient {
 
     public UserClient(RestTemplateBuilder restTemplateBuilder) {
         restTemplate = restTemplateBuilder
-                .rootUri(System.getenv("USER_SERVICE_HOSTNAME") + ":8080")
+                .rootUri("http://" + System.getenv("USER_SERVICE_HOSTNAME") + ":8080")
                 .setConnectTimeout(Duration.ofSeconds(2))
                 .setReadTimeout(Duration.ofSeconds(2))
                 .build();
