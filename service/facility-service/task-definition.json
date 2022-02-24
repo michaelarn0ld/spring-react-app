@@ -40,7 +40,7 @@
         },
         {
           "name": "USER_SERVICE_HOSTNAME",
-          "value": "http://localhost"
+          "value": "http://pete-lb-efde4b101a591634.elb.us-east-2.amazonaws.com"
         }
       ],
       "resourceRequirements": null,
@@ -77,8 +77,11 @@
   "placementConstraints": [],
   "memory": "512",
   "taskRoleArn": null,
-  "compatibilities": ["EC2", "FARGATE"],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-2:913869820395:task-definition/pete-facility-task:1",
+  "compatibilities": [
+    "EC2",
+    "FARGATE"
+  ],
+  "taskDefinitionArn": "arn:aws:ecs:us-east-2:913869820395:task-definition/pete-facility-task:4",
   "family": "pete-facility-task",
   "requiresAttributes": [
     {
@@ -113,14 +116,16 @@
     }
   ],
   "pidMode": null,
-  "requiresCompatibilities": ["FARGATE"],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
   "networkMode": "awsvpc",
   "runtimePlatform": {
     "operatingSystemFamily": "LINUX",
     "cpuArchitecture": null
   },
   "cpu": "256",
-  "revision": 1,
+  "revision": 4,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,

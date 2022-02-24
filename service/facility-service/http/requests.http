@@ -5,7 +5,7 @@
 @host=http://pete-lb-461189805.us-east-2.elb.amazonaws.com:8081
 
 # TOKEN
-@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTY1MTQzMX0.sDumWnjH-ssYd4SPFHTbSuy2X2s8cDc7bMLYj7Gkrdk
+@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTY1MzA4M30.PDrICyvcGImdLQPeCus2Qsf_SdF3Y-IpvZjIi9Mr4fU
 
 GET {{host}}/helloworld
 Content-Type: application/json
