@@ -5,8 +5,8 @@
 # @host=
 
 # TOKEN
-@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTY0ODg5OX0.ugGBaaCbFnk-6fMqI9o4EtSGBzy2z0QbxIp6Oz9YRYM
+@jwt=asjdl
 
 GET {{host}}/helloworld
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTY0ODg5OX0.ugGBaaCbFnk-6fMqI9o4EtSGBzy2z0QbxIp6Oz9YRYM
+Authorization: Bearer {{jwt}}
