@@ -29,8 +29,8 @@ function Registration() {
 
     return (
 
-        <div className="forms">
-            <h1>Hello {heading}</h1>
+        <div className="forms text-center">
+            <h1>Hello, We're glad you're here!</h1>
             <form onSubmit={handleClick }>
                 <label htmlFor="firstName">First Name: </label>
                 <input
@@ -117,7 +117,7 @@ function Registration() {
                 <br />
                 <button onClick={handleClick} >Submit</button>
             </form>
-        </div>
+		</div>
     )
 }
 
