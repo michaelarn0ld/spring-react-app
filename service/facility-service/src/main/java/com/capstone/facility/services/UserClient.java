@@ -20,6 +20,7 @@ public class UserClient {
                 .setConnectTimeout(Duration.ofSeconds(2))
                 .setReadTimeout(Duration.ofSeconds(2))
                 .build();
+        System.out.println("http://" + System.getenv("USER_SERVICE_HOSTNAME") + ":8080");
     }
 
     public Set<String> getRolesFromToken(String token) {
