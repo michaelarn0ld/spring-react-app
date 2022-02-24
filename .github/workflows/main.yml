@@ -36,10 +36,8 @@ jobs:
           context: ./service/user-service
           push: true
           tags: ${{ env.USER_IMAGE_NAME }}:latest
-          env:
-            USER_IMAGE_BUILDCACHE: ${{ env.USER_IMAGE_NAME }}:buildcache
-          cache-from: type=registry,ref=${{ env.USER_IMAGE_BUILDCACHE }}
-          cache-to: type=registry,ref=${{ env.USER_IMAGE_BUILDCACHE }},mode=max
+          cache-from: type=registry,ref=${{ env.USER_IMAGE_NAME }}:buildcache
+          cache-to: type=registry,ref=${{ env.USER_IMAGE_NAME }}:buildcache,mode=max
 
   CI | facility-service:
     runs-on: ubuntu-latest
@@ -62,10 +60,8 @@ jobs:
           context: ./service/facility-service
           push: true
           tags: ${{ env.FACILITY_IMAGE_NAME }}:latest
-          env:
-            FACILITY_IMAGE_BUILDCACHE: ${{ env.FACILITY_IMAGE_NAME }}:buildcache
-          cache-from: type=registry,ref=${{ env.FACILITY_IMAGE_BUILDCACHE }}
-          cache-to: type=registry,ref=${{ env.FACILITY_IMAGE_BUILDCACHE }},mode=max
+          cache-from: type=registry,ref=${{ env.FACILITY_IMAGE_NAME }}:buildcache
+          cache-to: type=registry,ref=${{ env.FACILITY_IMAGE_NAME }}:buildcache,mode=max
 
   CI | ui:
     runs-on: ubuntu-latest
@@ -88,10 +84,8 @@ jobs:
           context: ./ui
           push: true
           tags: ${{ env.UI_IMAGE_NAME }}:latest
-          env:
-            UI_IMAGE_BUILDCACHE: ${{ env.UI_IMAGE_NAME }}:buildcache
-          cache-from: type=registry,ref=${{ env.UI_IMAGE_BUILDCACHE }}
-          cache-to: type=registry,ref=${{ env.UI_IMAGE_BUILDCACHE }},mode=max
+          cache-from: type=registry,ref=${{ env.UI_IMAGE_NAME }}:buildcache
+          cache-to: type=registry,ref=${{ env.UI_IMAGE_NAME }}:buildcache,mode=max
 
   # CD | user-service:
   #   runs-on: ubuntu-latest
