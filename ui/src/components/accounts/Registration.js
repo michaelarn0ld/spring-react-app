@@ -29,8 +29,8 @@ function Registration() {
 
     return (
 
-        <div className="forms">
-            <h1>Hello {heading}</h1>
+        <div className="forms text-center">
+            <h1>Hello, We're glad you're here!</h1>
             <form onSubmit={handleClick }>
                 <label htmlFor="firstName">First Name: </label>
                 <input
@@ -117,7 +117,43 @@ function Registration() {
                 <br />
                 <button onClick={handleClick} >Submit</button>
             </form>
+			<div className={"card-group"}>
+				<div className={"card bg-dark text-white"}>
+					<img src={"https://post.healthline.com/wp-content/uploads/2020/09/woman-doing-push-ups-on-mat-732x549-thumbnail-732x549.jpg"} className={"card-img opacity-50"} alt={"yoga girl"}/>
+					<div className={"card-img-overlay"}>
+						<div className="card-title">
+							<div className="card-body">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className={"card bg-dark text-white"}>
+					<img src={"https://images.unsplash.com/photo-1596357395217-80de13130e92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d2VpZ2h0JTIwcm9vbXxlbnwwfHwwfHw%3D&w=1000&q=80"} className={"card-img opacity-50"} alt={"yoga girl"}/>
+					<div className={"card-img-overlay"}>
+						<div className="card-title">
+							<div className="card-body">
+							
+				</div>
+				<div className={"card bg-dark text-white"}>
+					<img src={"https://www.familyfuntwincities.com/wp-content/uploads/2020/07/grove-aquatic-center.jpg"} className={"card-img opacity-50"} alt={"yoga girl"}/>
+					<div className={"card-img-overlay"}>
+						<div className="card-title">
+							<div className="card-body">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div className={"card-group"}>
+				<div className={"card bg-dark text-white"}>
+					<img src={"https://images.squarespace-cdn.com/content/v1/54beb580e4b00cf9dcf08db8/1498259961131-L11YYWPW2B9I8712HR50/gym+wide+2017.png?format=750w"} className={"card-img opacity-50"} alt={"yoga girl"}/>
+					<div className={"card-img-overlay"}>
+					</div>
+				</div>
+			</div>
         </div>
+
+
     )
 }
 
