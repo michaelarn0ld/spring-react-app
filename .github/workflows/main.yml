@@ -50,6 +50,8 @@ jobs:
           context: ./service/user-service
           push: true
           tags: ${{env.USER_IMAGE}}
+          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/capstone_user-service:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/capstone_user-service:buildcache,mode=max
 
       # deploy to Amazon ECS
       - name: Configure AWS credentials
@@ -87,12 +89,23 @@ jobs:
           username: ${{secrets.DOCKERHUB_USERNAME}}
           password: ${{secrets.DOCKERHUB_TOKEN}}
 
+<<<<<<< HEAD
       - name: build & push to dockerhub
         uses: docker/build-push-action@v2
         with:
           context: ./service/facility-service
           push: true
           tags: ${{env.FACILITY_IMAGE}}
+=======
+      # - name: build & push to dockerhub
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     context: ./service/facility-service
+      #     push: true
+      #     tags: ${{FACILITY_IMAGE}}
+      #     cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/capstone_facility-service:buildcache
+      #     cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/capstone_facility-service:buildcache,mode=max
+>>>>>>> facility-service
 
       # deploy to Amazon ECS
       - name: Configure AWS credentials
