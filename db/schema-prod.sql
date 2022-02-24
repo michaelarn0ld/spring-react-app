@@ -5,8 +5,40 @@ DROP TABLE IF EXISTS
     app_user,
     app_role,
     app_user_role,
-    membership
+    membership,
+    reservation,
+    reseverable,
+    facility,
+    facility_reservable
 CASCADE;
+
+CREATE TABLE reservable (
+    id SERIAL PRIMARY KEY,
+    reservable_name VARCHAR(32) NOT NULL
+);
+
+CREATE TABLE facility (
+    id SERIAL PRIMARY KEY,
+    facility_name VARCHAR(32) NOT NULL,
+    open_time TIME NOT NULL,
+    close_time TIME NOT NULL
+);
+
+CREATE TABLE facility_reservable (
+    id SERIAL PRIMARY KEY,
+    facility_id INTEGER NOT NULL REFERENCES facility(id),
+    reservable_id INTEGER NOT NULL REFERENCES reservable(id),
+    UNIQUE (facility_id, reservable_id)
+);
+
+
+CREATE TABLE reservation (
+    id SERIAL PRIMARY KEY,
+    facility_reservable_id INTEGER NOT NULL REFERENCES facility_reservable(id),
+    app_user_id INTEGER NOT NULL REFERENCES app_user(id),
+    start_time TIMESTAMP  NOT NULL,
+    end_time TIMESTAMP NOT NULL
+);
 
 CREATE TABLE membership (
     id SERIAL PRIMARY KEY,
