@@ -11,7 +11,7 @@ services:
     env_file:
       - .env
     environment:
-      - USER_SERVICE_HOSTNAME=user-service
+      - HOST=${user-service}
     ports:
       - "8081:8081"
   ui:
