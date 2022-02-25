@@ -16,7 +16,7 @@ public class UserClient {
 
     public UserClient(RestTemplateBuilder restTemplateBuilder) {
         restTemplate = restTemplateBuilder
-                .rootUri("http://" + System.getenv("HOST") + "8080")
+                .rootUri("http://" + System.getenv("HOSTNAME") + "8080")
                 .setConnectTimeout(Duration.ofSeconds(2))
                 .setReadTimeout(Duration.ofSeconds(2))
                 .build();
