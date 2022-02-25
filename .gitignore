@@ -1,3 +1,6 @@
+# PowerShell scripts
+*.ps1
+
 # BlueJ files
 *.ctxt
 
