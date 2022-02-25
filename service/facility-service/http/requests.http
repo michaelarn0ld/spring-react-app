@@ -7,6 +7,6 @@
 # TOKEN
 @jwt=
 
-GET {{host}}/helloworld
-Content-Type: application/json
+###
+GET {{host}}/helloworld/1
 Authorization: Bearer {{jwt}}
