@@ -58,7 +58,6 @@ public class AuthController {
             }
 
         } catch (AuthenticationException ex) {
-            //noinspection ThrowablePrintedToSystemOut
             System.out.println(ex);
         }
 
