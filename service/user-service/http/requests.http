@@ -1,8 +1,8 @@
 # LOCALHOST
-# @host=http://localhost:8080
+@host=http://localhost:8080
 
 # AWS LOAD BALANCER
-@host=http://capst-LoadB-P7BEUOOT39LD-485879c4b3ac09f2.elb.us-east-2.amazonaws.com:8080
+# @host=http://capst-LoadB-P7BEUOOT39LD-485879c4b3ac09f2.elb.us-east-2.amazonaws.com:8080
 
 @jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTY2NTE2NX0.Q5LRjl8ilS8Pz1AlrZxyJyKySOwhYzJgkrwimLGeYt8
 

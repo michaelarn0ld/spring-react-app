@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS
     reservation,
     reservable,
     facility,
-    facility_reservable
+    equipment
 CASCADE;
 
 CREATE TABLE membership (
@@ -58,7 +58,7 @@ CREATE TABLE facility (
     close_time TIME NOT NULL
 );
 
-CREATE TABLE facility_reservable (
+CREATE TABLE equipment (
     id SERIAL PRIMARY KEY,
     facility_id INTEGER NOT NULL REFERENCES facility(id),
     reservable_id INTEGER NOT NULL REFERENCES reservable(id)
@@ -67,7 +67,7 @@ CREATE TABLE facility_reservable (
 
 CREATE TABLE reservation (
     id SERIAL PRIMARY KEY,
-    facility_reservable_id INTEGER NOT NULL REFERENCES facility_reservable(id),
+    equipment_id INTEGER NOT NULL REFERENCES equipment(id),
     app_user_id INTEGER NOT NULL REFERENCES app_user(id),
     start_time TIMESTAMP  NOT NULL,
     end_time TIMESTAMP NOT NULL
@@ -93,7 +93,7 @@ BEGIN
         reservation,
         reservable,
         facility,
-        facility_reservable
+        equipment
     RESTART IDENTITY
     CASCADE;
 
@@ -137,7 +137,7 @@ BEGIN
         ('Pool', '05:00:00', '20:00:00'),
         ('Track','05:00:00', '22:00:00');
 
-    INSERT INTO facility_reservable (facility_id, reservable_id) VALUES
+    INSERT INTO equipment (facility_id, reservable_id) VALUES
         (1, 1), -- Weight Room, Bench
         (1, 1), -- Weight Room, Bench
         (1, 2), -- Weight Room, Squat
@@ -147,7 +147,7 @@ BEGIN
         (3, 3), -- Track, Lane
         (3, 3); -- Track, Lane
 
-    INSERT INTO reservation (facility_reservable_id, app_user_id,
+    INSERT INTO reservation (equipment_id, app_user_id,
                                 start_time, end_time) VALUES
         (1, 1, '2022-02-22 06:30:00', '2022-02-22 07:30:00'),
         (1, 1, '2022-02-23 06:30:00', '2022-02-23 07:30:00'),
