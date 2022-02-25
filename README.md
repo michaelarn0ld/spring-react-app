@@ -36,4 +36,4 @@ container:
 `docker run --rm -d -p 5432:5432 --name gym-db-dev michaelarn0ld/gym-dev-db`
 1. Go to `/service` and make sure you can see the `user-service-1.0.0.jar` file
 1. Run the application:
-`java -jar user-service-1.0.0.jar`
+`DB_URL=jdbc:postgresql://localhost:5432/gym-prod DB_USERNAME=postgres DB_PASSWORD=password java -jar user-service-1.0.0.jar`
