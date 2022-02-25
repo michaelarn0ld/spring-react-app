@@ -10,6 +10,8 @@ services:
     image: friendcode/capstone-facility_service:latest
     env_file:
       - .env
+    environment:
+      - HOST=user-service
     ports:
       - "8081:8081"
   ui:

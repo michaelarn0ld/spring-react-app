@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.Set;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Component
@@ -15,9 +16,9 @@ public class UserClient {
     private final RestTemplate restTemplate;
 
     public UserClient(RestTemplateBuilder restTemplateBuilder) {
-        System.out.println("http://" + System.getenv("HOSTNAME") + ":8080");
+        System.out.println("http://" + System.getenv("HOST") + ":8080");
         restTemplate = restTemplateBuilder
-                .rootUri("http://" + System.getenv("HOSTNAME") + ":8080")
+                .rootUri("http://" + System.getenv("HOST") + ":8080")
                 .setConnectTimeout(Duration.ofSeconds(2))
                 .setReadTimeout(Duration.ofSeconds(2))
                 .build();
