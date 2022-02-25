@@ -69,6 +69,10 @@ function AdminPage() {
         setMembershipId(userToEdit.membershipId);
         setEmail(userToEdit.email);
         setPhone(userToEdit.phone);
+        setAddress(userToEdit.address);
+        setCity(userToEdit.city);
+        setState(userToEdit.state);
+        setZipCode(userToEdit.zipCode);
     }
 
     //adding + editing members
@@ -191,7 +195,7 @@ function AdminPage() {
         {view === "Main" &&(
             <>
         <h1 className="display-1">Users</h1>
-      <div className="accordion" id="usersAccordion">
+        <div className="accordion" id="usersAccordion">
         {users.map((user, i) => (
           <div key={user.userId} className="accordion-item">
             <h2 className="accordion-header" id={`heading${i}`}>
@@ -203,6 +207,7 @@ function AdminPage() {
                 aria-expanded="true"
                 aria-controls={`collapse${i}`}
               >
+
                 {user.firstName}
                 {user.lastName}
               </button>
@@ -218,21 +223,68 @@ function AdminPage() {
               data-bs-parent="#usersAccordion"
             >
               <div className="accordion-body">
+
+            <div className="row">
+            <div className="col-3 text-center">
+            <strong>Email</strong> <br />
                {user.email}
+               </div>
+
+            <div className="col-3 text-center">
+            <strong>Username</strong> <br />
                {user.username}
+               </div>
+
+            <div className="col-3 text-center">
+            <strong>Phone</strong> <br />
                {user.phone}
+               </div>
+
+            <div className="col-3 text-center">
+            <strong>Address</strong> <br />
                {user.address}
+               </div>
+
+            <div className="col-3 text-center">
+            <strong>City</strong> <br />
                {user.city}
+                </div>
+
+            <div className="col-3 text-center">
+            <strong>State</strong> <br />
                {user.state}
+                 </div>
+
+            <div className="col-3 text-center">
+            <strong>Zip Code</strong> <br />
                {user.zipCode}
+               </div>
+
+            <div className="col-3 text-center">
+            <strong>Membership Id</strong> <br />
                {user.membershipId}
+               </div>
+
+            <div className="col-3 text-center">
+            <strong>Authorities</strong> <br />
                {user.authorities}
+               </div>
+
               </div>
-            </div>
-          </div>
+
+            <div className="row"></div>
+
+            <span className="clickable" onClick={() => editUser(user.UserId)}>✏️</span>
+            <span className="clickable" onClick={() => deleteUser(user.userId)}>🗑️</span>
+            
+
+              </div>
+              </div>
+              </div>
+          
         ))}
-      </div>
-      </>
+        </div>
+        </>
         )}
         
 
@@ -241,9 +293,6 @@ function AdminPage() {
             <div className="row">
             <div className="column">
             <form onSubmit={onSubmit}>
-            <label htmlFor="membershipId">Membership Id:</label>
-            <input id="membershipId" name="membershipId" type="number" value={membershipId} onChange={event => setMembershipId(event.target.value)}/>
-            <br />
             <label htmlFor="email">Email:</label>
             <input id="email" name="email" type="text" value={email} onChange={event => setEmail(event.target.value)}/>
             <br />
@@ -266,7 +315,7 @@ function AdminPage() {
             <input id="city" name="city" type="text" value={city} onChange={event => setCity(event.target.value)}/>
             <br />
             <label htmlFor="state">State:</label>
-            <input maxlength="2" id="state" name="state" type="text" value={state} onChange={event => setState(event.target.value)}/>
+            <input maxLength="2" id="state" name="state" type="text" value={state} onChange={event => setState(event.target.value)}/>
             <br />
             <label htmlFor="zipCode">Zip Code:</label>
             <input id="zipCode" name="zipCode" type="text" value={zipCode} onChange={event => setZipCode(event.target.value)}/>
@@ -298,6 +347,12 @@ function AdminPage() {
             <label htmlFor="chkAdmin">Admin</label>
             </div>
             </div>
+            <button type="button" onClick={cancelButton}>
+                Cancel
+            </button>
+            <button type="submit">
+                Update
+            </button>
             </form>
             </div>
             </div>
