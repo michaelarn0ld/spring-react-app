@@ -5,8 +5,7 @@
 # @host=http://pete-lb-461189805.us-east-2.elb.amazonaws.com:8081
 
 # TOKEN
-@jwt=
+@jwt=notatoke
 
 ###
-GET {{host}}/helloworld/1
-Authorization: Bearer {{jwt}}
+GET {{host}}/helloworld/1/1
