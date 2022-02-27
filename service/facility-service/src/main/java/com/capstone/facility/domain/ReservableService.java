@@ -16,4 +16,8 @@ public class ReservableService {
     public List<Reservable> findByFacilityId(int id) {
         return repository.findByFacilityId(id);
     }
+
+    public int findReservableQuantityByFacility(int facilityId, int reservableId) {
+        return repository.findReservableQuantityByFacility(facilityId, reservableId);
+    }
 }

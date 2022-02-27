@@ -40,7 +40,7 @@ public class TestController {
 
     @GetMapping("/{fid}/{rid}")
     public ResponseEntity<?> reservations(@PathVariable int fid, @PathVariable int rid) {
-        LocalDate test = LocalDate.of(2022,2,22);
+        LocalDate test = LocalDate.of(2022,2,23);
         List<Reservation> reservation = reservationService.findByFacilityIdReservableIdDate(fid, rid, test);
         return new ResponseEntity<>(reservation, HttpStatus.OK);
     }

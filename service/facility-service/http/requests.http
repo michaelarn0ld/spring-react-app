@@ -8,4 +8,4 @@
 @jwt=notatoke
 
 ###
-GET {{host}}/helloworld/1/1
+GET {{host}}/1/1?date=2022-02-22
