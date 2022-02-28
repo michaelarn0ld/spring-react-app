@@ -3,13 +3,13 @@ services:
   user-service:
     image: friendcode/capstone-user_service:latest
     env_file:
-      - .env
+      - local.env
     ports:
       - "8080:8080"
   facility-service:
     image: friendcode/capstone-facility_service:latest
     env_file:
-      - .env
+      - local.env
     environment:
       - HOST=user-service
     ports:
