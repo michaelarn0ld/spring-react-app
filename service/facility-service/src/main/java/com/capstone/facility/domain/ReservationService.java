@@ -22,7 +22,10 @@ public class ReservationService {
         return repository.findByFacilityIdReservableIdDate(facilityId, reservableId, date);
     }
 
-    public boolean requestedReservationAvailable(Reservation reservation) {
-        return repository.requestedReservationAvailable(reservation);
+    public Reservation add(Reservation reservation) {
+        if (!repository.requestedReservationAvailable(reservation)) {
+            return null;
+        }
+        return repository.add(reservation);
     }
 }

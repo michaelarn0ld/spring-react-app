@@ -63,10 +63,10 @@ public class ReservationController {
 
     @PostMapping("{facilityId}/{reservableId}")
     public ResponseEntity<?> test(@RequestBody Reservation reservation) {
-        boolean canBeAdded = reservationService.requestedReservationAvailable(reservation);
-        if (canBeAdded) {
-            return new ResponseEntity<>(true, HttpStatus.OK);
+        Reservation result = reservationService.add(reservation);
+        if (result == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
