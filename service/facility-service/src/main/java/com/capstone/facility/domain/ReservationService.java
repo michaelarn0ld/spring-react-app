@@ -21,4 +21,8 @@ public class ReservationService {
             LocalDate date) {
         return repository.findByFacilityIdReservableIdDate(facilityId, reservableId, date);
     }
+
+    public boolean requestedReservationAvailable(Reservation reservation) {
+        return repository.requestedReservationAvailable(reservation);
+    }
 }
