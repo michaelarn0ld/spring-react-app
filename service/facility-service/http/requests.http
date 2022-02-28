@@ -9,3 +9,17 @@
 
 ###
 GET {{host}}/1/1?date=2022-02-22
+
+###
+POST {{host}}/1/1
+Content-Type: application/json
+
+{
+    "reservable": {
+        "id": 2
+    },
+    "facility": {
+        "id": 1
+    },
+    "startTime": "2022-02-22T09:00:00"
+}

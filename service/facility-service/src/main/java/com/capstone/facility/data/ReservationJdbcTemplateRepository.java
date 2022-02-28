@@ -45,6 +45,30 @@ public class ReservationJdbcTemplateRepository implements ReservationRepository 
         return reservations;
     }
 
+    @Override
+    public Reservation add(Reservation reservation) {
+        return null;
+    }
+
+    @Override
+    public boolean requestedReservationAvailable(Reservation reservation) {
+        final String sql = "SELECT id FROM equipment "
+                + "WHERE facility_id = ? "
+                + "AND reservable_id = ? "
+                + "AND id NOT IN ("
+                    + "SELECT e.id FROM reservation r "
+                    + "INNER JOIN equipment e ON e.id = r.equipment_id "
+                    + "WHERE e.facility_id = ? AND e.reservable_id = ? "
+                    + "AND r.start_time = ?)"
+                + "LIMIT 1;";
+        return jdbcTemplate.query(sql, (rs,i) -> rs.getInt("id"),
+                reservation.getFacility().getId(),
+                reservation.getReservable().getId(),
+                reservation.getFacility().getId(),
+                reservation.getReservable().getId(),
+                reservation.getStartTime()).size() > 0;
+    }
+
     private void addFacility(Reservation reservation) {
 
     }

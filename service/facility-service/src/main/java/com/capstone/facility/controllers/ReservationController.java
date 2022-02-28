@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -62,5 +59,14 @@ public class ReservationController {
             availability.put(time, n);
         }
         return new ResponseEntity<>(availability, HttpStatus.OK);
+    }
+
+    @PostMapping("{facilityId}/{reservableId}")
+    public ResponseEntity<?> test(@RequestBody Reservation reservation) {
+        boolean canBeAdded = reservationService.requestedReservationAvailable(reservation);
+        if (canBeAdded) {
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
     }
 }

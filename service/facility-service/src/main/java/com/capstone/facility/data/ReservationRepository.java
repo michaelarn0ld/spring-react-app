@@ -10,4 +10,8 @@ public interface ReservationRepository {
             int facilityId,
             int reservableId,
             LocalDate date);
+
+    Reservation add(Reservation reservation);
+
+    boolean requestedReservationAvailable(Reservation reservation);
 }
