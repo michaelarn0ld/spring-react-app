@@ -1,3 +1,6 @@
+# AWS
+aws
+
 # PowerShell scripts
 *.ps1
 
@@ -39,7 +42,7 @@ npm-debug.log*
 /build
 
 # docker
-*.env
+*.env*
 docker-compose*
 Dockerrun*
 .dockerignore
@@ -62,8 +65,4 @@ hs_err_pid*
 /build
 
 # Misc
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-npm-debug.log*
+*.log*
