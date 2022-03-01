@@ -3,6 +3,7 @@ package com.capstone.facility.controllers;
 import com.capstone.facility.domain.FacilityService;
 import com.capstone.facility.domain.ReservableService;
 import com.capstone.facility.domain.ReservationService;
+import com.capstone.facility.domain.Result;
 import com.capstone.facility.models.Facility;
 import com.capstone.facility.models.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,11 +63,11 @@ public class ReservationController {
     }
 
     @PostMapping("{facilityId}/{reservableId}")
-    public ResponseEntity<?> test(@RequestBody Reservation reservation) {
-        Reservation result = reservationService.add(reservation);
-        if (result == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<?> add(@RequestBody Reservation reservation) {
+        Result<Reservation> result = reservationService.add(reservation);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return ErrorResponse.build(result);
     }
 }
