@@ -16,7 +16,7 @@ function NavBar() {
     return (
         
             <div className={"container"}>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light" >
+                <nav className="navbar navbar-expand-sm navbar-light white" >
                     <a className="navbar-brand" href="#">Welcome</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"

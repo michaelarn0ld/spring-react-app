@@ -197,8 +197,6 @@ function AdminPage() {
                                         </ul>
                                     </div>
                                 )}
-
-
                                 {view === "Main" &&(
                                     <>
                                         <h1 className="text-center display-1 text-white">Members</h1>
