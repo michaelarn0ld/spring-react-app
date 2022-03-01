@@ -176,7 +176,6 @@ function AdminPage() {
         </div>
         <span className="clickable" onClick={() => deleteUser(user.userId)}>🗑️</span>
         </div>
-
     </li>        
     )
     }
@@ -189,7 +188,6 @@ function AdminPage() {
                 <div className={"card-img-overlay"}>
                     <div className="card-title">
                         <div className="card-body">
-
                             <>
                                 {(errors.length > 0) && (
                                     <div className="alert alert-danger">
