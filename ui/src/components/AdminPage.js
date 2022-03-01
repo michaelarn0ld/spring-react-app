@@ -196,7 +196,7 @@ function AdminPage() {
         {view === "Main" &&(
             <>
                     <h1 className="text-center display-1">Members</h1>
-                    <div className="accordion" id="usersAccordion">
+                    <div className="accordion text-center" id="usersAccordion">
                         {users.map((user, i) => (
                             <div key={user.userId} className="accordion-item">
                                 <h2 className="accordion-header" id={`heading${i}`}>
@@ -275,8 +275,8 @@ function AdminPage() {
 
                                         <div className="row"></div>
 
-                                        <span className="clickable" onClick={() => editUser(user.UserId)}>✏️</span>
-                                        <span className="clickable" onClick={() => deleteUser(user.userId)}>🗑️</span>
+                                        <button className="onClick" onClick={() => editUser(user.UserId)}>✏️</button>
+                                        <button className="clickable" onClick={() => deleteUser(user.userId)}>🗑️</button>
 
 
                                     </div>
