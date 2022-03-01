@@ -1,5 +1,6 @@
 # AWS
 aws
+cloud
 
 # PowerShell scripts
 *.ps1
@@ -43,9 +44,8 @@ npm-debug.log*
 
 # docker
 *.env*
-docker-compose*
-Dockerrun*
-.dockerignore
+*Docker*
+*docker*
 
 # Maven
 target/

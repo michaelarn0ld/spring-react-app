@@ -2,19 +2,25 @@ version: '3'
 services:
   user-service:
     image: friendcode/capstone-user_service:latest
-    env_file:
-      - local.env
+    environment:
+      - DB_URL=jdbc:postgresql://10.0.0.193:5432/prod
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=top-secret-password
     ports:
       - "8080:8080"
   facility-service:
     image: friendcode/capstone-facility_service:latest
-    env_file:
-      - local.env
     environment:
+      - DB_URL=jdbc:postgresql://10.0.0.193:5432/prod
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=top-secret-password
       - HOST=user-service
     ports:
       - "8081:8081"
   ui:
     image: friendcode/capstone-ui:latest
+    environment:
+      - USER_SERVICE_HOSTNAME=user-service
+      - FACILITY_SERVICE_HOSTNAME=facility-services
     ports:
       - "80:80"
