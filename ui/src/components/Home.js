@@ -1,17 +1,18 @@
 import React from "react";
+import "./styles.css";
 
 function Home() {
     return (
         <>
             <div className={"card-group"}>
                 <div className={"card bg-dark text-white"}>
-                    <img src={"https://post.healthline.com/wp-content/uploads/2020/09/woman-doing-push-ups-on-mat-732x549-thumbnail-732x549.jpg"} className={"card-img opacity-50"} alt={"yoga girl"}/>
+                    <img src={"http://www.vanguardlions.com/images/2018-19/5.jpg"} className={"card-img opacity-50 cards"} alt={"track"}/>
                     <div className={"card-img-overlay"}>
                         <div className="card-title">
                             <div className="card-body">
-                                <h5 className={"card-title"}>Yoga Studio</h5>
+                                <h5 className={"card-title"}>Track</h5>
                                 <p className={"card-text"}>
-                                    Schedule a class today for hot sweaty yoga or a bike class.
+                                    Whether you are training for a marathon or sprints, our spacious track contains lanes that can fit up to 10 people at once.
                                 </p>
                                 <button type="button" className="btn btn-primary">Reserve Now</button>
                             </div>
@@ -19,7 +20,7 @@ function Home() {
                     </div>
                 </div>
                 <div className={"card bg-dark text-white"}>
-                    <img src={"https://images.unsplash.com/photo-1596357395217-80de13130e92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d2VpZ2h0JTIwcm9vbXxlbnwwfHwwfHw%3D&w=1000&q=80"} className={"card-img opacity-50"} alt={"yoga girl"}/>
+                    <img src={"https://images.unsplash.com/photo-1596357395217-80de13130e92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d2VpZ2h0JTIwcm9vbXxlbnwwfHwwfHw%3D&w=1000&q=80"} className={"card-img opacity-50 cards"} alt={"yoga girl"}/>
                     <div className={"card-img-overlay"}>
                         <div className="card-title">
                             <div className="card-body">
@@ -33,7 +34,7 @@ function Home() {
                     </div>
                 </div>
                 <div className={"card bg-dark text-white"}>
-                    <img src={"https://www.familyfuntwincities.com/wp-content/uploads/2020/07/grove-aquatic-center.jpg"} className={"card-img opacity-50"} alt={"yoga girl"}/>
+                    <img src={"https://www.familyfuntwincities.com/wp-content/uploads/2020/07/grove-aquatic-center.jpg"} className={"card-img opacity-50 cards"} alt={"yoga girl"}/>
                     <div className={"card-img-overlay"}>
                         <div className="card-title">
                             <div className="card-body">
