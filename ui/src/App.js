@@ -3,6 +3,8 @@ import Home from "./components/Home";
 import NotFound from "./components/NotFound";
 import Login from "./components/accounts/Login";
 import Registration from "./components/accounts/Registration";
+import Reservations from "./components/reservations/Reservations";
+import UserReservations from "./components/reservations/UserReservations";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { useState } from "react";
 import AuthContext from "./context/AuthContext";
@@ -30,11 +32,17 @@ function App() {
           </Route>
           <Route path="/admin">
             <AdminPage />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route>
+        </Route>
+        <Route path="/reserve">
+          <Reservations />
+        </Route>
+        <Route path="/myreservations">
+          <UserReservations/>
+        </Route>
+        <Route exact path="/">
+            <Home/>
+        </Route>
+        <Route>
             <NotFound />
           </Route>
         </Switch>
