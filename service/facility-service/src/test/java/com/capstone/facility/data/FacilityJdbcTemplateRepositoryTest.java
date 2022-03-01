@@ -23,6 +23,7 @@ class FacilityJdbcTemplateRepositoryTest {
 
     @Test
     void shouldFindById() {
+        assertNotNull(repository.findById(1));
 
     }
 }
