@@ -195,6 +195,7 @@ function AdminPage() {
         {view === "Main" &&(
             <>
         <h1 className="display-1">Users</h1>
+
         <div className="accordion" id="usersAccordion">
         {users.map((user, i) => (
           <div key={user.userId} className="accordion-item">
@@ -265,12 +266,7 @@ function AdminPage() {
                {user.membershipId}
                </div>
 
-            <div className="col-3 text-center">
-            <strong>Authorities</strong> <br />
-               {user.authorities}
-               </div>
-
-              </div>
+            </div>
 
             <div className="row"></div>
 

@@ -17,11 +17,11 @@ Content-Type: application/json
 {
     "appUserId": 2,
     "reservable": {
-        "id": 3
+        "id": 1
     },
     "facility": {
-        "id": 2
+        "id": 1
     },
-    "startTime": "2022-02-25T08:00:00",
-    "endTime": "2022-02-25T09:00:00"
+    "startTime": "2022-02-22T08:00:00",
+    "endTime": "2022-02-22T09:00:00"
 }
