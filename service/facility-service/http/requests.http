@@ -5,14 +5,15 @@
 # @host=http://pete-lb-461189805.us-east-2.elb.amazonaws.com:8081
 
 # TOKEN
-@jwt=notatoke
+@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NjE2OTk5M30.cg4IkpYuunm91l_c5Bxl1jES_DNhm5T1A0sDAlqShZo
 
 ###
 GET {{host}}/1/1?date=2022-02-22
 
 ###
-POST {{host}}/1/1
+POST {{host}}/2/3
 Content-Type: application/json
+Authorization: Bearer {{jwt}}
 
 {
     "appUserId": 2,
@@ -25,3 +26,7 @@ Content-Type: application/json
     "startTime": "2022-02-25T08:00:00",
     "endTime": "2022-02-25T09:00:00"
 }
+
+###
+GET {{host}}/helloworld/
+Authorization: Bearer {{jwt}}

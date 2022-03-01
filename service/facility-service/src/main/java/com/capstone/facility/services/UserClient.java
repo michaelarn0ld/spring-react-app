@@ -1,11 +1,16 @@
 package com.capstone.facility.services;
 
+import com.capstone.facility.models.AppUser;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -22,8 +27,17 @@ public class UserClient {
                 .build();
     }
 
-    public Set<String> getRolesFromToken(String token) {
-        String[] roles = restTemplate.getForObject("/authenticate?jwt=" + token, String[].class);
-        return Arrays.stream(roles).collect(Collectors.toSet());
+    public AppUser getRolesFromToken(String token) {
+        JsonNode node = restTemplate.getForObject("/authenticate?jwt=" + token, JsonNode.class);
+        if (node == null) {
+            return null;
+        }
+        List<String> authorities = new ArrayList<>();
+        node.get("authorityNames").iterator().forEachRemaining(a -> authorities.add(a.textValue()));
+        AppUser user = new AppUser();
+        user.setAuthorities(authorities);
+        user.setUsername(node.get("username").textValue());
+        user.setId(node.get("id").intValue());
+        return user;
     }
 }
