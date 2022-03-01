@@ -202,7 +202,7 @@ function AdminPage() {
 
                                 {view === "Main" &&(
                                     <>
-                                        <h1 className="text-center display-1">Members</h1>
+                                        <h1 className="text-center display-1 text-white">Members</h1>
                                         <div className="accordion text-center" id="usersAccordion">
                                             {users.map((user, i) => (
                                                 <div key={user.userId} className="accordion-item">
