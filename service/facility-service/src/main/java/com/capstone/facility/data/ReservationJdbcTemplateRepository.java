@@ -11,7 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.PreparedStatement;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.temporal.TemporalField;
+import java.time.temporal.WeekFields;
 import java.util.List;
+import java.util.Locale;
 
 @Repository
 public class ReservationJdbcTemplateRepository implements ReservationRepository {
@@ -108,6 +111,33 @@ public class ReservationJdbcTemplateRepository implements ReservationRepository 
                 reservation.getFacility().getId(),
                 reservation.getReservable().getId(),
                 reservation.getStartTime()).size() > 0;
+    }
+
+    @Override
+    public boolean appUserReservationsExceeded(Reservation reservation) {
+        final String getWeeklyVisits = "SELECT weekly_visits FROM app_user au " +
+                "INNER JOIN membership m on m.id = au.membership_id " +
+                "WHERE au.id = ?;";
+
+        int weeklyVisits = jdbcTemplate.query(
+                getWeeklyVisits,
+                (rs, i) -> rs.getInt("weekly_visits"),
+                reservation.getAppUserId()).get(0);
+
+        final String getThisWeeksVisits = "SELECT COUNT(*) FROM reservation " +
+                "WHERE EXTRACT('week' FROM start_time) = ? " +
+                "AND app_user_id = ?;";
+
+        TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear();
+        int week = reservation.getStartTime().get(woy) - 1;
+
+        int thisWeeksVisits = jdbcTemplate.query(
+                getThisWeeksVisits,
+                (rs, i) -> rs.getInt("count"),
+                week,
+                reservation.getAppUserId()).get(0);
+
+        return thisWeeksVisits >= weeklyVisits;
     }
 
     private void addFacility(Reservation reservation) {

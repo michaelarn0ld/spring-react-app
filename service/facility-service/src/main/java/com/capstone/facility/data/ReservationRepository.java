@@ -14,4 +14,6 @@ public interface ReservationRepository {
     Reservation add(Reservation reservation);
 
     boolean requestedReservationAvailable(Reservation reservation);
+
+    boolean appUserReservationsExceeded(Reservation reservation);
 }
