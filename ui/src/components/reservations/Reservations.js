@@ -14,6 +14,34 @@ function Reservations() {
         console.log("scheduled: ", dateTime);
     };
 
+    const theme = {
+        primary: "#141bde",
+        secondary: "#a6aba6",
+        background: "#fff", // This should match the container background
+        buttons: {
+          disabled: {
+            color: "#333",
+            background: "#d91111"
+          },
+          confirm: {
+            color: "#fff",
+            background: "#929692",
+            hover: {
+              color: "",
+              background: "#36b33e"
+            }
+          }
+        },
+        feedback: {
+          success: {
+            color: "#29aba4"
+          },
+          failed: {
+            color: "#eb7260"
+          }
+        }
+      };      
+
     
 const Container = styled.div`
   width: 475px;
@@ -34,10 +62,7 @@ const cancelMain = () => {
     return setView("Main");
 }
 
-//On click {setView"xxx"} wasnt working so I had to do this 
-const toYoga = () => {
-    return setView("Yoga");
-};
+//On click={setView"xxx"} wasnt working so I had to do this 
 const toWeights = () => {
     return setView("Weights");
 };
@@ -103,7 +128,7 @@ const toTrackLane = () => {
         {view === "Bench" && (
         <Container>
             <h3>Bench Press</h3>
-       <DayTimePicker timeSlotSizeMinutes={60} onConfirm={handleScheduled} isLoading={isScheduling} isDone={isScheduled} err={scheduleErr} />
+       <DayTimePicker theme={theme} timeSlotSizeMinutes={60} onConfirm={handleScheduled} isLoading={isScheduling} isDone={isScheduled} err={scheduleErr} />
        <button onClick={toWeights}>Cancel</button>
        </Container>
         )};
@@ -111,7 +136,7 @@ const toTrackLane = () => {
         {view === "Squat" && (
         <Container>
             <h3>Squat Rack</h3>
-       <DayTimePicker timeSlotSizeMinutes={60} onConfirm={handleScheduled} isLoading={isScheduling} isDone={isScheduled} err={scheduleErr} />
+       <DayTimePicker theme={theme} timeSlotSizeMinutes={60} onConfirm={handleScheduled} isLoading={isScheduling} isDone={isScheduled} err={scheduleErr} />
        <button onClick={toWeights}>Cancel</button>
        </Container>
         )};
@@ -119,7 +144,7 @@ const toTrackLane = () => {
         {view === "Pool Lane" && (
         <Container>
             <h3>Pool Lane</h3>
-       <DayTimePicker timeSlotSizeMinutes={60} onConfirm={handleScheduled} isLoading={isScheduling} isDone={isScheduled} err={scheduleErr} />
+       <DayTimePicker theme={theme} timeSlotSizeMinutes={60} onConfirm={handleScheduled} isLoading={isScheduling} isDone={isScheduled} err={scheduleErr} />
        <button onClick={toPool}>Cancel</button>
        </Container>
         )};
@@ -127,7 +152,7 @@ const toTrackLane = () => {
         {view === "Track Lane" && (
         <Container>
             <h3>Track Lane</h3>
-       <DayTimePicker timeSlotSizeMinutes={60} onConfirm={handleScheduled} isLoading={isScheduling} isDone={isScheduled} err={scheduleErr} />
+       <DayTimePicker theme={theme} timeSlotSizeMinutes={60} onConfirm={handleScheduled} isLoading={isScheduling} isDone={isScheduled} err={scheduleErr} />
        <button onClick={toTrack}>Cancel</button>
        </Container>
         )};
