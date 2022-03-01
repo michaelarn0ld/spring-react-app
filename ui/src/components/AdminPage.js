@@ -215,7 +215,7 @@ function AdminPage() {
             <div
               id={`collapse${i}`}
               className={
-                i == 0
+                i === 0
                   ? "accordion-collapse collapse show"
                   : "accordion-collapse collapse"
               }

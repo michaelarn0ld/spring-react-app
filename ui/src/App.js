@@ -3,6 +3,7 @@ import Home from "./components/Home";
 import NotFound from "./components/NotFound";
 import Login from "./components/accounts/Login";
 import Registration from "./components/accounts/Registration";
+import Reservations from "./components/reservations/Reservations";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { useState } from "react";
 import AuthContext from "./context/AuthContext";
@@ -41,6 +42,9 @@ const [userStatus, setUserStatus] = useState();
         </Route>
         <Route path="/admin">
             <AdminPage />
+        </Route>
+        <Route path="/reserve">
+          <Reservations />
         </Route>
         <Route exact path="/">
             <Home/>
