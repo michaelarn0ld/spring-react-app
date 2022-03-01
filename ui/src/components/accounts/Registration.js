@@ -3,7 +3,7 @@ import { USER_SERVICE_URL } from "../../services/urls";
 
 function Registration() {
   const [user, setUser] = useState({
-    membershipId: "",
+    membershipId: 0,
     email: "",
     username: "",
     password: "",
@@ -225,9 +225,9 @@ function Registration() {
                 id="membership"
                 name="membership"
               >
-                <option value="gold">Gold ($100/mo)</option>
-                <option value="silver">Silver ($50/mo)</option>
-                <option value="bronze">Bronze ($25/mo)</option>
+                <option value="1">Gold ($100/mo)</option>
+                <option value="2">Silver ($50/mo)</option>
+                <option value="3">Bronze ($25/mo)</option>
               </select>
             </div>
           </div>
