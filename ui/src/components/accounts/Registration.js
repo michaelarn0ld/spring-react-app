@@ -51,7 +51,6 @@ function Registration() {
     }
     event.preventDefault();
   }
-
   return (
     <>
       <h1>Register</h1>

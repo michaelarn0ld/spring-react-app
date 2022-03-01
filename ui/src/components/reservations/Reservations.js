@@ -10,9 +10,19 @@ function Reservations() {
     const [ isScheduled, setIsScheduled ] = useState(false);
     const [ scheduleErr, setScheduleErr ] = useState("");
 
+
+
     const handleScheduled = dateTime => {
         console.log("scheduled: ", dateTime);
+
     };
+
+        fetch(`http://localhost:8081/1/1?=${Date}`, {
+            method: "GET",
+            headers: {
+                
+            }
+        })
 
     const theme = {
         primary: "#141bde",

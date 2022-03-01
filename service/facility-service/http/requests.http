@@ -18,10 +18,10 @@ Authorization: Bearer {{jwt}}
 {
     "appUserId": 2,
     "reservable": {
-        "id": 3
+        "id": 1
     },
     "facility": {
-        "id": 2
+        "id": 1
     },
     "startTime": "2022-02-25T08:00:00",
     "endTime": "2022-02-25T09:00:00"
