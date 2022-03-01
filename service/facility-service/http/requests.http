@@ -5,8 +5,23 @@
 # @host=http://pete-lb-461189805.us-east-2.elb.amazonaws.com:8081
 
 # TOKEN
-@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NTc0NDI0N30.t9xFDQB2R5CWsr_pnAhw9lCJSimUremvNMX6_-Yxuug
+@jwt=notatoke
 
-GET {{host}}/helloworld
+###
+GET {{host}}/1/1?date=2022-02-22
+
+###
+POST {{host}}/1/1
 Content-Type: application/json
-Authorization: Bearer {{jwt}}
+
+{
+    "appUserId": 2,
+    "reservable": {
+        "id": 3
+    },
+    "facility": {
+        "id": 2
+    },
+    "startTime": "2022-02-25T08:00:00",
+    "endTime": "2022-02-25T09:00:00"
+}

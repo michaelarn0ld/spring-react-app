@@ -1,1 +1,2 @@
-const apiUrl = `${window.API_URL}/quote`;
+const USER_SERVICE_URL = `http://${window.USER_SERVICE_HOSTNAME}:8080`;
+const FACILITY_SERVICE_URL = `http://${window.FACILITY_SERVICE_HOSTNAME}:8081`;

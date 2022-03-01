@@ -1,12 +1,16 @@
 package com.capstone.facility.models;
 
+import lombok.Data;
+
 import java.time.LocalDateTime;
 
+@Data
 public class Reservation {
-    int id;
-    int appUserId;
-    int facilityId;
-    int reservableId;
-    LocalDateTime start;
-    LocalDateTime end;
+    private int id;
+    private int appUserId;
+    private int equipmentId;
+    private Reservable reservable;
+    private Facility facility;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
 }

@@ -51,17 +51,17 @@
             <scope>runtime</scope>
         </dependency>
 
-<!--        &lt;!&ndash; JDBC Connector &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-jdbc</artifactId>-->
-<!--        </dependency>-->
+        <!-- JDBC Connector -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
 
-<!--        &lt;!&ndash; PostgreSQL &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.postgresql</groupId>-->
-<!--            <artifactId>postgresql</artifactId>-->
-<!--        </dependency>-->
+        <!-- PostgreSQL -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
 
         <!-- Getters & Setters -->
         <dependency>

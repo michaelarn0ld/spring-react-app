@@ -1,3 +1,10 @@
+# AWS
+aws
+cloud
+
+# PowerShell scripts
+*.ps1
+
 # BlueJ files
 *.ctxt
 
@@ -36,8 +43,9 @@ npm-debug.log*
 /build
 
 # docker
-*.env
-docker-compose*
+*.env*
+*Docker*
+*docker*
 
 # Maven
 target/
@@ -57,8 +65,4 @@ hs_err_pid*
 /build
 
 # Misc
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-npm-debug.log*
+*.log*
