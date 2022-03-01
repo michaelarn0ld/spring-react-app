@@ -5,7 +5,7 @@ import AuthContext from "../../context/AuthContext";
 import { USER_SERVICE_URL } from "../../services/urls";
 
 
-function Login({ userStatus }) {
+function Login() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -21,9 +21,8 @@ function Login({ userStatus }) {
     const body = JSON.stringify({
       username,
       password,
-    })
-    console.log(body)
-    //placeholder, double check to make sure this is the current fetch address
+    });
+    console.log(body);
     const response = await fetch(`${USER_SERVICE_URL}/login`, {
       method: "POST",
       headers: {
@@ -53,8 +52,8 @@ function Login({ userStatus }) {
   };
 
   const renderErrors = () => {
-    return errors.map(error => <li key={error}>{error}</li>)
-  }
+    return errors.map(error => <li key={error}>{error}</li>);
+  };
 
   return (
     <>

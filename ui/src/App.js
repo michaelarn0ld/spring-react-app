@@ -11,44 +11,33 @@ import Header from "./components/Header";
 
 function App() {
 
-// const [userStatus, setUserStatus] = useState({
-//   user: null,
-//   login(username) {
-//     setUserStatus((prev) => ({ ...prev, user: username}));
-//   },
-//   logout(){
-//     localStorage.removeItem("token");
-//     setUserStatus((prev) => ({ ...prev, user: null }));
-//   },
-// });
+  const [userStatus, setUserStatus] = useState();
 
-const [userStatus, setUserStatus] = useState();
-
-    //still need to protect routes for users that are logged in 
-    // as well as consumer vs admin
+  //still need to protect routes for users that are logged in 
+  // as well as consumer vs admin
 
   return (
     <Router>
-      <Header/>
+      <Header />
       <AuthContext.Provider value={[userStatus, setUserStatus]}>
-      <NavBar />
-      <Switch>
-        <Route path="/login">
+        <NavBar />
+        <Switch>
+          <Route path="/login">
             {userStatus?.user ? <Redirect to="/" /> : <Login />}
-        </Route>
-        <Route path="/register">
+          </Route>
+          <Route path="/register">
             {localStorage.getItem("token") ? <Redirect to="/" /> : <Registration />}
-        </Route>
-        <Route path="/admin">
+          </Route>
+          <Route path="/admin">
             <AdminPage />
-        </Route>
-        <Route exact path="/">
-            <Home/>
-        </Route>
-        <Route>
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route>
             <NotFound />
-        </Route>
-      </Switch>
+          </Route>
+        </Switch>
       </AuthContext.Provider>
     </Router>
 
