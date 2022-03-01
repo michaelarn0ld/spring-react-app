@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./styles.css";
 
 function AdminPage() {
 
@@ -185,6 +186,7 @@ function AdminPage() {
         <div className={"card-group"}>
             <div className={"card bg-dark text-black"}>
                 <img src={"https://post.healthline.com/wp-content/uploads/2020/09/woman-doing-push-ups-on-mat-732x549-thumbnail-732x549.jpg"} className={"card-img opacity-50"} alt={"yoga girl"}/>
+
                 <div className={"card-img-overlay"}>
                     <div className="card-title">
                         <div className="card-body">
@@ -196,8 +198,6 @@ function AdminPage() {
                                         </ul>
                                     </div>
                                 )}
-
-
                                 {view === "Main" &&(
                                     <>
                                         <h1 className="text-center display-1 text-white">Members</h1>

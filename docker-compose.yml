@@ -3,7 +3,7 @@ services:
   user-service:
     image: friendcode/capstone-user_service:latest
     environment:
-      - DB_URL=jdbc:postgresql://10.0.0.193:5432/prod
+      - DB_URL=jdbc:postgresql://10.0.0.193:5432
       - DB_USERNAME=postgres
       - DB_PASSWORD=top-secret-password
     ports:
@@ -11,10 +11,10 @@ services:
   facility-service:
     image: friendcode/capstone-facility_service:latest
     environment:
-      - DB_URL=jdbc:postgresql://10.0.0.193:5432/prod
+      - DB_URL=jdbc:postgresql://10.0.0.193:5432
       - DB_USERNAME=postgres
       - DB_PASSWORD=top-secret-password
-      - HOST=user-service
+      - USER_SERVICE_HOSTNAME=user-service
     ports:
       - "8081:8081"
   ui:

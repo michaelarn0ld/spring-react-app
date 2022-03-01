@@ -12,7 +12,6 @@ function Reservations() {
 
 
 
-
     const handleScheduled = dateTime => {
         console.log("scheduled: ", dateTime);
 
@@ -24,8 +23,6 @@ function Reservations() {
                 
             }
         })
-
-
 
     const theme = {
         primary: "#141bde",

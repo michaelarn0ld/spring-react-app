@@ -36,7 +36,7 @@ container:
 `docker run --rm -d -p 5432:5432 --name gym-db-dev michaelarn0ld/gym-dev-db`
 1. Go to `/service` and make sure you can see the `user-service-1.0.0.jar` file
 1. Run the application:
-`DB_URL=jdbc:postgresql://localhost:5432/gym-prod DB_USERNAME=postgres DB_PASSWORD=password java -jar user-service-1.0.0.jar`
+`DB_URL=jdbc:postgresql://localhost:5432 DB_USERNAME=postgres DB_PASSWORD=password java -jar user-service-1.0.0.jar`
 
 ## Facility Service
 Endpoints
@@ -51,4 +51,4 @@ Starting a Development Enviroment
 1. Run an instance of the docker db container provided in `Authentication Service`
 1. Go to `/service` and make sure you can see the `facility-service-1.0.0.jar` file
 1. Run the application:
-`DB_URL=jdbc:postgresql://localhost:5432/gym-prod DB_USERNAME=postgres DB_PASSWORD=password java -jar facility-service-1.0.0.jar`
+`DB_URL=jdbc:postgresql://localhost:5432 DB_USERNAME=postgres DB_PASSWORD=password java -jar facility-service-1.0.0.jar`
