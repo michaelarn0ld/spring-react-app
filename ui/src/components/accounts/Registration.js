@@ -130,7 +130,7 @@ function Registration() {
 											<option value="WY">Wyoming</option>
 										</select>
 										<br />
-										<button onClick={handleClick} >Submit</button>
+										<button onClick={handleClick}>Submit</button>
 									</form>
 								</div>
 							</div>
