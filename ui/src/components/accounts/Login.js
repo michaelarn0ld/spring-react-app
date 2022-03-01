@@ -4,9 +4,7 @@ import jwtDecode from "jwt-decode";
 import AuthContext from "../../context/AuthContext";
 import { USER_SERVICE_URL } from "../../services/urls";
 
-
 function Login() {
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -40,7 +38,6 @@ function Login() {
       localStorage.setItem("token", jwt);
       setUserStatus({ user: jwtDecode(jwt) });
       history.push("/");
-      ;
     } else if (response.status === 400) {
       const errors = await response.json();
       setErrors(errors);
@@ -52,38 +49,43 @@ function Login() {
   };
 
   const renderErrors = () => {
-    return errors.map(error => <li key={error}>{error}</li>);
+    return errors.map((error) => <li key={error}>{error}</li>);
   };
 
   return (
     <>
-      {(errors.length > 0) && (
+      {errors.length > 0 && (
         <div className="alert alert-danger">
-          <ul>
-            {renderErrors()}
-          </ul>
+          <ul>{renderErrors()}</ul>
         </div>
       )}
       <div>
         <h2>Login</h2>
-
         <form onSubmit={handleSubmit}>
-          <div>
-            <label>Username:</label>
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
             <input
               type="text"
+              className="form-control"
+              id="username"
+              placeholder="Username"
               onChange={(event) => setUsername(event.target.value)}
             />
-          </div>
-          <div>
-            <label>Password:</label>
+            <br />
+            <label htmlFor="password">Password</label>
             <input
               type="password"
+              className="form-control"
+              id="password"
+              placeholder="********"
               onChange={(event) => setPassword(event.target.value)}
             />
-          </div>
-          <div>
-            <button type="submit">Login</button>
+            <br />
+            <div>
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
+            </div>
           </div>
         </form>
       </div>
