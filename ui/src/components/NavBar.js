@@ -25,35 +25,38 @@ function NavBar() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                         <ul className={"navbar-nav mr-auto mt-2 mt-lg-0"}>
-                            <li className="nav-item active">
+                            <li className="nav-item">
                                 <Link to="/" className={"nav-link active"}>
                                     Home
-                                </Link>
-                            </li>
-                            {userStatus?.user ? (
-                                <li className="nav-item">
-                                    <button onClick={() => {
-                                        setUserStatus(null);
-                                        localStorage.removeItem("token");
-                                    }}>
-                                        Logout {userStatus.user.sub}
-                                    </button>
-                                </li>
-                            ) : (
-                                <li className="nav-item">
-                                    <Link to="/login" className={"nav-link"}>
-                                        Login
-                                    </Link>
-                                </li>
-                            )}
-                            <li className="nav-item">
-                                <Link to="/register" className={"nav-link"}>
-                                    {localStorage.getItem("token") ? "" : "Register"}
                                 </Link>
                             </li>
                             <li className="nav-item">
                                 <Link to="/admin" className={"nav-link"}>
                                     Admin
+                                </Link>
+                            </li>
+                            <li>
+                            </li>
+                            {userStatus?.user ? (
+                            <li className="nav-item">
+                                <Link
+                                    class="nav-link navbar sticky-top navbar-light bg-light"
+                                    onClick={() => {
+                                    setUserStatus(null);
+                                    localStorage.removeItem("token")}}>
+                                    Logout {userStatus.user.sub}
+                                </Link>
+                            </li>
+                            ) : (
+                            <li className="nav-item">
+                                <Link to="/login" className={"nav-link"}>
+                                    Login
+                                </Link>
+                            </li>
+                            )}
+                            <li className="nav-item">
+                                <Link to="/register" className={"nav-link"}>
+                                    {localStorage.getItem("token") ? "" : "Register"}
                                 </Link>
                             </li>
                         </ul>
