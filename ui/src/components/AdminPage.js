@@ -181,7 +181,8 @@ function AdminPage() {
     )
     }
 
-    return ( 
+    return (
+        <div className="p-3 mb-2 bg-info text-dark">
         <>
         {(errors.length > 0) && (
             <div className="alert alert-danger">
@@ -194,96 +195,96 @@ function AdminPage() {
         
         {view === "Main" &&(
             <>
-        <h1 className="display-1">Users</h1>
-        <div className="accordion" id="usersAccordion">
-        {users.map((user, i) => (
-          <div key={user.userId} className="accordion-item">
-            <h2 className="accordion-header" id={`heading${i}`}>
-              <button
-                className="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target={`#collapse${i}`}
-                aria-expanded="true"
-                aria-controls={`collapse${i}`}
-              >
+                    <h1 className="text-center display-1">Members</h1>
+                    <div className="accordion" id="usersAccordion">
+                        {users.map((user, i) => (
+                            <div key={user.userId} className="accordion-item">
+                                <h2 className="accordion-header" id={`heading${i}`}>
+                                    <button
+                                        className="accordion-button"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target={`#collapse${i}`}
+                                        aria-expanded="true"
+                                        aria-controls={`collapse${i}`}
+                                    >
 
-                {user.firstName}
-                {user.lastName}
-              </button>
-            </h2>
-            <div
-              id={`collapse${i}`}
-              className={
-                i === 0
-                  ? "accordion-collapse collapse show"
-                  : "accordion-collapse collapse"
-              }
-              aria-labelledby={`heading${i}`}
-              data-bs-parent="#usersAccordion"
-            >
-              <div className="accordion-body">
+                                        {user.firstName}
+                                        {user.lastName}
+                                    </button>
+                                </h2>
+                                <div
+                                    id={`collapse${i}`}
+                                    className={
+                                        i === 0
+                                            ? "accordion-collapse collapse show"
+                                            : "accordion-collapse collapse"
+                                    }
+                                    aria-labelledby={`heading${i}`}
+                                    data-bs-parent="#usersAccordion"
+                                >
+                                    <div className="accordion-body">
 
-            <div className="row">
-            <div className="col-3 text-center">
-            <strong>Email</strong> <br />
-               {user.email}
-               </div>
+                                        <div className="row">
+                                            <div className="col-3 text-center">
+                                                <strong>Email</strong> <br />
+                                                {user.email}
+                                            </div>
 
-            <div className="col-3 text-center">
-            <strong>Username</strong> <br />
-               {user.username}
-               </div>
+                                            <div className="col-3 text-center">
+                                                <strong>Username</strong> <br />
+                                                {user.username}
+                                            </div>
 
-            <div className="col-3 text-center">
-            <strong>Phone</strong> <br />
-               {user.phone}
-               </div>
+                                            <div className="col-3 text-center">
+                                                <strong>Phone</strong> <br />
+                                                {user.phone}
+                                            </div>
 
-            <div className="col-3 text-center">
-            <strong>Address</strong> <br />
-               {user.address}
-               </div>
+                                            <div className="col-3 text-center">
+                                                <strong>Address</strong> <br />
+                                                {user.address}
+                                            </div>
 
-            <div className="col-3 text-center">
-            <strong>City</strong> <br />
-               {user.city}
-                </div>
+                                            <div className="col-3 text-center">
+                                                <strong>City</strong> <br />
+                                                {user.city}
+                                            </div>
 
-            <div className="col-3 text-center">
-            <strong>State</strong> <br />
-               {user.state}
-                 </div>
+                                            <div className="col-3 text-center">
+                                                <strong>State</strong> <br />
+                                                {user.state}
+                                            </div>
 
-            <div className="col-3 text-center">
-            <strong>Zip Code</strong> <br />
-               {user.zipCode}
-               </div>
+                                            <div className="col-3 text-center">
+                                                <strong>Zip Code</strong> <br />
+                                                {user.zipCode}
+                                            </div>
 
-            <div className="col-3 text-center">
-            <strong>Membership Id</strong> <br />
-               {user.membershipId}
-               </div>
+                                            <div className="col-3 text-center">
+                                                <strong>Membership Id</strong> <br />
+                                                {user.membershipId}
+                                            </div>
 
-            <div className="col-3 text-center">
-            <strong>Authorities</strong> <br />
-               {user.authorities}
-               </div>
+                                            <div className="col-3 text-center">
+                                                <strong>Authorities</strong> <br />
+                                                {user.authorities}
+                                            </div>
 
-              </div>
+                                        </div>
 
-            <div className="row"></div>
+                                        <div className="row"></div>
 
-            <span className="clickable" onClick={() => editUser(user.UserId)}>✏️</span>
-            <span className="clickable" onClick={() => deleteUser(user.userId)}>🗑️</span>
-            
+                                        <span className="clickable" onClick={() => editUser(user.UserId)}>✏️</span>
+                                        <span className="clickable" onClick={() => deleteUser(user.userId)}>🗑️</span>
 
-              </div>
-              </div>
-              </div>
-          
-        ))}
-        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        ))}
+                    </div>
         </>
         )}
         
@@ -358,8 +359,9 @@ function AdminPage() {
             </div>
             </>
         )}
-        
+
         </>
+        </div>
      );
 }
 
