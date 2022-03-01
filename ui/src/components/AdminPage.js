@@ -182,7 +182,7 @@ function AdminPage() {
     }
 
     return (
-        <div className="p-3 mb-2 bg-info text-dark">
+
         <>
         {(errors.length > 0) && (
             <div className="alert alert-danger">
@@ -206,11 +206,8 @@ function AdminPage() {
                                         data-bs-toggle="collapse"
                                         data-bs-target={`#collapse${i}`}
                                         aria-expanded="true"
-                                        aria-controls={`collapse${i}`}
-                                    >
-
-                                        {user.firstName}
-                                        {user.lastName}
+                                        aria-controls={`collapse${i}`}>
+                                        {user.firstName} {user.lastName}
                                     </button>
                                 </h2>
                                 <div
@@ -361,7 +358,7 @@ function AdminPage() {
         )}
 
         </>
-        </div>
+
      );
 }
 
