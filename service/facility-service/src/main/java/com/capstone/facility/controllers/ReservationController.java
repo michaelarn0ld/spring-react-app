@@ -4,8 +4,10 @@ import com.capstone.facility.domain.FacilityService;
 import com.capstone.facility.domain.ReservableService;
 import com.capstone.facility.domain.ReservationService;
 import com.capstone.facility.domain.Result;
+import com.capstone.facility.models.AppUser;
 import com.capstone.facility.models.Facility;
 import com.capstone.facility.models.Reservation;
+import com.capstone.facility.services.UserClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -30,6 +32,9 @@ public class ReservationController {
 
     @Autowired
     FacilityService facilityService;
+
+    @Autowired
+    UserClient client;
 
     @GetMapping("{facilityId}/{reservableId}")
     public ResponseEntity<?> findByFacilityIdReservableIdDate(
@@ -63,7 +68,25 @@ public class ReservationController {
     }
 
     @PostMapping("{facilityId}/{reservableId}")
-    public ResponseEntity<?> add(@RequestBody Reservation reservation) {
+    public ResponseEntity<?> add(
+            @RequestHeader("Authorization") String bearer,
+            @RequestBody Reservation reservation,
+            @PathVariable int facilityId,
+            @PathVariable int reservableId) {
+
+        if (bearer.length() < 8) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        AppUser user = client.getRolesFromToken(bearer.substring(7));
+        if (user == null || !user.hasRole("USER") || !user.hasRole("ADMIN")) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+
+        if (facilityId != reservation.getFacility().getId() ||
+        reservableId != reservation.getReservable().getId()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         Result<Reservation> result = reservationService.add(reservation);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);

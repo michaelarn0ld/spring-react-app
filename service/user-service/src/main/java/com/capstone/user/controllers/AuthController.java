@@ -76,11 +76,8 @@ public class AuthController {
     }
 
     @GetMapping("/authenticate")
-    public List<String> helloWorld(@RequestParam(name = "jwt", required = false) String jwt) {
-        AppUser user = converter.getUserFromToken(jwt);
-        if (user == null) {
-            return new ArrayList<>();
-        }
-        return user.getAuthorityNames();
+    public AppUser authenticate(@RequestParam(name = "jwt", required = false) String jwt) {
+        System.out.println(converter.getUserFromToken(jwt));
+        return converter.getUserFromToken(jwt);
     }
 }
