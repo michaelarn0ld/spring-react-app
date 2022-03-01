@@ -42,8 +42,8 @@ container:
 Endpoints
 * `GET: /facilityId` - get a `List<Reservable>` that may be reserved at a given
 facility
-* `GET: /facilityId/reservableId?date=YYYY-MM-DD` - get a `Map<String, Boolean>`
-such that each `String` key is an hour-block and its `Boolean` value indicates
+* `GET: /facilityId/reservableId?date=YYYY-MM-DD` - get a `Map<LocalTime, Boolean>`
+such that each `LocalTime` key is an hour-block and its `Boolean` value indicates
 whether or not there is at least one `Reservable` available
 * `POST: /facilityId/reservableId` - attempt to add a reservation
 
