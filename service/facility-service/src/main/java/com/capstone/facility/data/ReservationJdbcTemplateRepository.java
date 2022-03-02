@@ -37,19 +37,15 @@ public class ReservationJdbcTemplateRepository implements ReservationRepository 
                 + "AND f.id = ? "
                 + "AND rb.id = ?;";
 
-        List<Reservation> reservations = jdbcTemplate.query(
+        return jdbcTemplate.query(
                 sql, new ReservationMapper(), date, facilityId, reservableId);
+    }
 
-        if (reservations.size() == 0) {
-            return reservations;
-        }
-
-        reservations.forEach(r -> {
-            addFacility(r);
-            addReservable(r);
-        });
-
-        return reservations;
+    @Override
+    public List<Reservation> findFutureReservationsByUserId(int id) {
+        final String sql = "SELECT id, app_user_id, equipment_id, start_time, end_time " +
+                "FROM reservation where app_user_id = ? AND start_time >= now();";
+        return jdbcTemplate.query(sql, new ReservationMapper(), id);
     }
 
     @Override
@@ -140,11 +136,21 @@ public class ReservationJdbcTemplateRepository implements ReservationRepository 
         return thisWeeksVisits >= weeklyVisits;
     }
 
-    private void addFacility(Reservation reservation) {
+    @Override
+    public boolean deleteById(int reservationId, int appUserId) {
+        final String sql = "SELECT id, app_user_id, equipment_id, start_time, end_time " +
+                "FROM reservation where id = ?;";
 
+        Reservation reservation = jdbcTemplate.query(sql, new ReservationMapper(), reservationId)
+                .stream()
+                .findFirst()
+                .orElse(null);
+
+        if (reservation == null || reservation.getAppUserId() != appUserId) {
+            return false;
+        }
+
+        return jdbcTemplate.update("DELETE FROM reservation WHERE id = ?;", reservationId) > 0;
     }
 
-    private void addReservable(Reservation reservation) {
-
-    }
 }

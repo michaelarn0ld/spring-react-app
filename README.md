@@ -1,9 +1,9 @@
 # Null Pointer Exceptions
 
-## Authentication Service
+## Authentication Service (:8080)
 
 Versions
-* 1.0.0 (2022-02-20)
+* 1.1.0 (2022-02-28)
 
 Dependencies
 * PostgreSQL Docker: `postgres:alpine`
@@ -38,14 +38,23 @@ container:
 1. Run the application:
 `DB_URL=jdbc:postgresql://localhost:5432 DB_USERNAME=postgres DB_PASSWORD=password java -jar user-service-1.0.0.jar`
 
-## Facility Service
+## Facility Service (:8081)
+
+Versions
+* 1.0.0 (2022-03-01)
+
+Dependencies
+* PostgreSQL Docker: `postgres:alpine`
+* Java Compiler: `javac 17.0.X`
+* Spring Boot: `2.6.3`
+* Lombok: `1.18.22`
+
 Endpoints
-* `GET: /facilityId` - get a `List<Reservable>` that may be reserved at a given
-facility
-* `GET: /facilityId/reservableId?date=YYYY-MM-DD` - get a `Map<LocalTime, Boolean>`
-such that each `LocalTime` key is an hour-block and its `Boolean` value indicates
-whether or not there is at least one `Reservable` available
-* `POST: /facilityId/reservableId` - attempt to add a reservation
+* `GET: /{facilityId}` - get a `List<Reservable>` that may be reserved at a given facility
+* `GET: /{facilityId}/{reservableId}?date=YYYY-MM-DD` - get a `Map<LocalTime, Boolean>` such that each `LocalTime` key is an hour-block and its `Boolean` value indicates whether or not there is at least one `Reservable` available
+* `POST: /{facilityId}/{reservableId}` - attempt to add a reservation
+* `GET: /reservations/{appUserId}` - gets future reservations associated with a given user
+* `DELETE: /reservations/{appUserId}/{reservation}` - deletes a specific reservation associated with a specific user
 
 Starting a Development Enviroment
 1. Run an instance of the docker db container provided in `Authentication Service`
