@@ -31,8 +31,6 @@ function AdminPage() {
       .catch((errors) => console.log(errors));
   }, []);
 
-  //Find members by first and last name
-
   //edit a member
   const editUser = (userId) => {
     setView("Edit");

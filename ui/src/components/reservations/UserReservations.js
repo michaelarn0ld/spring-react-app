@@ -49,14 +49,13 @@ function UserReservations() {
 
     return ( 
         <>
-
         {(errors.length > 0) && (
             <div className="alert alert-danger">
                 <ul>
                     {renderErrors()}
                 </ul>
             </div>
-        )};
+        )}
 
         <h1>My Reservations</h1>
         </>

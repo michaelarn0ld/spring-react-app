@@ -21,6 +21,10 @@ public class ReservationService {
         return repository.findByFacilityIdReservableIdDate(facilityId, reservableId, date);
     }
 
+    public List<Reservation> findFutureReservationsByUserId(int id) {
+        return repository.findFutureReservationsByUserId(id);
+    }
+
     public Result<Reservation> add(Reservation reservation) {
         Result<Reservation> result = new Result<>();
         // if there is no available reservations for this date,time,facility,equipment
@@ -35,5 +39,9 @@ public class ReservationService {
         }
         result.setPayload(repository.add(reservation));
         return result;
+    }
+
+    public boolean deleteById(int reservationId, int appUserId) {
+        return repository.deleteById(reservationId, appUserId);
     }
 }
