@@ -5,7 +5,7 @@
 # @host=http://pete-lb-461189805.us-east-2.elb.amazonaws.com:8081
 
 # TOKEN
-@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NjE5OTA5MH0.b2oXVpBNJyGf_9nKx6ID5d9XcvoG_xomgSLfkMM7kHk
+@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NjIwMDc2M30.TW4F3_LqDO_ITQLiprzQzgdjB9FW_ZAEEt7OPq82Ldo
 
 ###
 GET {{host}}/1/1?date=2022-02-22
@@ -29,4 +29,8 @@ Authorization: Bearer {{jwt}}
 
 ###
 GET {{host}}/reservations/1
+Authorization: Bearer {{jwt}}
+
+###
+DELETE {{host}}/reservations/1/8
 Authorization: Bearer {{jwt}}

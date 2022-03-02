@@ -136,4 +136,21 @@ public class ReservationJdbcTemplateRepository implements ReservationRepository 
         return thisWeeksVisits >= weeklyVisits;
     }
 
+    @Override
+    public boolean deleteById(int reservationId, int appUserId) {
+        final String sql = "SELECT id, app_user_id, equipment_id, start_time, end_time " +
+                "FROM reservation where id = ?;";
+
+        Reservation reservation = jdbcTemplate.query(sql, new ReservationMapper(), reservationId)
+                .stream()
+                .findFirst()
+                .orElse(null);
+
+        if (reservation == null || reservation.getAppUserId() != appUserId) {
+            return false;
+        }
+
+        return jdbcTemplate.update("DELETE FROM reservation WHERE id = ?;", reservationId) > 0;
+    }
+
 }

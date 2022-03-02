@@ -18,4 +18,6 @@ public interface ReservationRepository {
     boolean requestedReservationAvailable(Reservation reservation);
 
     boolean appUserReservationsExceeded(Reservation reservation);
+
+    boolean deleteById(int reservationId, int appUserId);
 }

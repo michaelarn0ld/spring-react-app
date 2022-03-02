@@ -40,4 +40,8 @@ public class ReservationService {
         result.setPayload(repository.add(reservation));
         return result;
     }
+
+    public boolean deleteById(int reservationId, int appUserId) {
+        return repository.deleteById(reservationId, appUserId);
+    }
 }

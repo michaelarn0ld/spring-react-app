@@ -112,4 +112,26 @@ public class ReservationController {
         }
         return ErrorResponse.build(result);
     }
+
+    @DeleteMapping("/reservations/{appUserId}/{reservationId}")
+    public ResponseEntity<?> deleteById(
+            @RequestHeader("Authorization") String bearer,
+            @PathVariable int appUserId,
+            @PathVariable int reservationId
+    ) {
+        if (bearer.length() < 8) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        AppUser user = client.getRolesFromToken(bearer.substring(7));
+        if (user == null || !user.hasRole("USER") || !user.hasRole("ADMIN")
+                || user.getId() != appUserId) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+
+        if (reservationService.deleteById(reservationId, user.getId())) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 }
