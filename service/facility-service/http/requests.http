@@ -5,28 +5,28 @@
 # @host=http://pete-lb-461189805.us-east-2.elb.amazonaws.com:8081
 
 # TOKEN
-@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NjE2OTk5M30.cg4IkpYuunm91l_c5Bxl1jES_DNhm5T1A0sDAlqShZo
+@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NjE5OTA5MH0.b2oXVpBNJyGf_9nKx6ID5d9XcvoG_xomgSLfkMM7kHk
 
 ###
 GET {{host}}/1/1?date=2022-02-22
 
 ###
-POST {{host}}/2/3
+POST {{host}}/1/1
 Content-Type: application/json
 Authorization: Bearer {{jwt}}
 
 {
-    "appUserId": 2,
+    "appUserId": 1,
     "reservable": {
         "id": 1
     },
     "facility": {
         "id": 1
     },
-    "startTime": "2022-02-25T08:00:00",
-    "endTime": "2022-02-25T09:00:00"
+    "startTime": "2022-03-25T08:00:00",
+    "endTime": "2022-03-25T09:00:00"
 }
 
 ###
-GET {{host}}/helloworld/
+GET {{host}}/reservations/1
 Authorization: Bearer {{jwt}}

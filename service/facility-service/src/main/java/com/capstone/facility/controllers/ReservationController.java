@@ -67,6 +67,25 @@ public class ReservationController {
         return new ResponseEntity<>(availability, HttpStatus.OK);
     }
 
+    @GetMapping("/reservations/{appUserId}")
+    public ResponseEntity<?> findFutureReservationsByUserId(
+            @RequestHeader("Authorization") String bearer,
+            @PathVariable int appUserId
+    ) {
+        if (bearer.length() < 8) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        AppUser user = client.getRolesFromToken(bearer.substring(7));
+        if (user == null || !user.hasRole("USER") || !user.hasRole("ADMIN")
+        || user.getId() != appUserId) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+
+        return new ResponseEntity<>(reservationService.findFutureReservationsByUserId(appUserId),
+                HttpStatus.OK);
+    }
+
     @PostMapping("{facilityId}/{reservableId}")
     public ResponseEntity<?> add(
             @RequestHeader("Authorization") String bearer,

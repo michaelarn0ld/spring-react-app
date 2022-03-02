@@ -11,6 +11,8 @@ public interface ReservationRepository {
             int reservableId,
             LocalDate date);
 
+    List<Reservation> findFutureReservationsByUserId(int id);
+
     Reservation add(Reservation reservation);
 
     boolean requestedReservationAvailable(Reservation reservation);

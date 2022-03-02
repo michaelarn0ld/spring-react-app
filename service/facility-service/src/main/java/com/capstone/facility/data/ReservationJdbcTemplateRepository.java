@@ -53,6 +53,13 @@ public class ReservationJdbcTemplateRepository implements ReservationRepository 
     }
 
     @Override
+    public List<Reservation> findFutureReservationsByUserId(int id) {
+        final String sql = "SELECT id, app_user_id, equipment_id, start_time, end_time " +
+                "FROM reservation where app_user_id = ? AND start_time >= now();";
+        return jdbcTemplate.query(sql, new ReservationMapper(), id);
+    }
+
+    @Override
     @Transactional
     public Reservation add(Reservation reservation) {
         final String getEquipmentId = "SELECT id FROM equipment "
