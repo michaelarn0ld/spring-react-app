@@ -15,8 +15,6 @@ function NavBar() {
     }
   }, [setUserStatus]);
 
-  console.log(userStatus);
-
   return (
     <div className={"container"}>
       <nav className="navbar navbar-expand-sm navbar-light white">
