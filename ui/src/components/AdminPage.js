@@ -175,7 +175,6 @@ function AdminPage() {
         <div className="col-2">
         <span className="clickable" onClick={() => editUser(user.UserId)}>✏️</span>
         </div>
-        <span className="clickable" onClick={() => deleteUser(user.userId)}>🗑️</span>
         </div>
     </li>        
     )
@@ -268,17 +267,12 @@ function AdminPage() {
                                                                     {user.membershipId}
                                                                 </div>
 
-                                                                <div className="col-3 text-center">
-                                                                    <strong>Authorities</strong> <br />
-                                                                    {user.authorities}
-                                                                </div>
-
                                                             </div>
 
                                                             <div className="row"></div>
 
                                                             <button className="onClick" onClick={() => editUser(user.UserId)}>✏️</button>
-                                                            <button className="clickable" onClick={() => deleteUser(user.userId)}>🗑️</button>
+                                                            <button className="Clickable" onClick={() => deleteUser(user.userId)}>🗑️</button>
 
 
                                                         </div>

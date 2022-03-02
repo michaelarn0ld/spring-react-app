@@ -107,7 +107,7 @@ const toTrackLane = () => {
             <button onClick={toPool}>Pool</button>
             <button onClick={toTrack}>Track</button>
             </>
-        )};
+        )}
 
         {view === "Weights" && (
             <>
@@ -116,7 +116,7 @@ const toTrackLane = () => {
             <button onClick={toSquatRack}>Squat Rack</button>
             <button onClick={cancelMain}>Cancel</button>
             </>
-            )};
+            )}
 
             {view === "Pool" && (
             <>
@@ -124,7 +124,7 @@ const toTrackLane = () => {
             <button onClick={toPoolLane}>Pool Lane</button>
             <button onClick={cancelMain}>Cancel</button>
             </>
-            )};
+            )}
 
             {view === "Track" && (
             <>
@@ -132,7 +132,7 @@ const toTrackLane = () => {
             <button onClick={toTrackLane}>Track Lane</button>
             <button onClick={cancelMain}>Cancel</button>
             </>
-            )};
+            )}
 
 
         {view === "Bench" && (
@@ -141,7 +141,7 @@ const toTrackLane = () => {
        <DayTimePicker theme={theme} timeSlotSizeMinutes={60} onConfirm={handleScheduled} isLoading={isScheduling} isDone={isScheduled} err={scheduleErr} />
        <button onClick={toWeights}>Cancel</button>
        </Container>
-        )};
+        )}
 
         {view === "Squat" && (
         <Container>
@@ -149,7 +149,7 @@ const toTrackLane = () => {
        <DayTimePicker theme={theme} timeSlotSizeMinutes={60} onConfirm={handleScheduled} isLoading={isScheduling} isDone={isScheduled} err={scheduleErr} />
        <button onClick={toWeights}>Cancel</button>
        </Container>
-        )};
+        )}
 
         {view === "Pool Lane" && (
         <Container>
@@ -157,7 +157,7 @@ const toTrackLane = () => {
        <DayTimePicker theme={theme} timeSlotSizeMinutes={60} onConfirm={handleScheduled} isLoading={isScheduling} isDone={isScheduled} err={scheduleErr} />
        <button onClick={toPool}>Cancel</button>
        </Container>
-        )};
+        )}
 
         {view === "Track Lane" && (
         <Container>
@@ -165,7 +165,7 @@ const toTrackLane = () => {
        <DayTimePicker theme={theme} timeSlotSizeMinutes={60} onConfirm={handleScheduled} isLoading={isScheduling} isDone={isScheduled} err={scheduleErr} />
        <button onClick={toTrack}>Cancel</button>
        </Container>
-        )};
+        )}
         </>
      );
 }
