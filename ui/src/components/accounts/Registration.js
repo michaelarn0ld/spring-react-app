@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { USER_SERVICE_URL } from "../../services/urls";
 
 function Registration() {
   const [user, setUser] = useState({
-    membershipId: 0,
+    membershipId: 1,
     email: "",
     username: "",
     password: "",
@@ -20,13 +21,22 @@ function Registration() {
 
   const [errors, setErrors] = useState([]);
 
+  const history = useHistory();
+
+  console.log(user);
+
   function handleChange(event) {
     const clone = { ...user };
-    clone[event.target.name] = event.target.value;
-    setUser(clone);
+    if (event.target.name === "membershipId") {
+      clone[event.target.name] = parseInt(event.target.value);
+    } else {
+      clone[event.target.name] = event.target.value;
+    }
+    setUser({ ...clone });
   }
 
   function handleClick(event) {
+    event.preventDefault();
     // perform all neccessary validations
     if (user.password !== confirmPassword) {
       alert("Passwords don't match");
@@ -45,11 +55,11 @@ function Registration() {
             return Promise.reject;
           }
         })
+        .then((data) => {})
         .catch((error) => {
           setErrors([error]);
         });
     }
-    event.preventDefault();
   }
   return (
     <>
@@ -127,13 +137,14 @@ function Registration() {
           </div>
           <div className="col-6">
             <div className="form-group">
-              <label htmlFor="phone">Phone Number: </label>
+              <label htmlFor="phone">Phone Number</label>
               <input
                 type="text"
                 className="form-control"
                 id="phone"
                 name="phone"
                 placeholder="1234567890"
+                onChange={handleChange}
               />
               <br />
               <label htmlFor="address">Address</label>
@@ -143,6 +154,7 @@ function Registration() {
                 id="address"
                 name="address"
                 placeholder="1234 Drury Ln"
+                onChange={handleChange}
               />
               <br />
               <label htmlFor="city">City</label>
@@ -152,10 +164,16 @@ function Registration() {
                 id="city"
                 name="city"
                 placeholder="City"
+                onChange={handleChange}
               />
               <br />
               <label htmlFor="state">State</label>
-              <select className="form-control" id="state" name="state">
+              <select
+                className="form-control"
+                id="state"
+                name="state"
+                onChange={handleChange}
+              >
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
                 <option value="AZ">Arizona</option>
@@ -209,24 +227,26 @@ function Registration() {
                 <option value="WY">Wyoming</option>
               </select>
               <br />
-              <label htmlFor="zip">Postal Code</label>
+              <label htmlFor="zipCode">Postal Code</label>
               <input
                 type="text"
                 className="form-control"
-                id="zip"
-                name="zip"
+                id="zipCode"
+                name="zipCode"
                 placeholder="12345"
+                onChange={handleChange}
               />
               <br />
-              <label htmlFor="membership">Membership</label>
+              <label htmlFor="membershipId">Membership</label>
               <select
                 className="form-control"
-                id="membership"
-                name="membership"
+                id="membershipId"
+                name="membershipId"
+                onChange={handleChange}
               >
-                <option value="1">Gold ($100/mo)</option>
-                <option value="2">Silver ($50/mo)</option>
-                <option value="3">Bronze ($25/mo)</option>
+                <option value={1}>Gold ($100/mo)</option>
+                <option value={2}>Silver ($50/mo)</option>
+                <option value={3}>Bronze ($25/mo)</option>
               </select>
             </div>
           </div>
