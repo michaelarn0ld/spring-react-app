@@ -37,19 +37,8 @@ public class ReservationJdbcTemplateRepository implements ReservationRepository 
                 + "AND f.id = ? "
                 + "AND rb.id = ?;";
 
-        List<Reservation> reservations = jdbcTemplate.query(
+        return jdbcTemplate.query(
                 sql, new ReservationMapper(), date, facilityId, reservableId);
-
-        if (reservations.size() == 0) {
-            return reservations;
-        }
-
-        reservations.forEach(r -> {
-            addFacility(r);
-            addReservable(r);
-        });
-
-        return reservations;
     }
 
     @Override
@@ -147,11 +136,4 @@ public class ReservationJdbcTemplateRepository implements ReservationRepository 
         return thisWeeksVisits >= weeklyVisits;
     }
 
-    private void addFacility(Reservation reservation) {
-
-    }
-
-    private void addReservable(Reservation reservation) {
-
-    }
 }
