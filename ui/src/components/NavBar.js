@@ -41,7 +41,7 @@ function NavBar() {
                 Home
               </Link>
             </li>
-            {userStatus?.authorities?.split(",").includes("Admin") && (
+            {userStatus?.user?.authorities?.split(",").includes("ADMIN") && (
               <li className="nav-item">
                 <Link to="/admin" className={"nav-link"}>
                   Admin
