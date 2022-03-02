@@ -40,27 +40,52 @@ function Registration() {
     // perform all neccessary validations
     if (user.password !== confirmPassword) {
       alert("Passwords don't match");
-    } else {
-      fetch(`${USER_SERVICE_URL}/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      })
-        .then((response) => {
-          if (response.status === 201) {
-            return Promise.resolve;
-          } else {
-            return Promise.reject;
-          }
-        })
-        .then((data) => {})
-        .catch((error) => {
-          setErrors([error]);
-        });
+      return;
     }
+
+    fetch(`${USER_SERVICE_URL}/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((response) => {
+        if (response.status === 201) {
+          return Promise.resolve;
+        } else {
+          return Promise.reject;
+        }
+      })
+      .then(() => {
+        const response = await fetch(`${USER_SERVICE_URL}/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: user.username,
+            password: user.password,
+          }),
+        });
+
+        if (response.status === 200) {
+          const { jwt } = await response.json();
+
+          localStorage.setItem("token", jwt);
+          setUserStatus({ user: jwtDecode(jwt) });
+          history.push("/");
+        } else if (response.status === 400) {
+          const error = await response.json();
+          setErrors(error);
+        } else if (response.status === 403) {
+          setErrors(["Login failed."]);
+        } else {
+          setErrors(["Unknown error."]);
+        }
+      });
   }
+
   return (
     <>
       <h1>Register</h1>

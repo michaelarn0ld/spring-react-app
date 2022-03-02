@@ -16,11 +16,6 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const body = JSON.stringify({
-      username,
-      password,
-    });
-    console.log(body);
     const response = await fetch(`${USER_SERVICE_URL}/login`, {
       method: "POST",
       headers: {
@@ -47,7 +42,6 @@ function Login() {
       setErrors(["Unknown error."]);
     }
   };
-
 
   const renderErrors = () => {
     return errors.map((error) => <li key={error}>{error}</li>);
