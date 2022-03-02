@@ -14,7 +14,7 @@ function Registration() {
     phone: "",
     address: "",
     city: "",
-    state: "Alabama",
+    state: "AL",
     zipCode: "",
   });
 
