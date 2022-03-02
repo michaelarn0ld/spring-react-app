@@ -2,7 +2,6 @@ import jwtDecode from "jwt-decode";
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import AuthContext from "../../context/AuthContext";
-import { USER_SERVICE_URL } from "../../services/urls";
 
 function Registration() {
   const [user, setUser] = useState({
@@ -47,7 +46,7 @@ function Registration() {
       return;
     }
 
-    fetch(`${USER_SERVICE_URL}/register`, {
+    fetch(`${window.USER_SERVICE_URL}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -62,7 +61,7 @@ function Registration() {
         }
       })
       .then(async () => {
-        const response = await fetch(`${USER_SERVICE_URL}/login`, {
+        const response = await fetch(`${window.USER_SERVICE_URL}/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

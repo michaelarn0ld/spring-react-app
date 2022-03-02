@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { USER_SERVICE_URL } from "../services/urls";
 import "./styles.css";
 
 function AdminPage() {
@@ -20,7 +19,7 @@ function AdminPage() {
   const [view, setView] = useState("Main");
 
   useEffect(() => {
-    fetch(`${USER_SERVICE_URL}/user`, {
+    fetch(`${window.USER_SERVICE_URL}/user`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -33,20 +32,32 @@ function AdminPage() {
 
   //edit a member
   const editUser = (userId) => {
-    setView("Edit");
-    setEditingUserId(userId);
-    const userToEdit = users.find((user) => user.userId === userId);
-    setUsername(userToEdit.username);
-    setAuthorities(userToEdit.authorities);
-    setFirstName(userToEdit.firstName);
-    setLastName(userToEdit.lastName);
-    setMembershipId(userToEdit.membershipId);
-    setEmail(userToEdit.email);
-    setPhone(userToEdit.phone);
-    setAddress(userToEdit.address);
-    setCity(userToEdit.city);
-    setState(userToEdit.state);
-    setZipCode(userToEdit.zipCode);
+
+      const initEdit = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      };
+      fetch(`${USER_SERVICE_URL}/user/${userId}`, initEdit)
+        .then(res => res.json())
+        .then(data => {
+
+          setView("Edit");
+          setEditingUserId(data.id);
+          setUsername(data.username);
+          setAuthorities(data.authorityNames);
+          setFirstName(data.firstName);
+          setLastName(data.lastName);
+          setMembershipId(data.membershipId);
+          setEmail(data.email);
+          setPhone(data.phone);
+          setAddress(data.address);
+          setCity(data.city);
+          setState(data.state);
+          setZipCode(data.zipCode);
+
+        });
   };
 
   //adding + editing members
@@ -73,12 +84,12 @@ function AdminPage() {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer {{jwt}}",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify(editUserObject),
       };
 
-      fetch(`${USER_SERVICE_URL}/user/update`, initUpdate)
+      fetch(`${window.USER_SERVICE_URL}/user/update`, initUpdate)
         .then((response) => {
           if (response.status === 204) {
             return null;
@@ -181,7 +192,7 @@ function AdminPage() {
                     </h1>
                     <div className="accordion text-center" id="usersAccordion">
                       {users.map((user, i) => (
-                        <div key={user.userId} className="accordion-item">
+                        <div key={user.id} className="accordion-item">
                           <h2 className="accordion-header" id={`heading${i}`}>
                             <button
                               className="accordion-button"
@@ -245,14 +256,15 @@ function AdminPage() {
                                   <strong>Membership Id</strong> <br />
                                   {user.membershipId}
                                 </div>
-
                               </div>
 
                               <div className="row"></div>
 
                               <button
                                 className="onClick"
-                                onClick={() => editUser(user.UserId)}
+                                onClick={() => {
+                                  editUser(user.id)
+                                }}
                               >
                                 ✏️
                               </button>
@@ -367,7 +379,7 @@ function AdminPage() {
                                 value="1"
                                 checked={membershipId === "1"}
                                 onChange={(event) =>
-                                  setMembershipId(event.target.value)
+                                  setMembershipId(parseInt(event.target.value))
                                 }
                               />
                               <label htmlFor="rdBronzeMembership">Bronze</label>
@@ -380,7 +392,7 @@ function AdminPage() {
                                 value="2"
                                 checked={membershipId === "2"}
                                 onChange={(event) =>
-                                  setMembershipId(event.target.value)
+                                  setMembershipId(parseInt(event.target.value))
                                 }
                               />
                               <label htmlFor="rdSilverMembership">Silver</label>
@@ -393,7 +405,7 @@ function AdminPage() {
                                 value="3"
                                 checked={membershipId === "3"}
                                 onChange={(event) =>
-                                  setMembershipId(event.target.value)
+                                  setMembershipId(parseInt(event.target.value))
                                 }
                               />
                               <label htmlFor="rdGoldMembership">Gold</label>
@@ -401,16 +413,32 @@ function AdminPage() {
                           </div>
                           <br />
                           <div>
-                             <h3>Authorities:</h3>
-                             <div className="checkbox">
-                             <input id="chkUser" name="authorities" type="checkbox" value="USER" onChange={event => setAuthorities(event.target.value)}/>
-                            <label htmlFor="chkUser">User</label>
-                           </div>
-                             <div className="checkbox">
-                            <input id="chkAdmin" name="authorities" type="checkbox" value="ADMIN" onChange={event => setAuthorities(event.target.value)}/>
-                             <label htmlFor="chkAdmin">Admin</label>
-                             </div>
+                            <h3>Authorities:</h3>
+                            <div className="checkbox">
+                              <input
+                                id="chkUser"
+                                name="authorities"
+                                type="checkbox"
+                                value="USER"
+                                onChange={(event) =>
+                                  setAuthorities(event.target.value)
+                                }
+                              />
+                              <label htmlFor="chkUser">User</label>
                             </div>
+                            <div className="checkbox">
+                              <input
+                                id="chkAdmin"
+                                name="authorities"
+                                type="checkbox"
+                                value="ADMIN"
+                                onChange={(event) =>
+                                  setAuthorities(event.target.value)
+                                }
+                              />
+                              <label htmlFor="chkAdmin">Admin</label>
+                            </div>
+                          </div>
                           <button type="button" onClick={cancelButton}>
                             Cancel
                           </button>

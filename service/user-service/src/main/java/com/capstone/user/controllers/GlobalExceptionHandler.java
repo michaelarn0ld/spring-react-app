@@ -15,6 +15,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DataIntegrityViolationException.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<String> handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
+        System.out.println(ex);
         return new ResponseEntity<>("Internal server error",
                 HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -22,6 +23,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ResponseEntity<String> handleHttpMessageNotReadableException(HttpMessageNotReadableException ex){
+        System.out.println(ex);
         return new ResponseEntity<>("Message not readable",
                 HttpStatus.BAD_REQUEST);
     }
@@ -29,6 +31,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
     @ResponseStatus(value = HttpStatus.UNSUPPORTED_MEDIA_TYPE)
     public ResponseEntity<String> handleHttpMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException ex){
+        System.out.println(ex);
         return new ResponseEntity<>("Unsupported media type",
                 HttpStatus.UNSUPPORTED_MEDIA_TYPE);
     }
@@ -36,6 +39,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<String> handleException(Exception ex) {
+        System.out.println(ex);
         return new ResponseEntity<>("Internal server error",
                 HttpStatus.INTERNAL_SERVER_ERROR);
     }

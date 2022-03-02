@@ -15,6 +15,8 @@ function NavBar() {
     }
   }, [setUserStatus]);
 
+  console.log(userStatus);
+
   return (
     <div className={"container"}>
       <nav className="navbar navbar-expand-sm navbar-light white">
@@ -41,12 +43,13 @@ function NavBar() {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
-             <Link to="/admin" className={"nav-link"}>
-                Admin
-              </Link>
-            </li> 
-            <li></li>
+            {userStatus?.authorities?.split(",").includes("Admin") && (
+              <li className="nav-item">
+                <Link to="/admin" className={"nav-link"}>
+                  Admin
+                </Link>
+              </li>
+            )}
             {userStatus?.user ? (
               <li className="nav-item">
                 <Link

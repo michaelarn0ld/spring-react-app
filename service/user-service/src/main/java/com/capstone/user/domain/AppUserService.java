@@ -80,7 +80,6 @@ public class AppUserService {
             violations.forEach(v -> result.addErrorMessage(v.getMessage()));
             return result;
         }
-        user.setPassword(encoder.encode(user.getPassword()));
         if (!repository.update(user)) {
             result.addErrorMessage("User not updated");
         }

@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import AuthContext from "../../context/AuthContext";
-import { USER_SERVICE_URL } from "../../services/urls";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -16,7 +15,7 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch(`${USER_SERVICE_URL}/login`, {
+    const response = await fetch(`${window.USER_SERVICE_URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
