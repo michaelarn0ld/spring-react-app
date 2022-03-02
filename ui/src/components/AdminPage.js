@@ -32,32 +32,29 @@ function AdminPage() {
 
   //edit a member
   const editUser = (userId) => {
-
-      const initEdit = {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      };
-      fetch(`${USER_SERVICE_URL}/user/${userId}`, initEdit)
-        .then(res => res.json())
-        .then(data => {
-
-          setView("Edit");
-          setEditingUserId(data.id);
-          setUsername(data.username);
-          setAuthorities(data.authorityNames);
-          setFirstName(data.firstName);
-          setLastName(data.lastName);
-          setMembershipId(data.membershipId);
-          setEmail(data.email);
-          setPhone(data.phone);
-          setAddress(data.address);
-          setCity(data.city);
-          setState(data.state);
-          setZipCode(data.zipCode);
-
-        });
+    const initEdit = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    fetch(`${window.USER_SERVICE_URL}/user/${userId}`, initEdit)
+      .then((res) => res.json())
+      .then((data) => {
+        setView("Edit");
+        setEditingUserId(data.id);
+        setUsername(data.username);
+        setAuthorities(data.authorityNames);
+        setFirstName(data.firstName);
+        setLastName(data.lastName);
+        setMembershipId(data.membershipId);
+        setEmail(data.email);
+        setPhone(data.phone);
+        setAddress(data.address);
+        setCity(data.city);
+        setState(data.state);
+        setZipCode(data.zipCode);
+      });
   };
 
   //adding + editing members
@@ -263,7 +260,7 @@ function AdminPage() {
                               <button
                                 className="onClick"
                                 onClick={() => {
-                                  editUser(user.id)
+                                  editUser(user.id);
                                 }}
                               >
                                 ✏️
