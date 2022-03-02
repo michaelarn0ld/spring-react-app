@@ -33,11 +33,11 @@ function App() {
           <Route path="/admin">
             <AdminPage />
         </Route>
-        <Route path="/reserve">
+        <Route path="/:facility/reserve">
           <Reservations />
         </Route>
         <Route path="/myreservations">
-          <UserReservations/>
+          <UserReservations />
         </Route>
         <Route exact path="/">
             <Home/>

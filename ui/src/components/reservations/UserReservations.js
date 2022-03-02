@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 
 function UserReservations() {
   const [errors, setErrors] = useState([]);
   const [view, setView] = useState("Main");
   const [reservations, setReservations] = useState([]);
+  const [userStatus, setUserStatus] = useContext(AuthContext);
 
-  useEffect((appUserId) => {
-    fetch(`${window.FACILITY_SERVICE_URL}/reservations/${appUserId}`, {
+  useEffect(() => {
+    userStatus && fetch(`${window.FACILITY_SERVICE_URL}/reservations/${userStatus.user.id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -15,7 +17,7 @@ function UserReservations() {
       .then((response) => response.json())
       .then((data) => setReservations(data))
       .catch((errors) => console.log(errors));
-  }, []);
+  }, [userStatus]);
 
   const deleteReservation = (appUserId, reservation) => {
     fetch(`http://localhost:8081/reservations/${appUserId}/${reservation}`, {
