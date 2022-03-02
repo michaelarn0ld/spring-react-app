@@ -45,7 +45,7 @@ function NavBar() {
              <Link to="/admin" className={"nav-link"}>
                 Admin
               </Link>
-            </li>
+            </li> 
             <li></li>
             {userStatus?.user ? (
               <li className="nav-item">
