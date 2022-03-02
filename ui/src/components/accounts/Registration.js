@@ -47,7 +47,7 @@ function Registration() {
       return;
     }
 
-    fetch(`${USER_SERVICE_URL}/register`, {
+    fetch(`${window.USER_SERVICE_URL}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -62,7 +62,7 @@ function Registration() {
         }
       })
       .then(async () => {
-        const response = await fetch(`${USER_SERVICE_URL}/login`, {
+        const response = await fetch(`${window.USER_SERVICE_URL}/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
