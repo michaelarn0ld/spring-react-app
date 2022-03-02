@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { render } from "react-dom";
 import DayTimePicker from "@mooncake-dev/react-day-time-picker";
 import styled from "styled-components";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function Reservations() {
+  const { facility } = useParams();
 
-  const {facility} = useParams();
+  const history = useHistory();
 
-  const [view, setView] = useState("facility");
+  const [view, setView] = useState(facility);
   const [isScheduling, setIsScheduling] = useState(false);
   const [isScheduled, setIsScheduled] = useState(false);
   const [scheduleErr, setScheduleErr] = useState("");
@@ -65,8 +67,8 @@ function Reservations() {
     }
   `;
 
-  const cancelMain = () => {
-    return setView("Main");
+  const toHome = () => {
+    history.push("/");
   };
 
   //On click={setView"xxx"} wasnt working so I had to do this
@@ -94,21 +96,12 @@ function Reservations() {
 
   return (
     <>
-      {view === "Main" && (
-        <>
-          <h3>Select a Facility</h3>
-          <button onClick={toWeights}>Weight Room</button>
-          <button onClick={toPool}>Pool</button>
-          <button onClick={toTrack}>Track</button>
-        </>
-      )}
-
       {view === "Weights" && (
         <>
           <h3>What Would You Like to Reserve?</h3>
           <button onClick={toBenchPress}>Bench Press</button>
           <button onClick={toSquatRack}>Squat Rack</button>
-          <button onClick={cancelMain}>Cancel</button>
+          <button onClick={toHome}>Cancel</button>
         </>
       )}
 
@@ -116,7 +109,7 @@ function Reservations() {
         <>
           <h3>What Would You Like to Reserve?</h3>
           <button onClick={toPoolLane}>Pool Lane</button>
-          <button onClick={cancelMain}>Cancel</button>
+          <button onClick={toHome}>Cancel</button>
         </>
       )}
 
@@ -124,7 +117,7 @@ function Reservations() {
         <>
           <h3>What Would You Like to Reserve?</h3>
           <button onClick={toTrackLane}>Track Lane</button>
-          <button onClick={cancelMain}>Cancel</button>
+          <button onClick={toHome}>Cancel</button>
         </>
       )}
 
