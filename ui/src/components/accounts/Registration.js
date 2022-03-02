@@ -2,7 +2,6 @@ import jwtDecode from "jwt-decode";
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import AuthContext from "../../context/AuthContext";
-import { USER_SERVICE_URL } from "../../services/urls";
 
 function Registration() {
   const [user, setUser] = useState({
