@@ -5,7 +5,7 @@
 # @host=http://pete-lb-461189805.us-east-2.elb.amazonaws.com:8081
 
 # TOKEN
-@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NjIwMjEyMn0.0464BMsXEL7Wy3F2z578Zy4X3dmiI7kiFqfqVu-l5ZM
+@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLXNlcnZpY2UiLCJzdWIiOiJtaWNoYWVsYXJuMGxkIiwiaWQiOjEsImF1dGhvcml0aWVzIjoiVVNFUixBRE1JTiIsImV4cCI6MTY0NjI1NDAwMn0.oq8sOv1YIYeAn0byWonZyrZBheD_-G-or7M9urHoyzM
 
 ###
 # get reservables for weight room

@@ -48,6 +48,13 @@ function NavBar() {
                 </Link>
               </li>
             )}
+            {userStatus?.user?.authorities?.split(",").includes("USER") && (
+              <li className="nav-item">
+                  <Link to="/myreservations" className="nav-link">
+                    My Reservations
+                  </Link>
+              </li>
+            )}
             {userStatus?.user ? (
               <li className="nav-item">
                 <Link
