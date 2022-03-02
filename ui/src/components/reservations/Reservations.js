@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { render } from "react-dom";
 import DayTimePicker from "@mooncake-dev/react-day-time-picker";
 import styled from "styled-components";
+import {useParams} from "react-router-dom";
 
 function Reservations() {
-  const [view, setView] = useState("Main");
+
+  const {facility} = useParams();
+
+  const [view, setView] = useState("facility");
   const [isScheduling, setIsScheduling] = useState(false);
   const [isScheduled, setIsScheduled] = useState(false);
   const [scheduleErr, setScheduleErr] = useState("");
