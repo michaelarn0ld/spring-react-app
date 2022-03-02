@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import "./styles.css";
+import {useHistory} from "react-router-dom";
 
 function Home() {
+
+    const history = useHistory();
+
     return (
         <>
             <div className={"card-group"}>
@@ -14,7 +18,7 @@ function Home() {
                                 <p className={"card-text"}>
                                     Whether you are training for a marathon or sprints, our spacious track contains lanes that can fit up to 10 people at once.
                                 </p>
-                                <button type="button" className="btn btn-primary">Reserve Now</button>
+                                <button onClick={() => history.push("/track/reserve")} type="button" className="btn btn-primary">Reserve Now</button>
                             </div>
                         </div>
                     </div>
@@ -28,7 +32,7 @@ function Home() {
                                 <p className={"card-text"}>
                                     Our weightrooms are one of the best in the country, with over 5,000 sq ft and a large variety of equipment, whether you're doing box jumps or band-resisted exercises.
                                 </p>
-                                <button type="button" className="btn btn-primary">Reserve Now</button>
+                                <button onClick={() => history.push("/weight-room/reserve")} type="button" className="btn btn-primary">Reserve Now</button>
                             </div>
                         </div>
                     </div>
@@ -42,7 +46,7 @@ function Home() {
                                 <p className={"card-text"}>
                                     Enjoy Swimming in world-class indoor pool featuring a water park and swimming lanes.
                                 </p>
-                                <button type="button" className="btn btn-primary">Reserve Now</button>
+                                <button onClick={() => history.push("/pool/reserve")} type="button" className="btn btn-primary">Reserve Now</button>
                             </div>
                         </div>
                     </div>
@@ -58,7 +62,7 @@ function Home() {
                                 <p className={"card-text text-center"}>
                                     Register and view our membership options that suit your needs. The over 20,000 sq ft fitness dream is awaiting you!
                                 </p>
-                                <button type="button" className="btn btn-primary">Register</button>
+                                <button onClick={() => history.push("/register")} type="button" className="btn btn-primary">Register</button>
                             </div>
                         </div>
                     </div>
