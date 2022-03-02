@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { USER_SERVICE_URL } from "../services/urls";
 import "./styles.css";
 
 function AdminPage() {
@@ -20,7 +19,7 @@ function AdminPage() {
   const [view, setView] = useState("Main");
 
   useEffect(() => {
-    fetch(`${USER_SERVICE_URL}/user`, {
+    fetch(`${window.USER_SERVICE_URL}/user`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -90,7 +89,7 @@ function AdminPage() {
         body: JSON.stringify(editUserObject),
       };
 
-      fetch(`${USER_SERVICE_URL}/user/update`, initUpdate)
+      fetch(`${window.USER_SERVICE_URL}/user/update`, initUpdate)
         .then((response) => {
           if (response.status === 204) {
             return null;
@@ -257,11 +256,6 @@ function AdminPage() {
                                   <strong>Membership Id</strong> <br />
                                   {user.membershipId}
                                 </div>
-
-                                <div className="col-3 text-center">
-                                  <strong>Authorities</strong> <br />
-                                  {user.authorities}
-                                </div>
                               </div>
 
                               <div className="row"></div>
@@ -418,6 +412,33 @@ function AdminPage() {
                             </div>
                           </div>
                           <br />
+                          <div>
+                            <h3>Authorities:</h3>
+                            <div className="checkbox">
+                              <input
+                                id="chkUser"
+                                name="authorities"
+                                type="checkbox"
+                                value="USER"
+                                onChange={(event) =>
+                                  setAuthorities(event.target.value)
+                                }
+                              />
+                              <label htmlFor="chkUser">User</label>
+                            </div>
+                            <div className="checkbox">
+                              <input
+                                id="chkAdmin"
+                                name="authorities"
+                                type="checkbox"
+                                value="ADMIN"
+                                onChange={(event) =>
+                                  setAuthorities(event.target.value)
+                                }
+                              />
+                              <label htmlFor="chkAdmin">Admin</label>
+                            </div>
+                          </div>
                           <button type="button" onClick={cancelButton}>
                             Cancel
                           </button>

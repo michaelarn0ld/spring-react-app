@@ -21,6 +21,6 @@ services:
     image: friendcode/capstone-ui:latest
     environment:
       - USER_SERVICE_HOSTNAME=user-service
-      - FACILITY_SERVICE_HOSTNAME=facility-services
+      - FACILITY_SERVICE_HOSTNAME=facility-service
     ports:
       - "80:80"
