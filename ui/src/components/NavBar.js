@@ -6,8 +6,6 @@ import jwtDecode from "jwt-decode";
 function NavBar() {
   const [userStatus, setUserStatus] = useContext(AuthContext);
 
-  const location = useLocation();
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -18,11 +16,6 @@ function NavBar() {
   return (
     <div className={"container"}>
       <nav className="navbar navbar-expand-sm navbar-light white">
-        {location.pathname === "/" && (
-          <a className="navbar-brand" href="#">
-            Welcome
-          </a>
-        )}
         <button
           className="navbar-toggler"
           type="button"
@@ -50,9 +43,9 @@ function NavBar() {
             )}
             {userStatus?.user?.authorities?.split(",").includes("USER") && (
               <li className="nav-item">
-                  <Link to="/myreservations" className="nav-link">
-                    My Reservations
-                  </Link>
+                <Link to="/myreservations" className="nav-link">
+                  My Reservations
+                </Link>
               </li>
             )}
             {userStatus?.user ? (
