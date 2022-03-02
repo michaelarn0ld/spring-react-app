@@ -30,7 +30,7 @@ public class AppUser implements UserDetails {
     @Pattern(regexp = "^[A-Za-z0-9_-]{4,32}$")
     private String username;
 
-    @Null
+
     // Password is 8 char and needs all the following: uppercase, lowercase, number, special character.
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,32}$")
     private String password;
