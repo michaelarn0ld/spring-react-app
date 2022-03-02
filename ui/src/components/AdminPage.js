@@ -246,10 +246,6 @@ function AdminPage() {
                                   {user.membershipId}
                                 </div>
 
-                                <div className="col-3 text-center">
-                                  <strong>Authorities</strong> <br />
-                                  {user.authorities}
-                                </div>
                               </div>
 
                               <div className="row"></div>
@@ -404,6 +400,17 @@ function AdminPage() {
                             </div>
                           </div>
                           <br />
+                          <div>
+                             <h3>Authorities:</h3>
+                             <div className="checkbox">
+                             <input id="chkUser" name="authorities" type="checkbox" value="USER" onChange={event => setAuthorities(event.target.value)}/>
+                            <label htmlFor="chkUser">User</label>
+                           </div>
+                             <div className="checkbox">
+                            <input id="chkAdmin" name="authorities" type="checkbox" value="ADMIN" onChange={event => setAuthorities(event.target.value)}/>
+                             <label htmlFor="chkAdmin">Admin</label>
+                             </div>
+                            </div>
                           <button type="button" onClick={cancelButton}>
                             Cancel
                           </button>

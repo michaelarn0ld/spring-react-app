@@ -7,9 +7,8 @@ function UserReservations() {
     const [ view, setView ] = useState("Main");
     const [ reservations, setReservations ] = useState([]);
 
-//ALL HTTP REQUESTS ARE PLACEHOLDERS, DOUBLE CHECK TO MAKE SURE THEY ARE ACCURATE
-    useEffect(() => {
-        fetch("http://localhost:8080/user/reservations", {
+    useEffect((appUserId) => {
+        fetch(`http://localhost:8081/reservations/${appUserId}`, {
          method: "GET",
          headers: {
          "Authorization": `Bearer ${localStorage.getItem("token")}`, 
@@ -21,13 +20,13 @@ function UserReservations() {
     }, []);
 
 
-    const deleteReservation = (reservationId) => {
+    const deleteReservation = (appUserId, reservation) => {
 
-        fetch( `http://localhost:8080/user/${reservationId}`, { method: "DELETE" } )
+        fetch( `http://localhost:8081/reservations/${appUserId}/${reservation}`, { method: "DELETE" } )
 
         .then(response => {
             if(response.status === 204) {
-                const filteredReservations = reservations.filter(reservation => reservation.reservationId !== reservationId);
+                const filteredReservations = reservations.filter(reservation => reservation.reservationId !== reservation);
                 setReservations(filteredReservations);
                 <div class="alert alert-success" role="alert">
                 Reservation successfully deleted
@@ -41,6 +40,17 @@ function UserReservations() {
             }
         })
         .catch(console.log)
+    }
+
+    const renderReservations = () => {
+        return reservations.map(reservation => <li key={reservation.reservationId}>
+        
+
+        <div className="col-2">
+        <span className="clickable" onClick={() => deleteReservation(reservation.reservationId)}>🗑️</span>
+        </div>
+        </li>
+        )
     }
 
     const renderErrors = () => {
@@ -58,6 +68,9 @@ function UserReservations() {
         )}
 
         <h1>My Reservations</h1>
+        {renderReservations}
+
+
         </>
      );
 }

@@ -42,7 +42,7 @@ function NavBar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/admin" className={"nav-link"}>
+             <Link to="/admin" className={"nav-link"}>
                 Admin
               </Link>
             </li>
