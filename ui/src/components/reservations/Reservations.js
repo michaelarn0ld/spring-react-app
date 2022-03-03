@@ -98,8 +98,8 @@ function Reservations() {
     <>
       {view === "Weights" && (
         <>
-          <h3>What Would You Like to Reserve?</h3>
-          <button onClick={toBenchPress}>Bench Press</button>
+          <h3 className={"text-center"}>What Would You Like to Reserve?</h3>
+          <button className={"center"} onClick={toBenchPress}>Bench Press</button>
           <button onClick={toSquatRack}>Squat Rack</button>
           <button onClick={toHome}>Cancel</button>
         </>
