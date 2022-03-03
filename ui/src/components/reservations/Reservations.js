@@ -108,7 +108,7 @@ function Reservations() {
     <>
       {view === "Weights" && (
         <>
-          <div className={"card-group"}>
+          <div className={"card-group text-center"}>
             <div className={"card bg-dark text-white"}>
               <img
                   src={"https://www.garagegymreviews.com/wp-content/uploads/Best-Univeristy-Football-Weight-Rooms.png"}
@@ -132,7 +132,7 @@ function Reservations() {
 
       {view === "Pool" && (
         <>
-          <div className={"card-group"}>
+          <div className={"card-group text-center"}>
             <div className={"card bg-dark text-white"}>
               <img
                   src={"https://cdn.hovia.com/app/uploads/swimming-lane-underwater-plain-1-820x532.jpg"}
@@ -155,7 +155,7 @@ function Reservations() {
 
       {view === "Track" && (
         <>
-          <div className={"card-group"}>
+          <div className={"card-group text-center"}>
             <div className={"card bg-dark text-white"}>
               <img
                   src={"https://www.ncaa.com/_flysystem/public-s3/images/2022/02/27/DII-IT%26F.JPG"}
