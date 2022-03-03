@@ -77,6 +77,8 @@ function AdminPage() {
         authorities,
       };
 
+      console.log(editUserObject)
+
       const initUpdate = {
         method: "PUT",
         headers: {
@@ -350,13 +352,17 @@ function AdminPage() {
 
                             <label htmlFor="authorities">Authorities</label>
                             <select
+                              value={authorities?.includes("ADMIN") ? "admin" : "user"}
                               className="form-control"
                               id="authorities"
                               name="authorities"
-                              onChange={(event) =>
-                                setAuthorities(event.target.value)
+                              onChange={(event) =>{
+                                  console.log(authorities)
+                                  const newAuthorities = event.target.value === "user" ? 
+                                      ["USER"] : ["USER", "ADMIN"]
+                                  setAuthorities(newAuthorities)
+                                }
                               }
-                              defaultValue={authorities}
                             >
                               <option value="user">USER</option>
                               <option value="admin">ADMIN</option>

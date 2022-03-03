@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { render } from "react-dom";
 import DayTimePicker from "@mooncake-dev/react-day-time-picker";
+import DatePicker from "react-date-picker";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 
 function Reservations() {
   const { facility } = useParams();
@@ -14,15 +16,23 @@ function Reservations() {
   const [isScheduling, setIsScheduling] = useState(false);
   const [isScheduled, setIsScheduled] = useState(false);
   const [scheduleErr, setScheduleErr] = useState("");
+  const [date, setDate] = useState(new Date());
 
   const handleScheduled = (dateTime) => {
     console.log("scheduled: ", dateTime);
   };
 
-  fetch(`${window.FACILITY_SERVICE_URL}/1/1?=${Date}`, {
-    method: "GET",
-    headers: {},
-  });
+  const getAvailableReservations = (date) => {
+    let query = date.toISOString().substring(0,10)
+    fetch(`${window.FACILITY_SERVICE_URL}/1/1?date=${query}`)
+      .then(res => res.json())
+      .then(data => console.log(data))
+  }
+
+  // fetch(`${window.FACILITY_SERVICE_URL}/1/1?=${Date}`, {
+  //   method: "GET",
+  //   headers: {},
+  // });
 
   const theme = {
     primary: "#141bde",
@@ -98,26 +108,71 @@ function Reservations() {
     <>
       {view === "Weights" && (
         <>
-          <h3 className={"text-center"}>What Would You Like to Reserve?</h3>
-          <button className={"center"} onClick={toBenchPress}>Bench Press</button>
-          <button onClick={toSquatRack}>Squat Rack</button>
-          <button onClick={toHome}>Cancel</button>
+          <div className={"card-group text-center"}>
+            <div className={"card bg-dark text-white"}>
+              <img
+                  src={"https://www.garagegymreviews.com/wp-content/uploads/Best-Univeristy-Football-Weight-Rooms.png"}
+                  className={"card-img opacity-50 cards"}
+                  alt={"track"}
+              />
+              <div className={"card-img-overlay"}>
+                <div className={"card-title"}>
+                  <div className={"card-body"}>
+                    <h3 className={"text-center"}>What Would You Like to Reserve?</h3>
+                    <button className="btn btn-primary" onClick={toBenchPress}>Bench Press</button>
+                    <button className="btn btn-primary" onClick={toSquatRack}>Squat Rack</button>
+                    <button className="btn btn-primary" onClick={toHome}>Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </>
       )}
 
       {view === "Pool" && (
         <>
-          <h3>What Would You Like to Reserve?</h3>
-          <button onClick={toPoolLane}>Pool Lane</button>
-          <button onClick={toHome}>Cancel</button>
+          <div className={"card-group text-center"}>
+            <div className={"card bg-dark text-white"}>
+              <img
+                  src={"https://cdn.hovia.com/app/uploads/swimming-lane-underwater-plain-1-820x532.jpg"}
+                  className={"card-img opacity-50 cards"}
+                  alt={"track"}
+              />
+              <div className={"card-img-overlay"}>
+                <div className={"card-title"}>
+                  <div className={"card-body"}>
+                    <h3>What Would You Like to Reserve?</h3>
+                    <button className="btn btn-primary" onClick={toPoolLane}>Pool Lane</button>
+                    <button className="btn btn-primary" onClick={toHome}>Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </>
       )}
 
       {view === "Track" && (
         <>
-          <h3>What Would You Like to Reserve?</h3>
-          <button onClick={toTrackLane}>Track Lane</button>
-          <button onClick={toHome}>Cancel</button>
+          <div className={"card-group text-center"}>
+            <div className={"card bg-dark text-white"}>
+              <img
+                  src={"https://www.ncaa.com/_flysystem/public-s3/images/2022/02/27/DII-IT%26F.JPG"}
+                  className={"card-img opacity-50 cards"}
+                  alt={"track"}
+              />
+              <div className={"card-img-overlay"}>
+                <div className={"card-title"}>
+                  <div className={"card-body"}>
+                    <h3>What Would You Like to Reserve?</h3>
+                    <button className="btn btn-primary" onClick={toTrackLane}>Track Lane</button>
+                    <button className="btn btn-primary" onClick={toHome}>Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </>
       )}
 
@@ -132,23 +187,21 @@ function Reservations() {
             isDone={isScheduled}
             err={scheduleErr}
           />
-          <button onClick={toWeights}>Cancel</button>
+          <button className="btn btn-primary" onClick={toWeights}>Cancel</button>
         </Container>
       )}
 
       {view === "Squat" && (
-        <Container>
+        <>
           <h3>Squat Rack</h3>
-          <DayTimePicker
-            theme={theme}
-            timeSlotSizeMinutes={60}
-            onConfirm={handleScheduled}
-            isLoading={isScheduling}
-            isDone={isScheduled}
-            err={scheduleErr}
-          />
-          <button onClick={toWeights}>Cancel</button>
-        </Container>
+          <DatePicker onChange={(v) => {
+              getAvailableReservations(v)
+              setDate(v)
+            }
+          } 
+          value={date}/>
+          <button className="btn btn-primary" onClick={toWeights}>Cancel</button>
+        </>
       )}
 
       {view === "Pool Lane" && (
@@ -162,7 +215,7 @@ function Reservations() {
             isDone={isScheduled}
             err={scheduleErr}
           />
-          <button onClick={toPool}>Cancel</button>
+          <button className="btn btn-primary" onClick={toPool}>Cancel</button>
         </Container>
       )}
 
@@ -177,7 +230,7 @@ function Reservations() {
             isDone={isScheduled}
             err={scheduleErr}
           />
-          <button onClick={toTrack}>Cancel</button>
+          <button className="btn btn-primary" onClick={toTrack}>Cancel</button>
         </Container>
       )}
     </>
