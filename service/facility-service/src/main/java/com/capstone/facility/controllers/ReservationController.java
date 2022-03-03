@@ -77,7 +77,7 @@ public class ReservationController {
         }
 
         AppUser user = client.getRolesFromToken(bearer.substring(7));
-        if (user == null || !user.hasRole("USER") || !user.hasRole("ADMIN")
+        if (user == null || !user.hasRole("USER")
         || user.getId() != appUserId) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
@@ -98,7 +98,7 @@ public class ReservationController {
         }
 
         AppUser user = client.getRolesFromToken(bearer.substring(7));
-        if (user == null || !user.hasRole("USER") || !user.hasRole("ADMIN")) {
+        if (user == null || !user.hasRole("USER")) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
 
@@ -124,7 +124,7 @@ public class ReservationController {
         }
 
         AppUser user = client.getRolesFromToken(bearer.substring(7));
-        if (user == null || !user.hasRole("USER") || !user.hasRole("ADMIN")
+        if (user == null || !user.hasRole("USER")
                 || user.getId() != appUserId) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
