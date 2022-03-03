@@ -31,11 +31,12 @@ function AdminPage() {
         setUsers(data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [view]);
 
   //edit a member
   const editUser = (userId) => {
-    setUserIndex(users.findIndex((user, i) => user.id === userId));
+    setUserIndex(users.findIndex((user) => user.id === userId));
+    console.log(userIndex);
     const initEdit = {
       method: "GET",
       headers: {

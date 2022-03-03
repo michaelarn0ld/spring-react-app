@@ -51,6 +51,7 @@ function NavBar() {
             {userStatus?.user ? (
               <li className="nav-item">
                 <Link
+                  to="/"
                   class="nav-link navbar sticky-top navbar-light"
                   onClick={() => {
                     setUserStatus(null);

@@ -34,7 +34,7 @@ function UserReservations() {
             (r) => r.id !== reservation
           );
           setReservations(filteredReservations);
-          <div class="alert alert-success" role="alert">
+          <div className=""="alert alert-success" role="alert">
             Reservation successfully deleted
           </div>;
         } else if (response.status === 404) {
@@ -49,8 +49,8 @@ function UserReservations() {
   };
 
   const renderReservations = () => {
-      return ( 
-      <table class="table">
+      return (
+      <table className="table">
           <thead>
             <tr>
               <th scope="col">Reservation ID</th>
@@ -67,7 +67,7 @@ function UserReservations() {
                   <td>{r.equipmentId}</td>
                   <td>{r.startTime}</td>
                   <td>{r.endTime}</td>
-                  <td><div class="btn btn-danger" onClick={() => deleteReservation(r.id)}>Delete</div></td>
+                  <td><div className="btn btn-danger" onClick={() => deleteReservation(r.id)}>Delete</div></td>
                 </tr>
             ))}
           </tbody>

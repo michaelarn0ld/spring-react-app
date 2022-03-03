@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import AuthContext from "../../context/AuthContext";
 
@@ -60,28 +60,28 @@ function Login() {
             <div className="card-title">
               <div className="card-body">
                 {errors.length > 0 && (
-                    <div className="alert alert-danger">
-                      <ul>{renderErrors()}</ul>
-                    </div>
+                  <div className="alert alert-danger">
+                    <ul>{renderErrors()}</ul>
+                  </div>
                 )}
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input
-                        type="text"
-                        className="form-control"
-                        id="username"
-                        placeholder="Username"
-                        onChange={(event) => setUsername(event.target.value)}
+                      type="text"
+                      className="form-control"
+                      id="username"
+                      placeholder="Username"
+                      onChange={(event) => setUsername(event.target.value)}
                     />
                     <br />
                     <label htmlFor="password">Password</label>
                     <input
-                        type="password"
-                        className="form-control"
-                        id="password"
-                        placeholder="********"
-                        onChange={(event) => setPassword(event.target.value)}
+                      type="password"
+                      className="form-control"
+                      id="password"
+                      placeholder="********"
+                      onChange={(event) => setPassword(event.target.value)}
                     />
                     <br />
                     <div>
