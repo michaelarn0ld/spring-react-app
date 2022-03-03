@@ -18,6 +18,7 @@ function AdminPage() {
   const [editingUserId, setEditingUserId] = useState(NaN);
   const [view, setView] = useState("Main");
   const [currentUserId, setCurrentUserId] = useState(0);
+  const [currentUserIndex, setCurrentUserIndex] = useState(0);
 
   useEffect(() => {
     fetch(`${window.USER_SERVICE_URL}/user`, {
@@ -29,6 +30,9 @@ function AdminPage() {
       .then((response) => response.json())
       .then((data) => {
         setUsers(data);
+        setCurrentUserIndex(
+          data.findIndex((user) => user.id === currentUserId)
+        );
       })
       .catch((error) => console.log(error));
   }, [view]);
@@ -36,7 +40,6 @@ function AdminPage() {
   //edit a member
   const editUser = (userId) => {
     setCurrentUserId(userId);
-    console.log(currentUserId);
     const initEdit = {
       method: "GET",
       headers: {
@@ -149,26 +152,6 @@ function AdminPage() {
     return errors.map((error) => <li key={error}>{error}</li>);
   };
 
-  //View all members
-  const renderUsers = () => {
-    return users.map((user) => (
-      <li key={user.id}>
-        <div className="row">
-          <div className="col-8">
-            {user.firstName}
-            <span> </span>
-            {user.lastName}
-          </div>
-          <div className="col-2">
-            <span className="clickable" onClick={() => editUser(user.id)}>
-              ✏️
-            </span>
-          </div>
-        </div>
-      </li>
-    ));
-  };
-
   return (
     <div className={"card-group"}>
       <div className={"card bg-dark text-black"}>
@@ -212,8 +195,7 @@ function AdminPage() {
                           <div
                             id={`collapse${i}`}
                             className={
-                              i ===
-                              users.findIndex((u) => (u.id = currentUserId))
+                              i === currentUserIndex
                                 ? "accordion-collapse collapse show"
                                 : "accordion-collapse collapse"
                             }
