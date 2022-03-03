@@ -17,7 +17,7 @@ function AdminPage() {
   const [zipCode, setZipCode] = useState("");
   const [editingUserId, setEditingUserId] = useState(NaN);
   const [view, setView] = useState("Main");
-  const [userIndex, setUserIndex] = useState(0);
+  const [currentUserId, setCurrentUserId] = useState(0);
 
   useEffect(() => {
     fetch(`${window.USER_SERVICE_URL}/user`, {
@@ -35,8 +35,8 @@ function AdminPage() {
 
   //edit a member
   const editUser = (userId) => {
-    setUserIndex(users.findIndex((user) => user.id === userId));
-    console.log(userIndex);
+    setCurrentUserId(userId);
+    console.log(currentUserId);
     const initEdit = {
       method: "GET",
       headers: {
@@ -106,7 +106,7 @@ function AdminPage() {
           if (!data) {
             const editingUsers = [...users];
             const indexOfEdit = editingUsers.findIndex(
-              (user) => user.userId === editingUserId
+              (user) => user.id === editingUserId
             );
 
             editingUsers[indexOfEdit] = editUserObject;
@@ -152,7 +152,7 @@ function AdminPage() {
   //View all members
   const renderUsers = () => {
     return users.map((user) => (
-      <li key={user.userId}>
+      <li key={user.id}>
         <div className="row">
           <div className="col-8">
             {user.firstName}
@@ -160,7 +160,7 @@ function AdminPage() {
             {user.lastName}
           </div>
           <div className="col-2">
-            <span className="clickable" onClick={() => editUser(user.UserId)}>
+            <span className="clickable" onClick={() => editUser(user.id)}>
               ✏️
             </span>
           </div>
@@ -212,7 +212,8 @@ function AdminPage() {
                           <div
                             id={`collapse${i}`}
                             className={
-                              i === userIndex
+                              i ===
+                              users.findIndex((u) => (u.id = currentUserId))
                                 ? "accordion-collapse collapse show"
                                 : "accordion-collapse collapse"
                             }

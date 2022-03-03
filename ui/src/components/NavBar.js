@@ -52,7 +52,7 @@ function NavBar() {
               <li className="nav-item">
                 <Link
                   to="/"
-                  class="nav-link navbar sticky-top navbar-light"
+                  className="nav-link navbar sticky-top navbar-light"
                   onClick={() => {
                     setUserStatus(null);
                     localStorage.removeItem("token");
