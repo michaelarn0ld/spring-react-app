@@ -110,7 +110,9 @@ function Reservations() {
         <>
           <h3 className={"text-center"}>What Would You Like to Reserve?</h3>
           <button className="btn btn-primary" onClick={toBenchPress}>Bench Press</button>
+
           <button className="btn btn-primary" onClick={toSquatRack}>Squat Rack</button>
+
           <button className="btn btn-primary" onClick={toHome}>Cancel</button>
         </>
       )}
