@@ -109,25 +109,25 @@ function Reservations() {
       {view === "Weights" && (
         <>
           <h3 className={"text-center"}>What Would You Like to Reserve?</h3>
-          <button className={"center"} onClick={toBenchPress}>Bench Press</button>
-          <button onClick={toSquatRack}>Squat Rack</button>
-          <button onClick={toHome}>Cancel</button>
+          <button className="btn btn-primary" onClick={toBenchPress}>Bench Press</button>
+          <button className="btn btn-primary" onClick={toSquatRack}>Squat Rack</button>
+          <button className="btn btn-primary" onClick={toHome}>Cancel</button>
         </>
       )}
 
       {view === "Pool" && (
         <>
           <h3>What Would You Like to Reserve?</h3>
-          <button onClick={toPoolLane}>Pool Lane</button>
-          <button onClick={toHome}>Cancel</button>
+          <button className="btn btn-primary" onClick={toPoolLane}>Pool Lane</button>
+          <button className="btn btn-primary" onClick={toHome}>Cancel</button>
         </>
       )}
 
       {view === "Track" && (
         <>
           <h3>What Would You Like to Reserve?</h3>
-          <button onClick={toTrackLane}>Track Lane</button>
-          <button onClick={toHome}>Cancel</button>
+          <button className="btn btn-primary" onClick={toTrackLane}>Track Lane</button>
+          <button className="btn btn-primary" onClick={toHome}>Cancel</button>
         </>
       )}
 
@@ -142,7 +142,7 @@ function Reservations() {
             isDone={isScheduled}
             err={scheduleErr}
           />
-          <button onClick={toWeights}>Cancel</button>
+          <button className="btn btn-primary" onClick={toWeights}>Cancel</button>
         </Container>
       )}
 
@@ -155,7 +155,7 @@ function Reservations() {
             }
           } 
           value={date}/>
-          <button onClick={toWeights}>Cancel</button>
+          <button className="btn btn-primary" onClick={toWeights}>Cancel</button>
         </>
       )}
 
@@ -170,7 +170,7 @@ function Reservations() {
             isDone={isScheduled}
             err={scheduleErr}
           />
-          <button onClick={toPool}>Cancel</button>
+          <button className="btn btn-primary" onClick={toPool}>Cancel</button>
         </Container>
       )}
 
@@ -185,7 +185,7 @@ function Reservations() {
             isDone={isScheduled}
             err={scheduleErr}
           />
-          <button onClick={toTrack}>Cancel</button>
+          <button className="btn btn-primary" onClick={toTrack}>Cancel</button>
         </Container>
       )}
     </>
