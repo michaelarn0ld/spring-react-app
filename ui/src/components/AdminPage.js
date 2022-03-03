@@ -28,7 +28,7 @@ function AdminPage() {
       .then((response) => response.json())
       .then((data) => setUsers(data))
       .catch((errors) => console.log(errors));
-  }, []);
+  }, [view]);
 
   //edit a member
   const editUser = (userId) => {
@@ -77,7 +77,7 @@ function AdminPage() {
         authorities,
       };
 
-      console.log(editUserObject)
+      console.log(editUserObject);
 
       const initUpdate = {
         method: "PUT",
@@ -352,17 +352,22 @@ function AdminPage() {
 
                             <label htmlFor="authorities">Authorities</label>
                             <select
-                              value={authorities?.includes("ADMIN") ? "admin" : "user"}
+                              value={
+                                authorities?.includes("ADMIN")
+                                  ? "admin"
+                                  : "user"
+                              }
                               className="form-control"
                               id="authorities"
                               name="authorities"
-                              onChange={(event) =>{
-                                  console.log(authorities)
-                                  const newAuthorities = event.target.value === "user" ? 
-                                      ["USER"] : ["USER", "ADMIN"]
-                                  setAuthorities(newAuthorities)
-                                }
-                              }
+                              onChange={(event) => {
+                                console.log(authorities);
+                                const newAuthorities =
+                                  event.target.value === "user"
+                                    ? ["USER"]
+                                    : ["USER", "ADMIN"];
+                                setAuthorities(newAuthorities);
+                              }}
                             >
                               <option value="user">USER</option>
                               <option value="admin">ADMIN</option>
