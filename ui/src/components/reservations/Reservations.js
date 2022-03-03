@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { render } from "react-dom";
 import DayTimePicker from "@mooncake-dev/react-day-time-picker";
+import DatePicker from "react-date-picker";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 
 function Reservations() {
   const { facility } = useParams();
@@ -14,15 +16,23 @@ function Reservations() {
   const [isScheduling, setIsScheduling] = useState(false);
   const [isScheduled, setIsScheduled] = useState(false);
   const [scheduleErr, setScheduleErr] = useState("");
+  const [date, setDate] = useState(new Date());
 
   const handleScheduled = (dateTime) => {
     console.log("scheduled: ", dateTime);
   };
 
-  fetch(`${window.FACILITY_SERVICE_URL}/1/1?=${Date}`, {
-    method: "GET",
-    headers: {},
-  });
+  const getAvailableReservations = (date) => {
+    let query = date.toISOString().substring(0,10)
+    fetch(`${window.FACILITY_SERVICE_URL}/1/1?date=${query}`)
+      .then(res => res.json())
+      .then(data => console.log(data))
+  }
+
+  // fetch(`${window.FACILITY_SERVICE_URL}/1/1?=${Date}`, {
+  //   method: "GET",
+  //   headers: {},
+  // });
 
   const theme = {
     primary: "#141bde",
@@ -137,18 +147,16 @@ function Reservations() {
       )}
 
       {view === "Squat" && (
-        <Container>
+        <>
           <h3>Squat Rack</h3>
-          <DayTimePicker
-            theme={theme}
-            timeSlotSizeMinutes={60}
-            onConfirm={handleScheduled}
-            isLoading={isScheduling}
-            isDone={isScheduled}
-            err={scheduleErr}
-          />
+          <DatePicker onChange={(v) => {
+              getAvailableReservations(v)
+              setDate(v)
+            }
+          } 
+          value={date}/>
           <button onClick={toWeights}>Cancel</button>
-        </Container>
+        </>
       )}
 
       {view === "Pool Lane" && (
