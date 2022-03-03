@@ -108,28 +108,71 @@ function Reservations() {
     <>
       {view === "Weights" && (
         <>
-          <h3 className={"text-center"}>What Would You Like to Reserve?</h3>
-          <button className="btn btn-primary" onClick={toBenchPress}>Bench Press</button>
-
-          <button className="btn btn-primary" onClick={toSquatRack}>Squat Rack</button>
-
-          <button className="btn btn-primary" onClick={toHome}>Cancel</button>
+          <div className={"card-group"}>
+            <div className={"card bg-dark text-white"}>
+              <img
+                  src={"https://www.garagegymreviews.com/wp-content/uploads/Best-Univeristy-Football-Weight-Rooms.png"}
+                  className={"card-img opacity-50 cards"}
+                  alt={"track"}
+              />
+              <div className={"card-img-overlay"}>
+                <div className={"card-title"}>
+                  <div className={"card-body"}>
+                    <h3 className={"text-center"}>What Would You Like to Reserve?</h3>
+                    <button className="btn btn-primary" onClick={toBenchPress}>Bench Press</button>
+                    <button className="btn btn-primary" onClick={toSquatRack}>Squat Rack</button>
+                    <button className="btn btn-primary" onClick={toHome}>Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </>
       )}
 
       {view === "Pool" && (
         <>
-          <h3>What Would You Like to Reserve?</h3>
-          <button className="btn btn-primary" onClick={toPoolLane}>Pool Lane</button>
-          <button className="btn btn-primary" onClick={toHome}>Cancel</button>
+          <div className={"card-group"}>
+            <div className={"card bg-dark text-white"}>
+              <img
+                  src={"https://cdn.hovia.com/app/uploads/swimming-lane-underwater-plain-1-820x532.jpg"}
+                  className={"card-img opacity-50 cards"}
+                  alt={"track"}
+              />
+              <div className={"card-img-overlay"}>
+                <div className={"card-title"}>
+                  <div className={"card-body"}>
+                    <h3>What Would You Like to Reserve?</h3>
+                    <button className="btn btn-primary" onClick={toPoolLane}>Pool Lane</button>
+                    <button className="btn btn-primary" onClick={toHome}>Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </>
       )}
 
       {view === "Track" && (
         <>
-          <h3>What Would You Like to Reserve?</h3>
-          <button className="btn btn-primary" onClick={toTrackLane}>Track Lane</button>
-          <button className="btn btn-primary" onClick={toHome}>Cancel</button>
+          <div className={"card-group"}>
+            <div className={"card bg-dark text-white"}>
+              <img
+                  src={"https://www.ncaa.com/_flysystem/public-s3/images/2022/02/27/DII-IT%26F.JPG"}
+                  className={"card-img opacity-50 cards"}
+                  alt={"track"}
+              />
+              <div className={"card-img-overlay"}>
+                <div className={"card-title"}>
+                  <div className={"card-body"}>
+                    <h3>What Would You Like to Reserve?</h3>
+                    <button className="btn btn-primary" onClick={toTrackLane}>Track Lane</button>
+                    <button className="btn btn-primary" onClick={toHome}>Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </>
       )}
 

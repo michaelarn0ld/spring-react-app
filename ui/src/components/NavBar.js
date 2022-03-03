@@ -51,7 +51,7 @@ function NavBar() {
             {userStatus?.user ? (
               <li className="nav-item">
                 <Link
-                  class="nav-link navbar sticky-top navbar-light bg-light"
+                  class="nav-link navbar sticky-top navbar-light"
                   onClick={() => {
                     setUserStatus(null);
                     localStorage.removeItem("token");
