@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { render } from "react-dom";
 import DayTimePicker from "@mooncake-dev/react-day-time-picker";
 import DatePicker from "react-date-picker";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import AuthContext from "../../context/AuthContext";
 
 
 function Reservations() {
@@ -17,22 +18,64 @@ function Reservations() {
   const [isScheduled, setIsScheduled] = useState(false);
   const [scheduleErr, setScheduleErr] = useState("");
   const [date, setDate] = useState(new Date());
+  const [open, setOpen] = useState([]);
+  const [userStatus, setUserStatus] = useContext(AuthContext);
 
   const handleScheduled = (dateTime) => {
     console.log("scheduled: ", dateTime);
   };
 
-  const getAvailableReservations = (date) => {
+  const getAvailableReservations = (date, facility, reservable) => {
     let query = date.toISOString().substring(0,10)
-    fetch(`${window.FACILITY_SERVICE_URL}/1/1?date=${query}`)
+    fetch(`${window.FACILITY_SERVICE_URL}/${facility}/${reservable}?date=${query}`)
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+      const available = []
+      Object.entries(data).forEach(e => {
+        if (e[1]) {
+          available.push(e)
+        }
+      })
+      setOpen(available)
+    })
   }
 
-  // fetch(`${window.FACILITY_SERVICE_URL}/1/1?=${Date}`, {
-  //   method: "GET",
-  //   headers: {},
-  // });
+  const reserve = (time, facilityId, reservableId) => {
+      let query = date.toISOString().substring(0,10)
+      let endTime = new Date(`2020-02-20T${time}`)
+      endTime.setHours(endTime.getHours() + 1 - 8)
+
+      const reservation = {
+        appUserId: userStatus.user.id,
+        reservable: {
+          id: reservableId
+        },
+        facility: {
+          id: facilityId
+        },
+        startTime: `${query}T${time}:00`,
+        endTime: `${query}T${endTime.toISOString().substring(11,16)}:00`
+      }
+
+      const init = {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${localStorage.getItem("token")}`
+          },
+          body: JSON.stringify(reservation)
+      }
+
+      fetch(`${window.FACILITY_SERVICE_URL}/${facilityId}/${reservableId}`, init)
+        .then(response => console.log(response))
+
+  }
+
+  const renderAvailable = (facility, reservable) => {
+    return open.map(r => (
+      <div className="btn btn-secondary" onClick={() => reserve(r[0], facility, reservable)}>{r[0]}</div>
+    ))
+  }
 
   const theme = {
     primary: "#141bde",
@@ -195,11 +238,12 @@ function Reservations() {
         <>
           <h3>Squat Rack</h3>
           <DatePicker onChange={(v) => {
-              getAvailableReservations(v)
+              getAvailableReservations(v,1,2)
               setDate(v)
             }
           } 
           value={date}/>
+          {renderAvailable(1,2)}
           <button className="btn btn-primary" onClick={toWeights}>Cancel</button>
         </>
       )}
