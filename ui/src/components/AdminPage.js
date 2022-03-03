@@ -77,6 +77,8 @@ function AdminPage() {
         authorities,
       };
 
+      console.log(editUserObject)
+
       const initUpdate = {
         method: "PUT",
         headers: {
@@ -374,12 +376,12 @@ function AdminPage() {
                                 name="membershipId"
                                 type="radio"
                                 value="1"
-                                checked={membershipId === "1"}
+                                checked={membershipId === 1}
                                 onChange={(event) =>
                                   setMembershipId(parseInt(event.target.value))
                                 }
                               />
-                              <label htmlFor="rdBronzeMembership">Bronze</label>
+                              <label htmlFor="rdBronzeMembership">Gold</label>
                             </div>
                             <div className="radio">
                               <input
@@ -387,7 +389,7 @@ function AdminPage() {
                                 name="membershipId"
                                 type="radio"
                                 value="2"
-                                checked={membershipId === "2"}
+                                checked={membershipId === 2}
                                 onChange={(event) =>
                                   setMembershipId(parseInt(event.target.value))
                                 }
@@ -400,37 +402,39 @@ function AdminPage() {
                                 name="membershipId"
                                 type="radio"
                                 value="3"
-                                checked={membershipId === "3"}
+                                checked={membershipId === 3}
                                 onChange={(event) =>
                                   setMembershipId(parseInt(event.target.value))
                                 }
                               />
-                              <label htmlFor="rdGoldMembership">Gold</label>
+                              <label htmlFor="rdGoldMembership">Bronze</label>
                             </div>
                           </div>
                           <br />
                           <div>
                             <h3>Authorities:</h3>
-                            <div className="checkbox">
+                            <div className="radio">
                               <input
                                 id="chkUser"
                                 name="authorities"
-                                type="checkbox"
+                                type="radio"
                                 value="USER"
-                                onChange={(event) =>
-                                  setAuthorities(event.target.value)
+                                checked={!authorities.includes("ADMIN")}
+                                onChange={() =>
+                                  setAuthorities(["USER"])
                                 }
                               />
                               <label htmlFor="chkUser">User</label>
                             </div>
-                            <div className="checkbox">
+                            <div className="radio">
                               <input
                                 id="chkAdmin"
                                 name="authorities"
-                                type="checkbox"
+                                type="radio"
                                 value="ADMIN"
-                                onChange={(event) =>
-                                  setAuthorities(event.target.value)
+                                checked={authorities.includes("ADMIN")}
+                                onChange={() =>
+                                  setAuthorities(["USER","ADMIN"])
                                 }
                               />
                               <label htmlFor="chkAdmin">Admin</label>
