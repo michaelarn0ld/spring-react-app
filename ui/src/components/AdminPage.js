@@ -27,7 +27,7 @@ function AdminPage() {
     })
       .then((response) => response.json())
       .then((data) => setUsers(data))
-      .catch((errors) => console.log(errors));
+      .catch((error) => console.log(error));
   }, [view]);
 
   //edit a member
