@@ -19,7 +19,7 @@ public class JwtConverter {
 
     public String getTokenFromUser(AppUser user) {
 
-        int EXPIRATION_MINUTES = 15;
+        int EXPIRATION_MINUTES = 150;
         int EXPIRATION_MILLIS = EXPIRATION_MINUTES * 60 * 1000;
         return Jwts.builder()
                 .setIssuer(ISSUER)
