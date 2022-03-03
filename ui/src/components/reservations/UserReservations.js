@@ -4,7 +4,7 @@ import AuthContext from "../../context/AuthContext";
 function UserReservations() {
   const [errors, setErrors] = useState([]);
   const [view, setView] = useState("Main");
-  const [reservations, setReservations] = useState();
+  const [reservations, setReservations] = useState([]);
   const [userStatus, setUserStatus] = useContext(AuthContext);
 
   useEffect(() => {

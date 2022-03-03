@@ -277,170 +277,6 @@ function AdminPage() {
 
                 {view === "Edit" && (
                   <>
-<<<<<<< HEAD
-                    <div className="row">
-                      <div className="column">
-                        <form onSubmit={onSubmit}>
-                          <label htmlFor="email">Email:</label>
-                          <input
-                            id="email"
-                            name="email"
-                            type="text"
-                            value={email}
-                            onChange={(event) => setEmail(event.target.value)}
-                          />
-                          <br />
-                          <label htmlFor="username">Username:</label>
-                          <input
-                            id="username"
-                            name="username"
-                            type="text"
-                            value={username}
-                            onChange={(event) =>
-                              setUsername(event.target.value)
-                            }
-                          />
-                          <br />
-                          <label htmlFor="firstName">First Name:</label>
-                          <input
-                            id="firstName"
-                            name="firstName"
-                            type="text"
-                            value={firstName}
-                            onChange={(event) =>
-                              setFirstName(event.target.value)
-                            }
-                          />
-                          <br />
-                          <label htmlFor="lastName">Last Name:</label>
-                          <input
-                            id="lastName"
-                            name="lastName"
-                            type="text"
-                            value={lastName}
-                            onChange={(event) =>
-                              setLastName(event.target.value)
-                            }
-                          />
-                          <br />
-                          <label htmlFor="phone">Phone:</label>
-                          <input
-                            id="phone"
-                            name="phone"
-                            type="text"
-                            value={phone}
-                            onChange={(event) => setPhone(event.target.value)}
-                          />
-                          <br />
-                          <label htmlFor="address">Address:</label>
-                          <input
-                            id="address"
-                            name="address"
-                            type="text"
-                            value={address}
-                            onChange={(event) => setAddress(event.target.value)}
-                          />
-                          <br />
-                          <label htmlFor="city">City:</label>
-                          <input
-                            id="city"
-                            name="city"
-                            type="text"
-                            value={city}
-                            onChange={(event) => setCity(event.target.value)}
-                          />
-                          <br />
-                          <label htmlFor="state">State:</label>
-                          <input
-                            maxLength="2"
-                            id="state"
-                            name="state"
-                            type="text"
-                            value={state}
-                            onChange={(event) => setState(event.target.value)}
-                          />
-                          <br />
-                          <label htmlFor="zipCode">Zip Code:</label>
-                          <input
-                            id="zipCode"
-                            name="zipCode"
-                            type="text"
-                            value={zipCode}
-                            onChange={(event) => setZipCode(event.target.value)}
-                          />
-                          <br />
-                          <div>
-                            <h3>Membership:</h3>
-                            <div className="radio">
-                              <input
-                                id="rdBronzeMembership"
-                                name="membershipId"
-                                type="radio"
-                                value="1"
-                                checked={membershipId === 1}
-                                onChange={(event) =>
-                                  setMembershipId(parseInt(event.target.value))
-                                }
-                              />
-                              <label htmlFor="rdBronzeMembership">Gold</label>
-                            </div>
-                            <div className="radio">
-                              <input
-                                id="rdSilverMembership"
-                                name="membershipId"
-                                type="radio"
-                                value="2"
-                                checked={membershipId === 2}
-                                onChange={(event) =>
-                                  setMembershipId(parseInt(event.target.value))
-                                }
-                              />
-                              <label htmlFor="rdSilverMembership">Silver</label>
-                            </div>
-                            <div className="radio">
-                              <input
-                                id="rdGoldMembership"
-                                name="membershipId"
-                                type="radio"
-                                value="3"
-                                checked={membershipId === 3}
-                                onChange={(event) =>
-                                  setMembershipId(parseInt(event.target.value))
-                                }
-                              />
-                              <label htmlFor="rdGoldMembership">Bronze</label>
-                            </div>
-                          </div>
-                          <br />
-                          <div>
-                            <h3>Authorities:</h3>
-                            <div className="radio">
-                              <input
-                                id="chkUser"
-                                name="authorities"
-                                type="radio"
-                                value="USER"
-                                checked={!authorities.includes("ADMIN")}
-                                onChange={() =>
-                                  setAuthorities(["USER"])
-                                }
-                              />
-                              <label htmlFor="chkUser">User</label>
-                            </div>
-                            <div className="radio">
-                              <input
-                                id="chkAdmin"
-                                name="authorities"
-                                type="radio"
-                                value="ADMIN"
-                                checked={authorities.includes("ADMIN")}
-                                onChange={() =>
-                                  setAuthorities(["USER","ADMIN"])
-                                }
-                              />
-                              <label htmlFor="chkAdmin">Admin</label>
-                            </div>
-=======
                     <form onSubmit={onSubmit}>
                       <div className="form-group">
                         <div className="row">
@@ -516,18 +352,21 @@ function AdminPage() {
 
                             <label htmlFor="authorities">Authorities</label>
                             <select
+                              value={authorities?.includes("ADMIN") ? "admin" : "user"}
                               className="form-control"
                               id="authorities"
                               name="authorities"
-                              onChange={(event) =>
-                                setAuthorities(event.target.value)
+                              onChange={(event) =>{
+                                  console.log(authorities)
+                                  const newAuthorities = event.target.value === "user" ? 
+                                      ["USER"] : ["USER", "ADMIN"]
+                                  setAuthorities(newAuthorities)
+                                }
                               }
-                              defaultValue={authorities}
                             >
                               <option value="user">USER</option>
                               <option value="admin">ADMIN</option>
                             </select>
->>>>>>> 576a72c275eb426b2b969beb96d8018a97c1a877
                           </div>
 
                           <div className="col-6">
