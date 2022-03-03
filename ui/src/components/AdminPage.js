@@ -17,6 +17,7 @@ function AdminPage() {
   const [zipCode, setZipCode] = useState("");
   const [editingUserId, setEditingUserId] = useState(NaN);
   const [view, setView] = useState("Main");
+  const [userIndex, setUserIndex] = useState(0);
 
   useEffect(() => {
     fetch(`${window.USER_SERVICE_URL}/user`, {
@@ -26,12 +27,15 @@ function AdminPage() {
       },
     })
       .then((response) => response.json())
-      .then((data) => setUsers(data))
+      .then((data) => {
+        setUsers(data);
+      })
       .catch((error) => console.log(error));
-  }, [view]);
+  }, []);
 
   //edit a member
   const editUser = (userId) => {
+    setUserIndex(users.findIndex((user, i) => user.id === userId));
     const initEdit = {
       method: "GET",
       headers: {
@@ -57,7 +61,7 @@ function AdminPage() {
       });
   };
 
-  //adding + editing members
+  //editing members
   const onSubmit = (event) => {
     event.preventDefault();
 
@@ -207,7 +211,7 @@ function AdminPage() {
                           <div
                             id={`collapse${i}`}
                             className={
-                              i === 0
+                              i === userIndex
                                 ? "accordion-collapse collapse show"
                                 : "accordion-collapse collapse"
                             }
