@@ -165,9 +165,17 @@ function Registration() {
                 onChange={(event) => setConfirmPassword(event.target.value)}
               />
               <br />
-              <button className="btn btn-primary" onClick={handleClick}>
-                Submit
-              </button>
+              <label htmlFor="membershipId">Membership</label>
+              <select
+                className="form-control"
+                id="membershipId"
+                name="membershipId"
+                onChange={handleChange}
+              >
+                <option value={1}>Gold ($100/mo)</option>
+                <option value={2}>Silver ($50/mo)</option>
+                <option value={3}>Bronze ($25/mo)</option>
+              </select>
             </div>
           </div>
           <div className="col-6">
@@ -272,17 +280,12 @@ function Registration() {
                 onChange={handleChange}
               />
               <br />
-              <label htmlFor="membershipId">Membership</label>
-              <select
-                className="form-control"
-                id="membershipId"
-                name="membershipId"
-                onChange={handleChange}
+              <button
+                className="btn btn-primary form-control"
+                onClick={handleClick}
               >
-                <option value={1}>Gold ($100/mo)</option>
-                <option value={2}>Silver ($50/mo)</option>
-                <option value={3}>Bronze ($25/mo)</option>
-              </select>
+                Submit
+              </button>
             </div>
           </div>
         </div>
