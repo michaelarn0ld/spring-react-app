@@ -277,6 +277,7 @@ function AdminPage() {
 
                 {view === "Edit" && (
                   <>
+<<<<<<< HEAD
                     <div className="row">
                       <div className="column">
                         <form onSubmit={onSubmit}>
@@ -439,14 +440,177 @@ function AdminPage() {
                               />
                               <label htmlFor="chkAdmin">Admin</label>
                             </div>
+=======
+                    <form onSubmit={onSubmit}>
+                      <div className="form-group">
+                        <div className="row">
+                          <div className="col-12">
+                            <label htmlFor="username">Username</label>
+                            <input
+                              className="form-control"
+                              id="username"
+                              name="username"
+                              type="text"
+                              value={username}
+                              onChange={(event) =>
+                                setUsername(event.target.value)
+                              }
+                            />
+                            <br />
                           </div>
-                          <button type="button" onClick={cancelButton}>
-                            Cancel
-                          </button>
-                          <button type="submit">Update</button>
-                        </form>
+                        </div>
+                        <div className="row">
+                          <div className="col-6">
+                            <label htmlFor="firstName">First Name</label>
+                            <input
+                              className="form-control"
+                              id="firstName"
+                              name="firstName"
+                              type="text"
+                              value={firstName}
+                              onChange={(event) =>
+                                setFirstName(event.target.value)
+                              }
+                            />
+                            <br />
+
+                            <label htmlFor="lastName">Last Name</label>
+                            <input
+                              className="form-control"
+                              id="lastName"
+                              name="lastName"
+                              type="text"
+                              value={lastName}
+                              onChange={(event) =>
+                                setLastName(event.target.value)
+                              }
+                            />
+                            <br />
+
+                            <label htmlFor="email">Email</label>
+                            <input
+                              className="form-control"
+                              id="email"
+                              name="email"
+                              type="text"
+                              value={email}
+                              onChange={(event) => setEmail(event.target.value)}
+                            />
+                            <br />
+
+                            <label htmlFor="membershipId">Membership</label>
+                            <select
+                              className="form-control"
+                              id="membershipId"
+                              name="membershipId"
+                              onChange={(event) =>
+                                setMembershipId(parseInt(event.target.value))
+                              }
+                              defaultValue={membershipId}
+                            >
+                              <option value={1}>Gold ($100/mo)</option>
+                              <option value={2}>Silver ($50/mo)</option>
+                              <option value={3}>Bronze ($25/mo)</option>
+                            </select>
+                            <br />
+
+                            <label htmlFor="authorities">Authorities</label>
+                            <select
+                              className="form-control"
+                              id="authorities"
+                              name="authorities"
+                              onChange={(event) =>
+                                setAuthorities(event.target.value)
+                              }
+                              defaultValue={authorities}
+                            >
+                              <option value="user">USER</option>
+                              <option value="admin">ADMIN</option>
+                            </select>
+>>>>>>> 576a72c275eb426b2b969beb96d8018a97c1a877
+                          </div>
+
+                          <div className="col-6">
+                            <label htmlFor="phone">Phone</label>
+                            <input
+                              className="form-control"
+                              id="phone"
+                              name="phone"
+                              type="text"
+                              value={phone}
+                              onChange={(event) => setPhone(event.target.value)}
+                            />
+                            <br />
+                            <label htmlFor="address">Address</label>
+                            <input
+                              className="form-control"
+                              id="address"
+                              name="address"
+                              type="text"
+                              value={address}
+                              onChange={(event) =>
+                                setAddress(event.target.value)
+                              }
+                            />
+                            <br />
+                            <label htmlFor="city">City</label>
+                            <input
+                              className="form-control"
+                              id="city"
+                              name="city"
+                              type="text"
+                              value={city}
+                              onChange={(event) => setCity(event.target.value)}
+                            />
+                            <br />
+                            <label htmlFor="state">State</label>
+                            <input
+                              className="form-control"
+                              maxLength="2"
+                              id="state"
+                              name="state"
+                              type="text"
+                              value={state}
+                              onChange={(event) => setState(event.target.value)}
+                            />
+                            <br />
+                            <label htmlFor="zipCode">Zip Code</label>
+                            <input
+                              className="form-control"
+                              id="zipCode"
+                              name="zipCode"
+                              type="text"
+                              value={zipCode}
+                              onChange={(event) =>
+                                setZipCode(event.target.value)
+                              }
+                            />
+                            <br />
+                          </div>
+                        </div>
+
+                        <div className="row">
+                          <div className="col-6">
+                            <button
+                              className="btn btn-danger form-control"
+                              type="button"
+                              onClick={cancelButton}
+                            >
+                              Cancel
+                            </button>
+                          </div>
+
+                          <div className="col-6">
+                            <button
+                              className="btn btn-primary form-control"
+                              type="submit"
+                            >
+                              Update
+                            </button>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    </form>
                   </>
                 )}
               </>

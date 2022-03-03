@@ -1,9 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
 import { useHistory } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 function Home() {
   const history = useHistory();
+  const [userStatus, setUserStatus] = useState();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setUserStatus({ user: jwtDecode(token) });
+    }
+  }, [setUserStatus]);
 
   return (
     <>
@@ -23,13 +32,20 @@ function Home() {
                   spacious track contains lanes that can fit up to 10 people at
                   once.
                 </p>
+                {userStatus?.user ? (
                 <button
                   onClick={() => history.push("/Track/reserve")}
                   type="button"
                   className="btn btn-primary"
                 >
                   Reserve Now
-                </button>
+                </button> ) :  (<button
+                  onClick={() => history.push("/login")}
+                  type="button"
+                  className="btn btn-primary"
+                >
+                  Reserve Now
+                </button> )}
               </div>
             </div>
           </div>
@@ -51,13 +67,20 @@ function Home() {
                   5,000 sq ft and a large variety of equipment, whether you're
                   doing box jumps or band-resisted exercises.
                 </p>
+                {userStatus?.user ? (
                 <button
                   onClick={() => history.push("/Weights/reserve")}
                   type="button"
                   className="btn btn-primary"
                 >
                   Reserve Now
-                </button>
+                </button> ) :  (<button
+                  onClick={() => history.push("/login")}
+                  type="button"
+                  className="btn btn-primary"
+                >
+                  Reserve Now
+                </button> )}
               </div>
             </div>
           </div>
@@ -78,13 +101,20 @@ function Home() {
                   Enjoy Swimming in world-class indoor pool featuring a water
                   park and swimming lanes.
                 </p>
+                {userStatus?.user ? (
                 <button
                   onClick={() => history.push("/Pool/reserve")}
                   type="button"
                   className="btn btn-primary"
                 >
                   Reserve Now
-                </button>
+                </button> ) :  (<button
+                  onClick={() => history.push("/login")}
+                  type="button"
+                  className="btn btn-primary"
+                >
+                  Reserve Now
+                </button> )}
               </div>
             </div>
           </div>

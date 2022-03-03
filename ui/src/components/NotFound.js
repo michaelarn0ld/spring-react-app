@@ -2,7 +2,7 @@
 
 function NotFound() {
     return ( 
-        <div>This is the 404 component</div>
+        <div>404 Not Found</div>
      );
 }
 
