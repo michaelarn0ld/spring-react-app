@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./styles.css";
 import { useHistory } from "react-router-dom";
 import jwtDecode from "jwt-decode";
+import video from "./assets/css-video.mp4";
 
 function Home() {
   const history = useHistory();
@@ -122,29 +123,21 @@ function Home() {
       </div>
       <div className={"card-group"}>
         <div className={"card bg-dark text-white"}>
-          <img
-            src={
-              "https://images.squarespace-cdn.com/content/v1/54beb580e4b00cf9dcf08db8/1498259961131-L11YYWPW2B9I8712HR50/gym+wide+2017.png?format=750w"
-            }
-            className={"card-img opacity-50"}
-            alt={"yoga girl"}
-          />
-          <div className={"card-img-overlay"}>
-            <div className="card-title">
-              <div className="card-body text-center">
-                <h5 className={"card-title text-center"}>Register Today!</h5>
-                <p className={"card-text text-center"}>
-                  Register and view our membership options that suit your needs.
-                  The over 20,000 sq ft fitness dream is awaiting you!
-                </p>
-                <button
+          <div className="card-title">
+            <div className="card-body text-center">
+              <h5 className={"card-title text-center"}>Register Today!</h5>
+              <p className={"card-text text-center"}>
+                Register and view our membership options that suit your needs.
+                The over 20,000 sq ft fitness dream is awaiting you!
+              </p>
+              <button
                   onClick={() => history.push("/register")}
                   type="button"
                   className="btn btn-primary"
-                >
-                  Register
-                </button>
-              </div>
+              >
+                Register
+              </button>
+              <video className={"overlay"} autoPlay loop muted><source src={video}/></video>
             </div>
           </div>
         </div>
