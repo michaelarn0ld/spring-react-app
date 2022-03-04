@@ -29,7 +29,7 @@
 
 6. Change Pisith
     * Silver Membership
-    * San Francisco, Calfornia (bought a $2M house)
+    * San Francisco, Calfornia (bought a $2M house) (and also married a newport beach girl)
 
 7. Make two reservations
     * Pool Lane, March 10 2022, 11:00
