@@ -123,23 +123,23 @@ function Home() {
       </div>
       <div className={"card-group"}>
         <div className={"card bg-dark text-white"}>
-            <div className="card-title">
-              <div className="card-body text-center">
-                <h5 className={"card-title text-center"}>Register Today!</h5>
-                <p className={"card-text text-center"}>
-                  Register and view our membership options that suit your needs.
-                  The over 20,000 sq ft fitness dream is awaiting you!
-                </p>
-                <button
+          <div className="card-title">
+            <div className="card-body text-center">
+              <h5 className={"card-title text-center"}>Register Today!</h5>
+              <p className={"card-text text-center"}>
+                Register and view our membership options that suit your needs.
+                The over 20,000 sq ft fitness dream is awaiting you!
+              </p>
+              <button
                   onClick={() => history.push("/register")}
                   type="button"
                   className="btn btn-primary"
-                >
-                  Register
-                </button>
-                <video className={"overlay"} autoPlay loop muted><source src={video}/></video>
-              </div>
+              >
+                Register
+              </button>
+              <video className={"overlay"} autoPlay loop muted><source src={video}/></video>
             </div>
+          </div>
         </div>
       </div>
     </>
