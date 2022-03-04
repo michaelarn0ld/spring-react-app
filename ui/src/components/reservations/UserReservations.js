@@ -27,7 +27,7 @@ function UserReservations() {
 
   const deleteReservation = (reservation) => {
     fetch(
-      `http://localhost:8081/reservations/${userStatus.user.id}/${reservation}`,
+      `${window.FACILITY_SERVICE_URL}/reservations/${userStatus.user.id}/${reservation}`,
       {
         method: "DELETE",
         headers: {
