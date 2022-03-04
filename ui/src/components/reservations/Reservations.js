@@ -67,14 +67,22 @@ function Reservations() {
       }
 
       fetch(`${window.FACILITY_SERVICE_URL}/${facilityId}/${reservableId}`, init)
-        .then(response => console.log(response))
+        .then(response => {
+          if (response.status === 201) {
+            history.push("/")
+          }
+        })
 
   }
 
   const renderAvailable = (facility, reservable) => {
-    return open.map(r => (
-      <div className="btn btn-secondary" onClick={() => reserve(r[0], facility, reservable)}>{r[0]}</div>
-    ))
+    return (
+    <div>
+    {open.map(r => (
+      <div className="btn btn-secondary m-1" onClick={() => reserve(r[0], facility, reservable)}>{r[0]}</div>
+    ))}
+    </div>
+    )
   }
 
   const theme = {
@@ -220,18 +228,17 @@ function Reservations() {
       )}
 
       {view === "Bench" && (
-        <Container>
+        <>
           <h3>Bench Press</h3>
-          <DayTimePicker
-            theme={theme}
-            timeSlotSizeMinutes={60}
-            onConfirm={handleScheduled}
-            isLoading={isScheduling}
-            isDone={isScheduled}
-            err={scheduleErr}
-          />
+          <DatePicker onChange={(v) => {
+              getAvailableReservations(v,1,1)
+              setDate(v)
+            }
+          } 
+          value={date}/>
+          {renderAvailable(1,1)}
           <button className="btn btn-primary" onClick={toWeights}>Cancel</button>
-        </Container>
+        </>
       )}
 
       {view === "Squat" && (
@@ -249,33 +256,31 @@ function Reservations() {
       )}
 
       {view === "Pool Lane" && (
-        <Container>
+        <>
           <h3>Pool Lane</h3>
-          <DayTimePicker
-            theme={theme}
-            timeSlotSizeMinutes={60}
-            onConfirm={handleScheduled}
-            isLoading={isScheduling}
-            isDone={isScheduled}
-            err={scheduleErr}
-          />
-          <button className="btn btn-primary" onClick={toPool}>Cancel</button>
-        </Container>
+          <DatePicker onChange={(v) => {
+              getAvailableReservations(v,2,3)
+              setDate(v)
+            }
+          } 
+          value={date}/>
+          {renderAvailable(2,3)}
+          <button className="btn btn-primary" onClick={toWeights}>Cancel</button>
+        </>
       )}
 
       {view === "Track Lane" && (
-        <Container>
+        <>
           <h3>Track Lane</h3>
-          <DayTimePicker
-            theme={theme}
-            timeSlotSizeMinutes={60}
-            onConfirm={handleScheduled}
-            isLoading={isScheduling}
-            isDone={isScheduled}
-            err={scheduleErr}
-          />
-          <button className="btn btn-primary" onClick={toTrack}>Cancel</button>
-        </Container>
+          <DatePicker onChange={(v) => {
+              getAvailableReservations(v,3,3)
+              setDate(v)
+            }
+          } 
+          value={date}/>
+          {renderAvailable(3,3)}
+          <button className="btn btn-primary" onClick={toWeights}>Cancel</button>
+        </>
       )}
     </>
   );
